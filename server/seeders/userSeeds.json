@@ -1,0 +1,32 @@
+[
+  {
+    "_id": "65674fcd32e16ff7ea845537",
+    "name": "Beth Deutmeyer",
+    "email": "beth@email.com",
+    "password": "password01"
+  },
+  {
+    "_id": "65674fcd32e16ff7ea84553a",
+    "name": "Eric Olson",
+    "email": "eric@email.com",
+    "password": "password02"
+  },
+  {
+    "_id": "65674fcd32e16ff7ea84553e",
+    "name": "Cody Kietzman",
+    "email": "cody@email.com",
+    "password": "password03"
+  },
+  {
+    "_id": "65674fcd32e16ff7ea84553c",
+    "name": "Corey Vladesov",
+    "email": "corey@email.com",
+    "password": "password04"
+  },
+  {
+    "_id": "65674fcd32e16ff7ea84553d",
+    "name": "Test User",
+    "email": "testuser@email.com",
+    "password": "testpassword1"
+  }
+]
