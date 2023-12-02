@@ -12,4 +12,3 @@ Hello world
 };
 
 export default Home;
-g
