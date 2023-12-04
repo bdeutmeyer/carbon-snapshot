@@ -26,9 +26,6 @@ const snapshotSchema = new Schema({
     gasolineFootprint: {
         type: Number,
     },
-    foodFootprint: {
-        type: Number,
-    },
 });
 
 const Snapshot = model('Snapshot', snapshotSchema);

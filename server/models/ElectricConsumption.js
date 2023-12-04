@@ -13,7 +13,10 @@ const electricConsumptionSchema = new Schema({
         type: Date,
         default: Date.now,
         get: (timestamp) => dateFormat(timestamp),
-      }
+      },
+      comment: {
+        type: String,
+      },
     },
 });
 
