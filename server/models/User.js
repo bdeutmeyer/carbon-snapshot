@@ -36,7 +36,7 @@ const userSchema = new Schema({
       ref: 'GasolineConsumption',
     },
   ],
-  monthlySnapshot: [
+  snapshots: [
     {
       type: Schema.Types.ObjectId,
       ref: 'Snapshot',
