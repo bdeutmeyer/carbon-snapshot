@@ -1,20 +1,33 @@
 import React, { useState } from 'react';
 import { Form, FormGroup, Label, Input, Button } from 'reactstrap';
 
-const ElectricCompanyForm = () => {
-  const [electricCompany, setElectricCompany] = useState('Mid American');
+const ElectricForm = () => {
+  const [electricCompany, setElectricCompany] = useState('');
+  const [kwh, setKwh] = useState('');
+  const [electricBillDate, setElectricBillDate] = useState('');
 
   const handleElectricCompanyChange = (event) => {
     setElectricCompany(event.target.value);
   }
 
-  const handleElectricCompanySubmit = (event) => {
+  const handleKwhChange = (event) => {
+    setKwh(event.target.value);
+  }
+
+  const handleElectricBillDateChange = (event) => {
+    setElectricBillDate(event.target.value);
+  }
+
+  const handleElectricFormSubmit = (event) => {
     event.preventDefault();
-    // You can do something with the selected electric company if needed
+    // Perform actions with the collected electric data
+    console.log('Electric Company:', electricCompany);
+    console.log('KWH:', kwh);
+    console.log('Electric Bill Date:', electricBillDate);
   }
 
   return (
-    <Form onSubmit={handleElectricCompanySubmit}>
+    <Form onSubmit={handleElectricFormSubmit}>
       <FormGroup>
         <Label for="electricCompany">Please choose your electric company:</Label>
         <Input type="select" id="electricCompany" value={electricCompany} onChange={handleElectricCompanyChange}>
@@ -24,85 +37,49 @@ const ElectricCompanyForm = () => {
           <option value="Commonwealth Edison">Commonwealth Edison</option>
         </Input>
       </FormGroup>
-      <Button type="submit">Submit</Button>
-    </Form>
-  );
-}
-
-const KWHInputForm = () => {
-  const [kwh, setKwh] = useState('');
-
-  const handleKwhChange = (event) => {
-    setKwh(event.target.value);
-  }
-
-  const handleKwhSubmit = (event) => {
-    event.preventDefault();
-    // You can do something with the entered KWH value if needed
-  }
-
-  return (
-    <Form onSubmit={handleKwhSubmit}>
       <FormGroup>
         <Label for="kwh">Please enter your KWH:</Label>
         <Input type="number" id="kwh" value={kwh} onChange={handleKwhChange} />
       </FormGroup>
-      <Button type="submit">Submit</Button>
+      <FormGroup>
+        <Label for="electricBillDate">Please enter your electric bill date:</Label>
+        <Input type="date" id="electricBillDate" value={electricBillDate} onChange={handleElectricBillDateChange} />
+      </FormGroup>
+      <Button type="submit">Submit Electric Info</Button>
     </Form>
   );
 }
 
-const ThermInputForm = () => {
+const GasForm = () => {
   const [therm, setTherm] = useState('');
+  const [gasBillDate, setGasBillDate] = useState('');
 
   const handleThermChange = (event) => {
     setTherm(event.target.value);
   }
 
-  const handleThermSubmit = (event) => {
+  const handleGasBillDateChange = (event) => {
+    setGasBillDate(event.target.value);
+  }
+
+  const handleGasFormSubmit = (event) => {
     event.preventDefault();
-    // You can do something with the entered Therm value if needed
+    // Perform actions with the collected gas data
+    console.log('Therm:', therm);
+    console.log('Gas Bill Date:', gasBillDate);
   }
 
   return (
-    <Form onSubmit={handleThermSubmit}>
+    <Form onSubmit={handleGasFormSubmit}>
       <FormGroup>
         <Label for="therm">Please enter your number of Therms:</Label>
         <Input type="number" id="therm" value={therm} onChange={handleThermChange} />
       </FormGroup>
-      <Button type="submit">Submit</Button>
-    </Form>
-  );
-}
-
-const MonthYearInputForm = () => {
-  const [electric, setElectric] = useState('');
-  const [gas, setGas] = useState('');
-
-  const handleElectricChange = (event) => {
-    setElectric(event.target.value);
-  }
-
-  const handleGasChange = (event) => {
-    setGas(event.target.value);
-  }
-
-  const handleBillSubmit = (event) => {
-    event.preventDefault();
-    // You can do something with the entered month and year if needed
-  }
-
-  return (
-    <Form onSubmit={handleBillSubmit}>
-      <FormGroup>
-        <Label for="electricBillDate">Please enter your electric bill date:</Label>
-        <Input type="date" id="electricBillDate" value={electric} onChange={handleElectricChange} />
-      </FormGroup>
       <FormGroup>
         <Label for="gasBillDate">Please enter your gas bill date:</Label>
-        <Input type="date" id="gasBillDate" value={gas} onChange={handleGasChange} />
+        <Input type="date" id="gasBillDate" value={gasBillDate} onChange={handleGasBillDateChange} />
       </FormGroup>
-      <Button type="submit">Submit</Button>
+      <Button type="submit">Submit Gas Info</Button>
     </Form>
   );
 }
@@ -110,13 +87,13 @@ const MonthYearInputForm = () => {
 const Utilities = () => {
   return (
     <main className="utilities-page">
-      <ElectricCompanyForm />
-      <KWHInputForm />
-      <ThermInputForm />
-      <MonthYearInputForm />
+      <ElectricForm />
+      <GasForm />
     </main>
   );
 };
 
 export default Utilities;
+
+
 
