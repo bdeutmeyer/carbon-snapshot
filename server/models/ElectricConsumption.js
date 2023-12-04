@@ -4,20 +4,17 @@ const electricConsumptionSchema = new Schema({
   userId: {
     type: String,
     required: true,
-    },
-  electricity: {
-      kWh: {
-        type: Number,
-      },
-      billDate:{
-        type: Date,
-        default: Date.now,
-        get: (timestamp) => dateFormat(timestamp),
-      },
-      comment: {
-        type: String,
-      },
-    },
+  },
+  kWh: {
+    type: Number,
+  },
+  billDate: {
+    type: Date,
+    default: Date.now,
+  },
+  comment: {
+    type: String,
+  },
 });
 
 const ElectricConsumption = model('ElectricConsumption', electricConsumptionSchema);

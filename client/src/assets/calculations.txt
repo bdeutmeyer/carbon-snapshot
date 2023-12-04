@@ -25,3 +25,9 @@ Natural Gas	0.42			KWH*.42*.97
 Nuclear	0.33				KWH*.33*.0717	
 Solar 	0.01				KWH*.01*.1102	
 Wind	0.04				KWH*.04*.0243	
+
+
+Natural Gas Calcs
+Therms *  0.034121412 * .97
+
+

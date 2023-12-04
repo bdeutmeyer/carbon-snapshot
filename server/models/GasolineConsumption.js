@@ -4,19 +4,16 @@ const gasolineConsumptionSchema = new Schema({
   userId: {
     type: String,
     required: true,
-    },
-  gasoline: {
-    gallons: {
-      type: Number,
-    },
-    purchaseDate:{
-      type: Date,
-      default: Date.now,
-      get: (timestamp) => dateFormat(timestamp),
-    },
-    comment: {
-      type: String,
-    },
+  },
+  gallons: {
+    type: Number,
+  },
+  purchaseDate: {
+    type: Date,
+    default: Date.now,
+  },
+  comment: {
+    type: String,
   },
 });
 
