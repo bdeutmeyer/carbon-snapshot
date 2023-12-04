@@ -1,19 +1,21 @@
+/* In your CSS file */
 #root {
-  max-width: 1280px;
+  /* font-family: 'Roboto', sans-serif; Use the imported font-family in your styles */
+  font-family: 'Rock Salt', sans-serif !important;
   margin: 0 auto;
-  padding: 2rem;
   text-align: center;
   background-image: url(./assets/wind-turbines.jpg);
   background-size: cover;
   background-position: center;
 }
 
-.landing-page {
-  color: white;
+#title-CS {
+  font-size: xxx-large !important;
+  font-family: 'Rock Salt', sans-serif !important;
 }
 
-#landing-header {
-  margin: -32px !important;
+#subTitle-CS {
+  font-size: x-large;
 }
 
 .logo {
@@ -22,6 +24,15 @@
   will-change: filter;
   transition: filter 300ms;
 }
+
+.landing-page {
+  color: white;
+}
+
+#landing-header {
+  margin: 0px !important;
+}
+
 .logo:hover {
   filter: drop-shadow(0 0 2em #646cffaa);
 }
@@ -50,4 +61,20 @@
 
 .read-the-docs {
   color: #888;
+}
+
+@media screen and (max-width: 768px) {
+  #title-CS {
+      font-size: xx-large !important;
+  }
+  #subTitle-CS {
+    font-size: large !important;
+  }
+  h4 {
+    font-size: .75rem;
+  }
+  .btn.btn-lg {
+    font-size: .85rem;
+    padding: -0.2rem 1.4rem;
+}
 }

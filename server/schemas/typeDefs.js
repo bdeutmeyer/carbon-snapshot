@@ -4,6 +4,7 @@ const typeDefs = `
     name: String
     email: String
     password: String
+    electricCompany: String
     electricConsumption: [ElectricConsumption]
     naturalGasConsumption: [NaturalGasConsumption]
     gasolineConsumption: [GasolineConsumption]

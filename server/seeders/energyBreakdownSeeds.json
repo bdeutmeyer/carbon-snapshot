@@ -1,6 +1,6 @@
 [
     {
-        "name": "Mid American Energy Company",
+        "companyName": "Mid American Energy Company",
         "sourceBreakdown": {
             "coal": 0.23,
             "natural gas": 0.11,
@@ -11,7 +11,7 @@
         "dataSource": "https://www.midamericanenergy.com/energy-mix"
     },
     {
-        "name": "Alliant Energy",
+        "companyName": "Alliant Energy",
         "sourceBreakdown": {
             "coal": 0.32,
             "natural gas": 0.32,
@@ -22,7 +22,7 @@
         "dataSource": "https://s201.q4cdn.com/991130938/files/doc_downloads/413350-Corporate-Profile-Broch.pdf"
     },
     {
-        "name": "Ameren Illinois Energy Company",
+        "companyName": "Ameren Illinois Energy Company",
         "sourceBreakdown": {
             "coal": 0.3,
             "natural gas": 0.36,
@@ -33,7 +33,7 @@
         "dataSource": "https://www.ameren.com/-/media/illinois-site/files/electricchoice/sources-of-supply/2023/aic_342950_environmental-disclosure-q4-2023-(1).ashx"
     },
     {
-        "name": "Commonwealth Edison",
+        "companyName": "Commonwealth Edison",
         "sourceBreakdown": {
             "coal": 0.18,
             "natural gas": 0.42,

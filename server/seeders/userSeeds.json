@@ -3,30 +3,35 @@
     "_id": "65674fcd32e16ff7ea845537",
     "name": "Beth Deutmeyer",
     "email": "beth@email.com",
-    "password": "password01"
+    "password": "password01",
+    "electricCompany": "Mid American Energy Company"
   },
   {
     "_id": "65674fcd32e16ff7ea84553a",
     "name": "Eric Olson",
     "email": "eric@email.com",
-    "password": "password02"
+    "password": "password02",
+    "electricCompany": "Commonwealth Edison"
   },
   {
     "_id": "65674fcd32e16ff7ea84553e",
     "name": "Cody Kietzman",
     "email": "cody@email.com",
-    "password": "password03"
+    "password": "password03",
+    "electricCompany": "Ameren Illinois Energy Company"
   },
   {
     "_id": "65674fcd32e16ff7ea84553c",
     "name": "Corey Vladesov",
     "email": "corey@email.com",
-    "password": "password04"
+    "password": "password04",
+    "electricCompany": "Commonwealth Edison"
   },
   {
     "_id": "65674fcd32e16ff7ea84553d",
     "name": "Test User",
     "email": "testuser@email.com",
-    "password": "testpassword1"
+    "password": "testpassword1",
+    "electricCompany": "Alliant Energy"
   }
 ]
