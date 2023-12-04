@@ -46,6 +46,7 @@ const Login = (props) => {
         <div className="card">
           <h4 className="card-header bg-dark text-light p-2">Login</h4>
           <div className="card-body">
+            {/* adjust below to just head straight to user's main dashboard */}
             {data ? (
               <p>
                 Success! You may now head{' '}

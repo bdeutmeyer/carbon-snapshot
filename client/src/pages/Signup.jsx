@@ -8,7 +8,7 @@ import Auth from '../utils/auth';
 
 const Signup = () => {
   const [formState, setFormState] = useState({
-    username: '',
+    name: '',
     email: '',
     password: '',
   });
@@ -44,6 +44,7 @@ const Signup = () => {
         <div className="card">
           <h4 className="card-header bg-dark text-light p-2">Sign Up</h4>
           <div className="card-body">
+            {/* adjust below to just head straight to user's main dashboard */}
             {data ? (
               <p>
                 Success! You may now head{' '}
@@ -53,8 +54,8 @@ const Signup = () => {
               <form onSubmit={handleFormSubmit}>
                 <input
                   className="form-input"
-                  placeholder="Your username"
-                  name="username"
+                  placeholder="Your name"
+                  name="name"
                   type="text"
                   value={formState.name}
                   onChange={handleChange}
