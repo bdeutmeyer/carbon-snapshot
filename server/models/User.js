@@ -18,6 +18,9 @@ const userSchema = new Schema({
     required: true,
     minlength: 5,
   },
+  electricCompany: {
+    type: String,
+  },
   electricConsumption: [
     {
       type: Schema.Types.ObjectId,
