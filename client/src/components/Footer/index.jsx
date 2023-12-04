@@ -1,5 +1,7 @@
 import { useLocation, useNavigate } from 'react-router-dom';
 
+import '../../App.css'
+
 const Footer = () => {
   const location = useLocation();
   const navigate = useNavigate();
@@ -16,7 +18,7 @@ const Footer = () => {
           </button>
         )}
         <h4>
-          Made by us.
+        Carbon Snapshot - 2023. All rights reserved. Made by: Cody, Eric, Beth and Corey.
         </h4>
       </div>
     </footer>
