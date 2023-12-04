@@ -8,15 +8,18 @@ const Header = () => {
     Auth.logout();
   };
   return (
+    // In the case of Bootstrap/reactstrap, this would change to a Header component. Will want to restyle later
     <header className="bg-primary text-light mb-4 py-3 flex-row align-center">
       <div className="container flex-row justify-space-between-lg justify-center align-center">
         <div>
+          {/* this link should probably route to /me (or whatever the user's main dashboard is) instead */}
           <Link className="text-light" to="/">
-            <h1 className="m-0">Tech Thoughts</h1>
+            <h1 className="m-0">Carbon Snapshot</h1>
           </Link>
-          <p className="m-0">Get into the mind of a programmer.</p>
+          <p className="m-0">It feels good to be green.</p>
         </div>
         <div>
+          {/* This will all get adjusted based on what we decide. Definitely axe the username part and the signup link if login/signup happens on a headerless landing page */}
           {Auth.loggedIn() ? (
             <>
               <Link className="btn btn-lg btn-info m-2" to="/me">

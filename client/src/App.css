@@ -5,6 +5,11 @@
   text-align: center;
 }
 
+.landing-page {
+  background-image: url(./assets/wind-turbines.jpg);
+  color: white
+}
+
 .logo {
   height: 6em;
   padding: 1.5em;
