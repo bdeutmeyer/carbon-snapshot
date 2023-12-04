@@ -12,8 +12,6 @@ import Error from './pages/Error';
 import Landing from './pages/Landing';
 import Utilities from './pages/Utilities';
 
-
-
 const router = createBrowserRouter([
   {
     path: '/',
