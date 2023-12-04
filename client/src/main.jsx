@@ -1,5 +1,6 @@
 import ReactDOM from 'react-dom/client'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom/dist'
+import 'bootstrap/dist/css/bootstrap.css';
 import './index.css'
 
 import App from './App.jsx'
@@ -18,7 +19,7 @@ const router = createBrowserRouter([
     children: [
       {
         index: true,
-        element: <Home />
+        element: <Landing />
       }, {
         path: '/login',
         element: <Login />
@@ -28,17 +29,16 @@ const router = createBrowserRouter([
       }, {
         path: '/me',
         element: <Profile />
-      }, {
-        path: '/profiles/:profileId',
-        element: <Profile />
-      }, 
-      // this will change, but just to get it rendering and play with it:
+      },
       {
-        path: '/landing',
-        element: <Landing />
+        path: '/utilities',
+        element: <Utilities />
+      },
+      {
+        path: '/gasoline',
+        element: <Gasoline />
       }
     ]
-    // We'll need to eliminate one of these Profile routes. Maybe keep the me and get rid of the one with the id?
   }
 ])
 
