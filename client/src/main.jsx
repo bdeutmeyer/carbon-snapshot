@@ -4,12 +4,12 @@ import 'bootstrap/dist/css/bootstrap.css';
 import './index.css'
 
 import App from './App.jsx'
-import Home from './pages/Home';
 import Signup from './pages/Signup';
 import Login from './pages/Login';
 import Profile from './pages/Profile';
 import Error from './pages/Error';
 import Landing from './pages/Landing';
+
 
 const router = createBrowserRouter([
   {
