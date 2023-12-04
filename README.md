@@ -134,7 +134,7 @@ Resources Utilized:
 - ChatGPT
 
 ## GitHub Repository
-https://github.com/ckietzm2/It-feels-good-being-green
+https://github.com/bdeutmeyer/carbon-snapshot
 
 ## License
 This project is licensed under the MIT License - see the [MIT License](/LICENSE) file for details.
