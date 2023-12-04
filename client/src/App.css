@@ -3,11 +3,17 @@
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
+  background-image: url(./assets/wind-turbines.jpg);
+  background-size: cover;
+  background-position: center;
 }
 
 .landing-page {
-  background-image: url(./assets/wind-turbines.jpg);
-  color: white
+  color: white;
+}
+
+#landing-header {
+  margin: -32px !important;
 }
 
 .logo {
