@@ -5,6 +5,7 @@ const Footer = () => {
   const navigate = useNavigate();
   return (
     <footer className="w-100 mt-auto bg-secondary p-4">
+      {/* we'll probably axe this? */}
       <div className="container text-center mb-5">
         {location.pathname !== '/' && (
           <button
@@ -15,16 +16,7 @@ const Footer = () => {
           </button>
         )}
         <h4>
-          Made with{' '}
-          <span
-            className="emoji"
-            role="img"
-            aria-label="heart"
-            aria-hidden="false"
-          >
-            ❤️
-          </span>{' '}
-          by the Tech Thoughts team.
+          Made by us.
         </h4>
       </div>
     </footer>
