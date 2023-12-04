@@ -2,6 +2,8 @@ import { Link } from 'react-router-dom';
 
 import Auth from '../../utils/auth';
 
+import '../../App.css'
+
 const Header = () => {
   const logout = (event) => {
     event.preventDefault();
@@ -14,7 +16,7 @@ const Header = () => {
         <div>
           {/* this link should probably route to /me (or whatever the user's main dashboard is) instead */}
           <Link className="text-light" to="/">
-            <h1 className="m-0">Carbon Snapshot</h1>
+            <h1 className="m-0">Welcome To Carbon Snapshot!</h1>
           </Link>
           <p className="m-0">It feels good to be green.</p>
         </div>
