@@ -2,6 +2,8 @@
 import React, {useState} from 'react';
 import ElectricCalc from '../components/ElectricCalc';
 import ElectricForm from '../components/ElectricForm';
+import GasCalc from '../components/GasCalc';
+import GasForm from '../components/GasForm';
 // import GasCalc from './GasCalc';
 
 const CalculationPage = () => {
@@ -24,24 +26,25 @@ const CalculationPage = () => {
   const handleElectricFormSubmit = (event) => {
     event.preventDefault();
 
-    // Collect the electric form data
-    const electricFormData = {
-      electricCompany: electricCompany,
-      kwh: kwh,
-      electricBillDate: electricBillDate,
-    };
-
-    // Placeholder: Log the collected data
-    console.log('Electric Form Data:', electricFormData);
-
-   
-
-    // // Optional: Reset form fields after submission
-    // setElectricCompany('');
-    // setKwh('');
-    // setElectricBillDate('');
   }
 
+  const [therm, setTherm] = useState('');
+  const [gasBillDate, setGasBillDate] = useState('');
+
+
+
+  const handleThermChange = (event) => {
+    setTherm(event.target.value);
+  }
+
+  const handleGasBillDateChange = (event) => {
+    setGasBillDate(event.target.value);
+  }
+
+  const handleGasFormSubmit = (event) => {
+    event.preventDefault();
+
+  }
   return (
     <div>
       <h1>Calculation Page</h1>
@@ -59,10 +62,22 @@ const CalculationPage = () => {
       handleElectricBillDateChange = {handleElectricBillDateChange}
       handleElectricFormSubmit = {handleElectricFormSubmit}
       />
-      {/* <GasCalc /> */}
-      {/* Add other calculation components as needed */}
+      <GasCalc 
+        therm = {therm}
+        gasBillDate = {gasBillDate}
+      />
+      <GasForm 
+      therm = {therm}
+      gasBillDate = {gasBillDate}
+      handleThermChange = {handleThermChange}
+      handleGasBillDateChange = {handleGasBillDateChange}
+      handleGasFormSubmit = {handleGasFormSubmit}
+      />
+
     </div>
   );
 };
+
+
 
 export default CalculationPage;
