@@ -3,6 +3,9 @@ import { useQuery } from '@apollo/client';
 import { QUERY_ME } from '../utils/queries';
 import Auth from '../utils/auth';
 import AllHistory from '../components/charts/AllHistory'
+import ElectricForm from '../components/ElectricForm';
+import GasForm from '../components/GasForm';
+import GasolineForm from '../components/GasolineForm';
 
 const Profile = () => {
   const { email: userParam } = useParams();
@@ -34,6 +37,9 @@ const Profile = () => {
 
   return (
     <div>
+      <ElectricForm />
+      <GasForm />
+      <GasolineForm />
       <AllHistory />
     </div>
   );
