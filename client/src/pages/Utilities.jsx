@@ -1,5 +1,4 @@
 import React from 'react';
-import GasForm from '../components/GasForm';
 import Calculation from './Calculation'
 import { useParams } from 'react-router-dom';
 import { useQuery } from '@apollo/client';
@@ -39,7 +38,7 @@ const Utilities = () => {
   return (
     <main className="utilities-page">
       <h1>Utilities Information</h1>
-      {/* <ElectricForm /> */}
+      <ElectricForm />
       <Calculation />
       <GasForm />
       <UtilitiesHistory />
