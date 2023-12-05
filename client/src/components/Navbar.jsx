@@ -19,7 +19,7 @@ export default function Navigation(args) {
     {Auth.loggedIn() ? (
         <div>
       <Navbar {...args}>
-          <Nav className="me-auto" navbar>
+          <Nav id="mainFont" className="me-auto" navbar>
             <NavItem>
               <NavLink href="/me">
                 Dashboard
