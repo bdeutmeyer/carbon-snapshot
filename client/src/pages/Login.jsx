@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Link, redirect, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { useMutation } from '@apollo/client';
 import { LOGIN_USER } from '../utils/mutations';
 import Auth from '../utils/auth';
@@ -29,9 +29,7 @@ const Login = (props) => {
       });
 
       Auth.login(data.login.token);
-      // redirect('/me');
-      // const navigate = useNavigate();
-      // navigate('/me')
+      window.location.assign('/me');
     } catch (e) {
       console.error(e);
     }
@@ -49,13 +47,6 @@ const Login = (props) => {
         <div className="card">
           <h4 className="card-header bg-dark text-light p-2">Login</h4>
           <div className="card-body">
-            {/* adjust below to just head straight to user's main dashboard */}
-            {data ? (
-              <p>
-                Success! You may now head{' '}
-                <Link to="/me">back to the homepage.</Link>
-              </p>
-            ) : (
               <form onSubmit={handleFormSubmit}>
                 <input
                   className="form-input"
@@ -81,8 +72,6 @@ const Login = (props) => {
                   Submit
                 </button>
               </form>
-            )}
-
             {error && (
               <div className="my-3 p-3 bg-danger text-white">
                 {error.message}

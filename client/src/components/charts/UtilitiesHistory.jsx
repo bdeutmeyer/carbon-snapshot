@@ -23,7 +23,7 @@ ChartJS.register(
   Legend
 );
 
-export default function History() {
+export default function AllHistory() {
     const { email: userParam } = useParams();
 
     const { loading, data } = useQuery(QUERY_ME, {

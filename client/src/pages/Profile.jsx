@@ -2,8 +2,7 @@ import { Navigate, useParams } from 'react-router-dom';
 import { useQuery } from '@apollo/client';
 import { QUERY_ME } from '../utils/queries';
 import Auth from '../utils/auth';
-import History from '../components/charts/History'
-import Snapshot from '../components/charts/Snapshot'
+import AllHistory from '../components/charts/AllHistory'
 
 const Profile = () => {
   const { email: userParam } = useParams();
@@ -35,8 +34,7 @@ const Profile = () => {
 
   return (
     <div>
-      <History />
-      <Snapshot />
+      <AllHistory />
     </div>
   );
 };

@@ -1,6 +1,6 @@
 import React from 'react';
 import ElectricForm from '../components/ElectricForm';
-import Gas from '../components/GasForm';
+import GasForm from '../components/GasForm';
 
 const Utilities = () => {
   return (
