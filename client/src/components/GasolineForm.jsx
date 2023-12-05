@@ -25,9 +25,6 @@ const GasolineForm = () => {
     // Placeholder: Log the collected data
     console.log('Gasoline Form Data:', gasolineFormData);
 
-    // You can perform additional actions with the collected data, such as updating state or making API calls
-    // For now, this example just logs the data to the console
-
     // Reset form fields after submission if needed
     setGallon('');
     setPurchaseDate('');
