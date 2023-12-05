@@ -22,14 +22,16 @@ ChartJS.register(
   Legend
 );
 
-export default function History() {
+export default function GasolineHistory() {
     const { email: userParam } = useParams();
 
     const { loading, data } = useQuery(QUERY_ME, {
       variables: { email: userParam },
     });
+    console.log(data)
 
     const user = data?.me || data?.user || {};
+    console.log(user)
 
     const options = {
         responsive: true,
@@ -44,21 +46,18 @@ export default function History() {
         },
       };
       
-      const labels = [user.electricConsumption[0].billDate, 'February', 'March', 'April', 'May', 'June', 'July'];
+      const gasolineDatesToFormat = user.gasolineConsumption.map((index) => new Date(parseInt(index.purchaseDate)).toLocaleDateString())
+
+      const labels = gasolineDatesToFormat
 
       const chartDetails = {
         labels,
         datasets: [
-          {
-            label: `Electric Use through ${user.electricCompany}`,
-            data: user.electricConsumption.map((index) => index.kWh),
-            backgroundColor: 'rgba(255, 99, 132, 0.5)',
-          },
-          {
-            label: 'Natural Gas Use',
-            data: user.naturalGasConsumption.map((index) => index.therms),
-            backgroundColor: 'rgba(53, 162, 235, 0.5)',
-          },
+            {
+                label: 'Gasoline Use',
+                data: user.gasolineConsumption.map((index) => index.gallons),
+                backgroundColor: 'rgba(34, 139, 34, 0.5)'
+            },
         ],
       };
 

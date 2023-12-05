@@ -1,122 +1,55 @@
-import '../App.css';
-import React, { useState } from 'react';
-
-const ElectricCompanyForm = () => {
-  const [electricCompany, setElectricCompany] = useState('Mid American');
-
-  const handleElectricCompanyChange = (event) => {
-    setElectricCompany(event.target.value);
-  }
-
-  const handleElectricCompanySubmit = (event) => {
-    event.preventDefault();
-    // You can do something with the selected electric company if needed
-  }
-
-  return (
-    <form onSubmit={handleElectricCompanySubmit}>
-      <label>
-        Please choose your electric company:
-        <select value={electricCompany} onChange={handleElectricCompanyChange}>
-          <option value="Alliant Energy">Alliant Energy</option>
-          <option value="Ameren">Ameren</option>
-          <option value="Mid American">Mid American</option>
-          <option value="Commonwealth Edison">Commonwealth Edison</option>
-        </select>
-      </label>
-      <input type="submit" value="Submit" />
-    </form>
-  );
-}
-
-const KWHInputForm = () => {
-  const [kwh, setKwh] = useState('');
-
-  const handleKwhChange = (event) => {
-    setKwh(event.target.value);
-  }
-
-  const handleKwhSubmit = (event) => {
-    event.preventDefault();
-    // You can do something with the entered KWH value if needed
-  }
-
-  return (
-    <form onSubmit={handleKwhSubmit}>
-      <label>
-        Please enter your KWH:
-        <input type="number" value={kwh} onChange={handleKwhChange} />
-      </label>
-      <input type="submit" value="Submit" />
-    </form>
-  );
-}
-
-const ThermInputForm = () => {
-    const [therm, setTherm] = useState('');
-  
-    const handleThermChange = (event) => {
-      setTherm(event.target.value);
-    }
-  
-    const handleThermSubmit = (event) => {
-      event.preventDefault();
-      // You can do something with the entered Therm value if needed
-    }
-  
-    return (
-      <form onSubmit={handleThermSubmit}>
-        <label>
-          Please enter your number of Therms:
-          <input type="number" value={therm} onChange={handleThermChange} />
-        </label>
-        <input type="submit" value="Submit" />
-      </form>
-    );
-    }
-    const MonthYearInputForm = () => {
-        const [month, setMonth] = useState('');
-        const [year, setYear] = useState('');
-      
-        const handleMonthChange = (event) => {
-          setMonth(event.target.value);
-        }
-      
-        const handleYearChange = (event) => {
-          setYear(event.target.value);
-        }
-      
-        const handleMonthYearSubmit = (event) => {
-          event.preventDefault();
-          // You can do something with the entered month and year if needed
-        }
-      
-        return (
-          <form onSubmit={handleMonthYearSubmit}>
-            <label>
-              Please enter your electric bill date
-              <input type="date" onChange={handleMonthChange} />
-            </label>
-            <label>
-              Please enter the 2 gas bill date:
-              <input type="date"  onChange={handleYearChange} />
-            </label>
-            <input type="submit" value="Submit" />
-          </form>
-        );
-      }
-
-  
+import React from 'react';
+import GasForm from '../components/GasForm';
+import Calculation from './Calculation'
+import { useParams } from 'react-router-dom';
+import { useQuery } from '@apollo/client';
+import { QUERY_ME } from '../utils/queries';
+import Auth from '../utils/auth';
+import ElectricForm from '../components/ElectricForm';
+import GasForm from '../components/GasForm';
+import UtilitiesHistory from '../components/charts/UtilitiesHistory'
 
 const Utilities = () => {
+  const { email: userParam } = useParams();
+
+  const { loading, data } = useQuery(QUERY_ME, {
+    variables: { email: userParam },
+  });
+
+  const user = data?.me || data?.user || {};
+  if (
+    Auth.loggedIn() && 
+    /* Run the getProfile() method to get access to the unencrypted token value in order to retrieve the user's email, and compare it to the userParam variable */
+    Auth.getProfile().authenticatedPerson.email === userParam
+  ) {
+    return <Navigate to="/utilities" />;
+  }
+
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+
+  if (!user?.name) {
+    return (
+      <h4>
+        You need to be logged in to see this page. Use the navigation links above to sign up or log in!
+      </h4>
+    );
+  }
   return (
     <main className="utilities-page">
-      <ElectricCompanyForm />
-      <KWHInputForm />
-      <ThermInputForm />
-      <MonthYearInputForm />
+      <h1>Utilities Information</h1>
+      {/* <ElectricForm /> */}
+      <Calculation />
+      <GasForm />
+      <UtilitiesHistory />
+      {/* You can add more forms or components as needed */}
     </main>
   );
 };
 
 export default Utilities;
+
+
+
+

@@ -1,13 +1,12 @@
-import { Navigate, useParams } from 'react-router-dom';
+import React from 'react';
+import { useParams } from 'react-router-dom';
 import { useQuery } from '@apollo/client';
 import { QUERY_ME } from '../utils/queries';
 import Auth from '../utils/auth';
-import AllHistory from '../components/charts/AllHistory'
-import ElectricForm from '../components/ElectricForm';
-import GasForm from '../components/GasForm';
+import GasolineHistory from '../components/charts/GasolineHistory'
 import GasolineForm from '../components/GasolineForm';
 
-const Profile = () => {
+const Gasoline = () => {
   const { email: userParam } = useParams();
 
   const { loading, data } = useQuery(QUERY_ME, {
@@ -20,7 +19,7 @@ const Profile = () => {
     /* Run the getProfile() method to get access to the unencrypted token value in order to retrieve the user's email, and compare it to the userParam variable */
     Auth.getProfile().authenticatedPerson.email === userParam
   ) {
-    return <Navigate to="/me" />;
+    return <Navigate to="/gasoline" />;
   }
 
   if (loading) {
@@ -34,15 +33,14 @@ const Profile = () => {
       </h4>
     );
   }
-
-  return (
-    <div>
-      <ElectricForm />
-      <GasForm />
-      <GasolineForm />
-      <AllHistory />
-    </div>
-  );
-};
-
-export default Profile;
+    return (
+      <main className="gasoline-page">
+        <h1>Gasoline Information</h1>
+        <GasolineForm />
+        <GasolineHistory />
+        {/* You can add more forms or components as needed */}
+      </main>
+    );
+  };
+  
+  export default Gasoline;

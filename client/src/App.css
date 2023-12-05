@@ -18,6 +18,10 @@
   font-size: x-large;
 }
 
+#github-link {
+  color: black !important;
+}
+
 .logo {
   height: 6em;
   padding: 1.5em;
@@ -72,6 +76,8 @@
   }
   h4 {
     font-size: .75rem;
+    font-family: 'Rock Salt', sans-serif !important;
+    color: black;
   }
   .btn.btn-lg {
     font-size: .85rem;
