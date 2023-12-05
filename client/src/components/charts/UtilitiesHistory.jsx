@@ -12,6 +12,7 @@ import {
 } from 'chart.js';
 import { Bar } from 'react-chartjs-2';
 import { QUERY_ME } from '../../utils/queries';
+import { convertFromUnix } from '../../utils/dateFormat';
 
 ChartJS.register(
   CategoryScale,
@@ -22,7 +23,7 @@ ChartJS.register(
   Legend
 );
 
-export default function History() {
+export default function AllHistory() {
     const { email: userParam } = useParams();
 
     const { loading, data } = useQuery(QUERY_ME, {
@@ -30,6 +31,7 @@ export default function History() {
     });
 
     const user = data?.me || data?.user || {};
+    console.log(user)
 
     const options = {
         responsive: true,
@@ -44,7 +46,9 @@ export default function History() {
         },
       };
       
-      const labels = [user.electricConsumption[0].billDate, 'February', 'March', 'April', 'May', 'June', 'July'];
+      const datesToFormat = user.electricConsumption.map((index) => index.billDate)
+
+      const labels = datesToFormat
 
       const chartDetails = {
         labels,

@@ -1,33 +1,33 @@
 [
     {
         "userId": "65674fcd32e16ff7ea845537",
-        "kWh": 500,
-        "billDate": "June 13, 2023"
+        "kWh": 0,
+        "billDate": "June 16, 2023"
     },
     {
         "userId": "65674fcd32e16ff7ea845537",
-        "kWh": 547,
-        "billDate": "July 13, 2023"
+        "kWh": 209,
+        "billDate": "July 18, 2023"
     },
     {
         "userId": "65674fcd32e16ff7ea845537",
-        "kWh": 602,
-        "billDate": "August 13, 2023"
+        "kWh": 542,
+        "billDate": "August 16, 2023"
     },
     {
         "userId": "65674fcd32e16ff7ea845537",
-        "kWh": 479,
-        "billDate": "September 13, 2023"
+        "kWh": 373,
+        "billDate": "September 15, 2023"
     },
     {
         "userId": "65674fcd32e16ff7ea845537",
-        "kWh": 460,
-        "billDate": "October 13, 2023"
+        "kWh": 239,
+        "billDate": "October 16, 2023"
     },
     {
         "userId": "65674fcd32e16ff7ea845537",
-        "kWh": 486,
-        "billDate": "November 13, 2023"
+        "kWh": 522,
+        "billDate": "November 14, 2023"
     },
     {
         "userId": "65674fcd32e16ff7ea84553a",
