@@ -15,9 +15,9 @@ const Header = () => {
       <div className="container flex-row justify-space-between-lg justify-center align-center">
         <div>
           {/* this link should probably route to /me (or whatever the user's main dashboard is) instead */}
-          <Link className="text-light" to="/">
+          <div className="text-light" to="/">
             <h1 id="title-CS" className="m-0">Welcome To Carbon Snapshot!</h1>
-          </Link>
+          </div>
           <p id="subTitle-CS" className="m-0">It feels good to be green.</p>
         </div>
         <div>
