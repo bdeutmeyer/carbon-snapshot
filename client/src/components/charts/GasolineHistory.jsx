@@ -12,7 +12,6 @@ import {
 } from 'chart.js';
 import { Bar } from 'react-chartjs-2';
 import { QUERY_ME } from '../../utils/queries';
-import { convertFromUnix } from '../../utils/dateFormat';
 
 ChartJS.register(
   CategoryScale,
@@ -23,12 +22,13 @@ ChartJS.register(
   Legend
 );
 
-export default function AllHistory() {
+export default function GasolineHistory() {
     const { email: userParam } = useParams();
 
     const { loading, data } = useQuery(QUERY_ME, {
       variables: { email: userParam },
     });
+    console.log(data)
 
     const user = data?.me || data?.user || {};
     console.log(user)
@@ -46,9 +46,9 @@ export default function AllHistory() {
         },
       };
       
-      const datesToFormat = user.gasolineConsumption.map((index) => index.purchaseDate)
+      const gasolineDatesToFormat = user.gasolineConsumption.map((index) => new Date(parseInt(index.purchaseDate)).toLocaleDateString())
 
-      const labels = datesToFormat
+      const labels = gasolineDatesToFormat
 
       const chartDetails = {
         labels,
