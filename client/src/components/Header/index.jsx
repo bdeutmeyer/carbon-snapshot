@@ -1,37 +1,35 @@
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
+import { useQuery } from '@apollo/client';
+import { QUERY_ME } from '../../utils/queries';
 
 import Auth from '../../utils/auth';
 
 import '../../App.css'
 
 const Header = () => {
-  const logout = (event) => {
-    event.preventDefault();
-    Auth.logout();
-  };
+  const { email: userParam } = useParams();
+
+  const { loading, data } = useQuery(QUERY_ME, {
+    variables: { email: userParam },
+  });
+
+  const user = data?.me || data?.user || {};
+  const splitName = user.name.split(' ');
+  const firstName = splitName[0]
+  console.log(firstName)
+  
   return (
-    // In the case of Bootstrap/reactstrap, this would change to a Header component. Will want to restyle later
     <header className="bg-primary text-light mb-4 py-3 flex-row align-center">
       <div className="container flex-row justify-space-between-lg justify-center align-center">
         <div>
-          {/* this link should probably route to /me (or whatever the user's main dashboard is) instead */}
           <div className="text-light" to="/">
-            <h1 id="title-CS" className="m-0">Welcome To Carbon Snapshot!</h1>
+            <h1 id="title-CS" className="m-0">{Auth.loggedIn() ? ('Carbon Snapshot') : ('Welcome To Carbon Snapshot!')}</h1>
           </div>
-          <p id="subTitle-CS" className="m-0">It feels good to be green.</p>
+          <p id="subTitle-CS" className="m-0">{Auth.loggedIn() ? (`Welcome, ${firstName} !`) : ('It feels good to be green.')}</p>
         </div>
         <div>
-          {/* This will all get adjusted based on what we decide. Definitely axe the username part and the signup link if login/signup happens on a headerless landing page */}
           {Auth.loggedIn() ? (
-            <>
-              <Link className="btn btn-lg btn-info m-2" to="/me">
-                {/* Run the getProfile() method to get access to the unencrypted token value in order to retrieve the user's username  */}
-                {Auth.getProfile().authenticatedPerson.username}'s profile
-              </Link>
-              <button className="btn btn-lg btn-light m-2" onClick={logout}>
-                Logout
-              </button>
-            </>
+            <></>
           ) : (
             <>
               <Link className="btn btn-lg btn-info m-2" to="/login">
