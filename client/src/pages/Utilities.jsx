@@ -38,9 +38,9 @@ const Utilities = () => {
   return (
     <main className="utilities-page">
       <h1>Utilities Information</h1>
-      <ElectricForm />
+      {/* <ElectricForm /> */}
       <Calculation />
-      <GasForm />
+      {/* <GasForm /> */}
       <UtilitiesHistory />
       {/* You can add more forms or components as needed */}
     </main>

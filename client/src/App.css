@@ -1,7 +1,7 @@
 /* In your CSS file */
 #root {
   /* font-family: 'Roboto', sans-serif; Use the imported font-family in your styles */
-  font-family: 'Rock Salt', sans-serif !important;
+  font-family: 'Manjari', sans-serif !important;
   margin: 0 auto;
   text-align: center;
   background-image: url(./assets/wind-turbines.jpg);
@@ -31,6 +31,10 @@
 
 .landing-page {
   color: white;
+}
+
+#mainFont {
+  font-family: 'Londrina Solid', sans-serif !important;
 }
 
 #landing-header {

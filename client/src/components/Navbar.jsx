@@ -4,7 +4,6 @@ import {
   Nav,
   NavItem,
   NavLink,
-  NavbarText,
 } from 'reactstrap';
 
 export default function Navigation(args) {
@@ -12,7 +11,7 @@ export default function Navigation(args) {
   return (
     <div>
       <Navbar {...args}>
-          <Nav className="me-auto" navbar>
+          <Nav id="mainFont" className="me-auto" navbar>
             <NavItem>
               <NavLink href="/me">Dashboard</NavLink>
             </NavItem>
@@ -27,7 +26,6 @@ export default function Navigation(args) {
               </NavLink>
             </NavItem>
           </Nav>
-          <NavbarText>Simple Text</NavbarText>
       </Navbar>
     </div>
   );
