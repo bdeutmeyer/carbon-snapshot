@@ -11,7 +11,9 @@ import Profile from './pages/Profile';
 import Error from './pages/Error';
 import Landing from './pages/Landing';
 import Utilities from './pages/Utilities';
+import Calculation from './pages/Calculation';
 import Gasoline from './pages/Gasoline';
+
 
 const router = createBrowserRouter([
   {
@@ -34,7 +36,12 @@ const router = createBrowserRouter([
       }, {
         path: '/utilities',
         element: <Utilities />
-      }, {
+      },
+      {
+        path: '/calculation',
+        element: <Calculation />
+      }, 
+        {
         path: '/gasoline',
         element: <Gasoline />
       }

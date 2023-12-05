@@ -1,44 +1,43 @@
 import React, { useState } from 'react';
 import { Form, FormGroup, Label, Input, Button } from 'reactstrap';
 
-const ElectricForm = () => {
-  const [electricCompany, setElectricCompany] = useState('');
-  const [kwh, setKwh] = useState('');
-  const [electricBillDate, setElectricBillDate] = useState('');
+const ElectricForm = ({electricCompany, kwh, electricBillDate, handleElectricCompanyChange, handleKwhChange, handleElectricBillDateChange, handleElectricFormSubmit}) => {
+  // const [electricCompany, setElectricCompany] = useState('');
+  // const [kwh, setKwh] = useState('');
+  // const [electricBillDate, setElectricBillDate] = useState('');
 
-  const handleElectricCompanyChange = (event) => {
-    setElectricCompany(event.target.value);
-  }
+  // const handleElectricCompanyChange = (event) => {
+  //   setElectricCompany(event.target.value);
+  // }
 
-  const handleKwhChange = (event) => {
-    setKwh(event.target.value);
-  }
+  // const handleKwhChange = (event) => {
+  //   setKwh(event.target.value);
+  // }
 
-  const handleElectricBillDateChange = (event) => {
-    setElectricBillDate(event.target.value);
-  }
+  // const handleElectricBillDateChange = (event) => {
+  //   setElectricBillDate(event.target.value);
+  // }
 
-  const handleElectricFormSubmit = (event) => {
-    event.preventDefault();
+  // const handleElectricFormSubmit = (event) => {
+  //   event.preventDefault();
 
-    // Collect the electric form data
-    const electricFormData = {
-      electricCompany: electricCompany,
-      kwh: kwh,
-      electricBillDate: electricBillDate,
-    };
+  //   // Collect the electric form data
+  //   const electricFormData = {
+  //     electricCompany: electricCompany,
+  //     kwh: kwh,
+  //     electricBillDate: electricBillDate,
+  //   };
 
-    // Placeholder: Log the collected data
-    console.log('Electric Form Data:', electricFormData);
+  //   // Placeholder: Log the collected data
+  //   console.log('Electric Form Data:', electricFormData);
 
-    // You can perform additional actions with the collected data, such as updating state or making API calls
-    // For now, this example just logs the data to the console
+  //  e
 
-    // Optional: Reset form fields after submission
-    setElectricCompany('');
-    setKwh('');
-    setElectricBillDate('');
-  }
+  //   // // Optional: Reset form fields after submission
+  //   // setElectricCompany('');
+  //   // setKwh('');
+  //   // setElectricBillDate('');
+  // }
 
   return (
     <Form onSubmit={handleElectricFormSubmit}>
