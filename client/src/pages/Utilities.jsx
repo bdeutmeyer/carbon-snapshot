@@ -1,11 +1,9 @@
 import React from 'react';
-import GasForm from '../components/GasForm';
 import Calculation from './Calculation'
 import { useParams } from 'react-router-dom';
 import { useQuery } from '@apollo/client';
 import { QUERY_ME } from '../utils/queries';
 import Auth from '../utils/auth';
-import ElectricForm from '../components/ElectricForm';
 import UtilitiesHistory from '../components/charts/UtilitiesHistory'
 
 const Utilities = () => {
