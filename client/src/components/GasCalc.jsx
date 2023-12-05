@@ -3,7 +3,7 @@ import React from 'react';
 
 const GasCalc = ({therm, gasBillDate}) => {
   // Access the shared data context
-const thermTotal = therm *  0.034121412 * .97
+  const thermTotal = (therm * 0.034121412 * 0.97).toFixed(2);
 
   return (
     <div>
