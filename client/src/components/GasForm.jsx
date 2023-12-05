@@ -1,37 +1,9 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Form, FormGroup, Label, Input, Button } from 'reactstrap';
 
-const GasForm = () => {
-  const [therm, setTherm] = useState('');
-  const [gasBillDate, setGasBillDate] = useState('');
+const GasForm = ({therm, gasBillDate, handleThermChange, handleGasBillDateChange, handleGasFormSubmit}) => {
 
-  const handleThermChange = (event) => {
-    setTherm(event.target.value);
-  }
 
-  const handleGasBillDateChange = (event) => {
-    setGasBillDate(event.target.value);
-  }
-
-  const handleGasFormSubmit = (event) => {
-    event.preventDefault();
-
-    // Collect the gas form data
-    const gasFormData = {
-      therm: therm,
-      gasBillDate: gasBillDate,
-    };
-
-    // Placeholder: Log the collected data
-    console.log('Gas Form Data:', gasFormData);
-
-    // You can perform additional actions with the collected data, such as updating state or making API calls
-    // For now, this example just logs the data to the console
-
-    // Reset form fields after submission if needed
-    setTherm('');
-    setGasBillDate('');
-  }
 
   return (
     <Form onSubmit={handleGasFormSubmit}>
@@ -49,3 +21,5 @@ const GasForm = () => {
 }
 
 export default GasForm;
+
+

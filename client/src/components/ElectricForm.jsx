@@ -1,43 +1,9 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Form, FormGroup, Label, Input, Button } from 'reactstrap';
 
 const ElectricForm = ({electricCompany, kwh, electricBillDate, handleElectricCompanyChange, handleKwhChange, handleElectricBillDateChange, handleElectricFormSubmit}) => {
-  // const [electricCompany, setElectricCompany] = useState('');
-  // const [kwh, setKwh] = useState('');
-  // const [electricBillDate, setElectricBillDate] = useState('');
 
-  // const handleElectricCompanyChange = (event) => {
-  //   setElectricCompany(event.target.value);
-  // }
 
-  // const handleKwhChange = (event) => {
-  //   setKwh(event.target.value);
-  // }
-
-  // const handleElectricBillDateChange = (event) => {
-  //   setElectricBillDate(event.target.value);
-  // }
-
-  // const handleElectricFormSubmit = (event) => {
-  //   event.preventDefault();
-
-  //   // Collect the electric form data
-  //   const electricFormData = {
-  //     electricCompany: electricCompany,
-  //     kwh: kwh,
-  //     electricBillDate: electricBillDate,
-  //   };
-
-  //   // Placeholder: Log the collected data
-  //   console.log('Electric Form Data:', electricFormData);
-
-  //  e
-
-  //   // // Optional: Reset form fields after submission
-  //   // setElectricCompany('');
-  //   // setKwh('');
-  //   // setElectricBillDate('');
-  // }
 
   return (
     <Form onSubmit={handleElectricFormSubmit}>
