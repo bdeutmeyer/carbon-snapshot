@@ -1,5 +1,4 @@
 import React from 'react';
-import GasForm from '../components/GasForm';
 import Calculation from './Calculation'
 import { useParams } from 'react-router-dom';
 import { useQuery } from '@apollo/client';
