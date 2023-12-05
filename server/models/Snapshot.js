@@ -17,7 +17,7 @@ const snapshotSchema = new Schema({
         default: Date.now,
         get: (timestamp) => dateFormat(timestamp),
     },
-    electricityFootprint: {
+    electricFootprint: {
         type: Number,
     },
     naturalGasFootprint: {

@@ -2,7 +2,6 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useMutation } from '@apollo/client';
 import { LOGIN_USER } from '../utils/mutations';
-
 import Auth from '../utils/auth';
 
 const Login = (props) => {
@@ -23,21 +22,23 @@ const Login = (props) => {
   const handleFormSubmit = async (event) => {
     event.preventDefault();
     console.log(formState);
+
     try {
       const { data } = await login({
         variables: { ...formState },
       });
 
       Auth.login(data.login.token);
+      window.location.assign('/me');
     } catch (e) {
       console.error(e);
     }
-
     // clear form values
     setFormState({
       email: '',
       password: '',
     });
+    
   };
 
   return (
@@ -46,13 +47,6 @@ const Login = (props) => {
         <div className="card">
           <h4 className="card-header bg-dark text-light p-2">Login</h4>
           <div className="card-body">
-            {/* adjust below to just head straight to user's main dashboard */}
-            {data ? (
-              <p>
-                Success! You may now head{' '}
-                <Link to="/">back to the homepage.</Link>
-              </p>
-            ) : (
               <form onSubmit={handleFormSubmit}>
                 <input
                   className="form-input"
@@ -78,8 +72,6 @@ const Login = (props) => {
                   Submit
                 </button>
               </form>
-            )}
-
             {error && (
               <div className="my-3 p-3 bg-danger text-white">
                 {error.message}

@@ -5,18 +5,15 @@ const naturalGasConsumptionSchema = new Schema({
     type: String,
     required: true,
   },
-  naturalGas: {
-    therms: {
-      type: Number,
-    },
-    billDate: {
-      type: Date,
-      default: Date.now,
-      get: (timestamp) => dateFormat(timestamp),
-    },
-    comment: {
-      type: String,
-    },
+  therms: {
+    type: Number,
+  },
+  billDate: {
+    type: Date,
+    default: Date.now,
+  },
+  comment: {
+    type: String,
   },
 });
 

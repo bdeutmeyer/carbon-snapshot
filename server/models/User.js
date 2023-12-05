@@ -18,6 +18,9 @@ const userSchema = new Schema({
     required: true,
     minlength: 5,
   },
+  electricCompany: {
+    type: String,
+  },
   electricConsumption: [
     {
       type: Schema.Types.ObjectId,
@@ -36,7 +39,7 @@ const userSchema = new Schema({
       ref: 'GasolineConsumption',
     },
   ],
-  monthlySnapshot: [
+  snapshots: [
     {
       type: Schema.Types.ObjectId,
       ref: 'Snapshot',

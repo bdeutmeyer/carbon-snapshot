@@ -2,6 +2,7 @@ import ReactDOM from 'react-dom/client'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom/dist'
 import 'bootstrap/dist/css/bootstrap.css';
 import './index.css'
+import './App.css'
 
 import App from './App.jsx'
 import Signup from './pages/Signup';
@@ -11,6 +12,8 @@ import Error from './pages/Error';
 import Landing from './pages/Landing';
 import Utilities from './pages/Utilities';
 import Calculation from './pages/Calculation';
+import Gasoline from './pages/Gasoline';
+
 
 const router = createBrowserRouter([
   {
@@ -30,14 +33,17 @@ const router = createBrowserRouter([
       }, {
         path: '/me',
         element: <Profile />
-      },
-      {
+      }, {
         path: '/utilities',
         element: <Utilities />
       },
       {
         path: '/calculation',
         element: <Calculation />
+      }, 
+        {
+        path: '/gasoline',
+        element: <Gasoline />
       }
     ]
   }
