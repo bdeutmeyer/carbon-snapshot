@@ -21,8 +21,8 @@ const Footer = () => {
           Carbon Snapshot - 2023. All rights reserved. Made by:
           <a href="https://github.com/ckietzm2" id= "github-link">Cody, </a>
           <a href="https://github.com/ericolson1977" id= "github-link">Eric, </a>
-          <a href="https://github.com/bdeutmeyer" id= "github-link">Beth, and </a>
-          <a href="https://github.com/vladesovc" id= "github-link">Corey.</a>
+          <a href="https://github.com/bdeutmeyer" id= "github-link">Beth, </a>and
+          <a href="https://github.com/vladesovc" id= "github-link"> Corey.</a>
         </h4>
       </div>
     </footer>

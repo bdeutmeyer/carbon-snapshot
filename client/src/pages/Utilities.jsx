@@ -1,4 +1,6 @@
 import React from 'react';
+import GasForm from '../components/GasForm';
+import Calculation from './Calculation'
 import { useParams } from 'react-router-dom';
 import { useQuery } from '@apollo/client';
 import { QUERY_ME } from '../utils/queries';
@@ -37,7 +39,8 @@ const Utilities = () => {
   return (
     <main className="utilities-page">
       <h1>Utilities Information</h1>
-      <ElectricForm />
+      {/* <ElectricForm /> */}
+      <Calculation />
       <GasForm />
       <UtilitiesHistory />
       {/* You can add more forms or components as needed */}
