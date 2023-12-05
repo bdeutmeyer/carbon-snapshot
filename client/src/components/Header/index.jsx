@@ -14,9 +14,6 @@ const Header = () => {
   });
 
   const user = data?.me || data?.user || {};
-  const splitName = user.name.split(' ');
-  const firstName = splitName[0]
-  console.log(firstName)
   
   return (
     <header className="bg-primary text-light mb-4 py-3 flex-row align-center">
@@ -25,7 +22,7 @@ const Header = () => {
           <div className="text-light" to="/">
             <h1 id="title-CS" className="m-0">{Auth.loggedIn() ? ('Carbon Snapshot') : ('Welcome To Carbon Snapshot!')}</h1>
           </div>
-          <p id="subTitle-CS" className="m-0">{Auth.loggedIn() ? (`Welcome, ${firstName} !`) : ('It feels good to be green.')}</p>
+          <p id="subTitle-CS" className="m-0">{Auth.loggedIn() ? (`Welcome, ${user.name} !`) : ('It feels good to be green.')}</p>
         </div>
         <div>
           {Auth.loggedIn() ? (

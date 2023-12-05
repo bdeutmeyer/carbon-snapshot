@@ -6,6 +6,7 @@ import AllHistory from '../components/charts/AllHistory'
 import ElectricForm from '../components/ElectricForm';
 import GasForm from '../components/GasForm';
 import GasolineForm from '../components/GasolineForm';
+import { Container, Row } from 'reactstrap';
 
 const Profile = () => {
   const { email: userParam } = useParams();
@@ -15,9 +16,9 @@ const Profile = () => {
   });
 
   const user = data?.me || data?.user || {};
-  
+
   if (
-    Auth.loggedIn() && 
+    Auth.loggedIn() &&
     /* Run the getProfile() method to get access to the unencrypted token value in order to retrieve the user's email, and compare it to the userParam variable */
     Auth.getProfile().authenticatedPerson.email === userParam
   ) {
@@ -38,11 +39,19 @@ const Profile = () => {
 
   return (
     <div>
-      <ElectricForm />
-      <GasForm />
-      <GasolineForm />
-      <AllHistory />
-    </div>
+      <Container fluid>
+        <Row className='d-flex'>
+          <ElectricForm />
+          <GasForm />
+          <GasolineForm />
+        </Row>
+      </Container>
+      <Container fluid>
+        <Row className='d-flex'>
+          <AllHistory />
+        </Row>
+      </Container>
+    </div >
   );
 };
 
