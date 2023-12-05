@@ -41,13 +41,6 @@ const Profile = () => {
     <div>
       <Container fluid>
         <Row className='d-flex'>
-          <ElectricForm />
-          <GasForm />
-          <GasolineForm />
-        </Row>
-      </Container>
-      <Container fluid>
-        <Row className='d-flex'>
           <AllHistory />
         </Row>
       </Container>

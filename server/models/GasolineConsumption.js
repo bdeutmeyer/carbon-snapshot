@@ -12,6 +12,9 @@ const gasolineConsumptionSchema = new Schema({
     type: Date,
     default: Date.now,
   },
+  carbonOutput: {
+    type: Number,
+  },
   comment: {
     type: String,
   },

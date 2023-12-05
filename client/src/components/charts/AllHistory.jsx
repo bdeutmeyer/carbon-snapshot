@@ -12,6 +12,7 @@ import {
 } from 'chart.js';
 import { Bar } from 'react-chartjs-2';
 import { QUERY_ME } from '../../utils/queries';
+import { Col } from 'reactstrap'
 
 ChartJS.register(
   CategoryScale,
@@ -30,7 +31,6 @@ export default function AllHistory() {
   });
 
   const user = data?.me || data?.user || {};
-  console.log(user)
 
   const options = {
     responsive: true,
@@ -45,22 +45,32 @@ export default function AllHistory() {
     },
   };
 
-  const utilDatesToFormat = user.electricConsumption.map((index) => new Date(parseInt(index.billDate)).toLocaleDateString())
+  const electricDatesToFormat = user.electricConsumption.map((index) => new Date(parseInt(index.billDate)).toLocaleDateString())
 
-  const utilLabels = utilDatesToFormat
+  const electricLabels = electricDatesToFormat
+
+  const naturalGasDatesToFormat = user.naturalGasConsumption.map((index) => new Date(parseInt(index.billDate)).toLocaleDateString())
+
+  const naturalGasLabels = naturalGasDatesToFormat
 
   const gasolineDatesToFormat = user.gasolineConsumption.map((index) => new Date(parseInt(index.purchaseDate)).toLocaleDateString())
 
   const gasolineLabels = gasolineDatesToFormat
 
-  const utilsChartDetails = {
-    labels: utilLabels,
+  const electricChartDetails = {
+    labels: electricLabels,
     datasets: [
       {
         label: `Electric Use through ${user.electricCompany}`,
         data: user.electricConsumption.map((index) => index.kWh),
         backgroundColor: 'rgba(255, 99, 132, 0.5)',
       },
+    ]
+  };
+
+  const naturalGasChartDetails = {
+    labels: naturalGasLabels,
+    datasets: [
       {
         label: 'Natural Gas Use',
         data: user.naturalGasConsumption.map((index) => index.therms),
@@ -79,12 +89,18 @@ export default function AllHistory() {
       },
     ],
   };
-  console.log(gasolineChartDetails)
 
   return (
     <>
-      <Bar options={options} data={utilsChartDetails} className='bg-white'/>
-      <Bar options={options} data={gasolineChartDetails} className='bg-white'/>
+      <Col>
+        <Bar options={options} data={electricChartDetails} className='bg-white' />
+      </Col>
+      <Col>
+        <Bar options={options} data={naturalGasChartDetails} className='bg-white' />
+      </Col>
+      <Col>
+        <Bar options={options} data={gasolineChartDetails} className='bg-white' />
+      </Col>
     </>
   )
 }

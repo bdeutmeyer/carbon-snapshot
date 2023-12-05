@@ -10,20 +10,8 @@ const resolvers = {
         .populate('electricConsumption')
         .populate('naturalGasConsumption')
         .populate('gasolineConsumption')
-        // .populate({
-        //   path: 'snapshots',
-        // ---leaving out for now since we have no snapshots to pull. Will want to have it show ...what? most recent snap? aggregate for the calendar year?
-        // });
       }
-
-      // populate({
-      //   path: 'fans',
-      //   match: { age: { $gte: 21 } },
-      //   // Explicitly exclude `_id`, see http://bit.ly/2aEfTdB
-      //   select: 'name -_id'
-      // }).
-      // exec();
-
+      
       throw AuthenticationError;
     },
   },
