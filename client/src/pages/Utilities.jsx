@@ -6,7 +6,6 @@ import { useQuery } from '@apollo/client';
 import { QUERY_ME } from '../utils/queries';
 import Auth from '../utils/auth';
 import ElectricForm from '../components/ElectricForm';
-import GasForm from '../components/GasForm';
 import UtilitiesHistory from '../components/charts/UtilitiesHistory'
 
 const Utilities = () => {
@@ -39,7 +38,7 @@ const Utilities = () => {
   return (
     <main className="utilities-page">
       <h1>Utilities Information</h1>
-      {/* <ElectricForm /> */}
+      {<ElectricForm />}
       <Calculation />
       <GasForm />
       <UtilitiesHistory />

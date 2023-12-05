@@ -42,7 +42,6 @@ const ElectricCalc = ({electricCompany, kwh, electricBillDate}) => {
   // Calculate carbon footprint based on the collected data
   const calculateCarbonFootprint = () => {
     const companyCostFactors = costFactors[electricCompany] || {};
-    console.log(companyCostFactors );
     // const energySourceCostFactor = companyCostFactors[electricData.energySource] || 0;
     // const footprintFactor = carbonFootprintFactors[electricData.energySource] || 0;
     
@@ -52,26 +51,16 @@ const ElectricCalc = ({electricCompany, kwh, electricBillDate}) => {
   return (
     <div>
       <h2>Electric Calculation Results</h2>
-      {/* <p>Electric Company: {electricData.electricCompany}</p>
-      <p>Energy Source: {electricData.energySource}</p>
-      <p>KWH: {electricData.kwh}</p>
-      <p>Electric Bill Date: {electricData.electricBillDate}</p> */}
+      <p>Electric Company: {electricCompany}</p>
+      <p>KWH: {kwh}</p>
+      <p>Electric Bill Date: {electricBillDate}</p>
       
       {/* Display breakdown of carbon footprint for each energy source */}
       <p>Carbon Footprint Breakdown:</p>
       <p>(Pounds of CO2)</p>
-      {/* <ul>
-        {Object.entries(carbonFootprintFactors).map(([source, factor]) => (
-          <li key={source}>
-            {source}: {electricData.kwh * factor} kg CO2
-          </li>
-        ))}
-      </ul> */}
 
-      {/* Display total carbon footprint */}
 
       {  
-      //  console.log( Object.values(calculateCarbonFootprint()))
        Object.entries(calculateCarbonFootprint()).map(item => (
         <p>{item[0]} = {item[1]}</p>
        ))
