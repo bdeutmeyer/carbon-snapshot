@@ -3,18 +3,26 @@ import {
   Navbar,
   Nav,
   NavItem,
-  NavLink,
-  NavbarText,
+  NavLink
 } from 'reactstrap';
+import Auth from '../utils/auth';
 
 export default function Navigation(args) {
-
+  const logout = (event) => {
+    event.preventDefault();
+    Auth.logout();
+    window.location.assign('/');
+  };
   return (
-    <div>
+    <>
+    {Auth.loggedIn() ? (
+        <div>
       <Navbar {...args}>
           <Nav className="me-auto" navbar>
             <NavItem>
-              <NavLink href="/me">Dashboard</NavLink>
+              <NavLink href="/me">
+                Dashboard
+                </NavLink>
             </NavItem>
             <NavItem>
               <NavLink href="/utilities">
@@ -26,9 +34,16 @@ export default function Navigation(args) {
                 Gasoline
               </NavLink>
             </NavItem>
+            <NavItem>
+            <NavLink onClick={logout}>
+                Logout
+              </NavLink>
+            </NavItem>
           </Nav>
-          <NavbarText>Simple Text</NavbarText>
       </Navbar>
     </div>
+    ) : ( <div></div> )}
+    </>
+
   );
 }

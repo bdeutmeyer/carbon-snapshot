@@ -15,6 +15,7 @@ const Profile = () => {
   });
 
   const user = data?.me || data?.user || {};
+  
   if (
     Auth.loggedIn() && 
     /* Run the getProfile() method to get access to the unencrypted token value in order to retrieve the user's email, and compare it to the userParam variable */
