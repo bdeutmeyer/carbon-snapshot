@@ -2,52 +2,68 @@
     {
         "userId": "65674fcd32e16ff7ea845537",
         "kwh": 0,
-        "billDate": "June 16, 2023"
+        "billDate": "June 16, 2023",
+        "electricCompany": "Mid American Energy Company",
+        "carbonOutput": 0
     },
     {
         "userId": "65674fcd32e16ff7ea845537",
         "kwh": 209,
-        "billDate": "July 18, 2023"
+        "billDate": "July 18, 2023",
+        "electricCompany": "Mid American Energy Company",
+        "carbonOutput": 20
     },
     {
         "userId": "65674fcd32e16ff7ea845537",
         "kwh": 542,
-        "billDate": "August 16, 2023"
+        "billDate": "August 16, 2023",
+        "electricCompany": "Mid American Energy Company",
+        "carbonOutput": 47
     },
     {
         "userId": "65674fcd32e16ff7ea845537",
         "kwh": 373,
-        "billDate": "September 15, 2023"
+        "billDate": "September 15, 2023",
+        "electricCompany": "Mid American Energy Company",
+        "carbonOutput": 38
     },
     {
         "userId": "65674fcd32e16ff7ea845537",
         "kwh": 239,
-        "billDate": "October 16, 2023"
+        "billDate": "October 16, 2023",
+        "electricCompany": "Mid American Energy Company",
+        "carbonOutput": 34
     },
     {
         "userId": "65674fcd32e16ff7ea845537",
         "kwh": 522,
-        "billDate": "November 14, 2023"
+        "billDate": "November 14, 2023",
+        "electricCompany": "Mid American Energy Company",
+        "carbonOutput": 45
     },
     {
         "userId": "65674fcd32e16ff7ea84553a",
         "kwh": 500,
-        "billDate": "June 13, 2023"
+        "billDate": "June 13, 2023",
+        "electricCompany": "Commonwealth Edison"
     },
     {
         "userId": "65674fcd32e16ff7ea84553a",
         "kwh": 547,
-        "billDate": "July 13, 2023"
+        "billDate": "July 13, 2023",
+        "electricCompany": "Commonwealth Edison"
     },
     {
         "userId": "65674fcd32e16ff7ea84553a",
         "kwh": 602,
-        "billDate": "August 13, 2023"
+        "billDate": "August 13, 2023",
+        "electricCompany": "Commonwealth Edison"
     },
     {
         "userId": "65674fcd32e16ff7ea84553a",
         "kwh": 479,
-        "billDate": "September 13, 2023"
+        "billDate": "September 13, 2023",
+        "electricCompany": "Commonwealth Edison"
     },
     {
         "userId": "65674fcd32e16ff7ea84553a",
@@ -57,37 +73,44 @@
     {
         "userId": "65674fcd32e16ff7ea84553a",
         "kwh": 486,
-        "billDate": "November 13, 2023"
+        "billDate": "November 13, 2023",
+        "electricCompany": "Commonwealth Edison"
     },
     {
         "userId": "65674fcd32e16ff7ea84553e",
         "kwh": 500,
-        "billDate": "June 13, 2023"
+        "billDate": "June 13, 2023",
+        "electricCompany": "Commonwealth Edison"
     },
     {
         "userId": "65674fcd32e16ff7ea84553e",
         "kwh": 547,
-        "billDate": "July 13, 2023"
+        "billDate": "July 13, 2023",
+        "electricCompany": "Commonwealth Edison"
     },
     {
         "userId": "65674fcd32e16ff7ea84553e",
         "kwh": 602,
-        "billDate": "August 13, 2023"
+        "billDate": "August 13, 2023",
+        "electricCompany": "Commonwealth Edison"
     },
     {
         "userId": "65674fcd32e16ff7ea84553e",
         "kwh": 479,
-        "billDate": "September 13, 2023"
+        "billDate": "September 13, 2023",
+        "electricCompany": "Commonwealth Edison"
     },
     {
         "userId": "65674fcd32e16ff7ea84553e",
         "kwh": 460,
-        "billDate": "October 13, 2023"
+        "billDate": "October 13, 2023",
+        "electricCompany": "Commonwealth Edison"
     },
     {
         "userId": "65674fcd32e16ff7ea84553e",
         "kwh": 486,
-        "billDate": "November 13, 2023"
+        "billDate": "November 13, 2023",
+        "electricCompany": "Commonwealth Edison"
     },
     {
         "userId": "65674fcd32e16ff7ea84553c",

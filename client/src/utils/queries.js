@@ -5,6 +5,7 @@ query me {
   me {
     name
     electricConsumption {
+      electricCompany
       kwh
       billDate
       carbonOutput
