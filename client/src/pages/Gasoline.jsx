@@ -4,7 +4,7 @@ import { useQuery } from '@apollo/client';
 import { QUERY_ME } from '../utils/queries';
 import Auth from '../utils/auth';
 import GasolineHistory from '../components/charts/GasolineHistory'
-import GasolineForm from '../components/GasolineForm';
+import GasolineCalculation from '../components/calculations/GasolineCalculation';
 
 const Gasoline = () => {
   const { email: userParam } = useParams();
@@ -35,8 +35,7 @@ const Gasoline = () => {
   }
     return (
       <main className="gasoline-page">
-        <h1>Gasoline Information</h1>
-        <GasolineForm />
+        <GasolineCalculation />
         <GasolineHistory />
         {/* You can add more forms or components as needed */}
       </main>

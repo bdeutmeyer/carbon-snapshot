@@ -3,9 +3,6 @@ import { useQuery } from '@apollo/client';
 import { QUERY_ME } from '../utils/queries';
 import Auth from '../utils/auth';
 import AllHistory from '../components/charts/AllHistory'
-import ElectricForm from '../components/ElectricForm';
-import GasForm from '../components/GasForm';
-import GasolineForm from '../components/GasolineForm';
 import { Container, Row } from 'reactstrap';
 
 const Profile = () => {
@@ -19,7 +16,7 @@ const Profile = () => {
 
   if (
     Auth.loggedIn() &&
-    /* Run the getProfile() method to get access to the unencrypted token value in order to retrieve the user's email, and compare it to the userParam variable */
+
     Auth.getProfile().authenticatedPerson.email === userParam
   ) {
     return <Navigate to="/me" />;
@@ -41,9 +38,9 @@ const Profile = () => {
     <div>
       <Container fluid>
         <Row className='d-flex'>
-          <AllHistory />
-        </Row>
-      </Container>
+        <AllHistory />
+      </Row>
+    </Container>
     </div >
   );
 };

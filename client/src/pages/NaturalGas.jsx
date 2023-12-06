@@ -1,5 +1,5 @@
 import React from 'react';
-import Calculation from './Calculation'
+import NaturalGasCalculation from '../components/calculations/NaturalGasCalculation';
 import { useParams } from 'react-router-dom';
 import { useQuery } from '@apollo/client';
 import { QUERY_ME } from '../utils/queries';
@@ -35,8 +35,7 @@ const NaturalGas = () => {
   }
   return (
     <main className="natural-gas-page">
-      <h1>Natural Gas Use Information</h1>
-      <Calculation />
+      <NaturalGasCalculation />
       <NaturalGasHistory />
     </main>
   );

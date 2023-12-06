@@ -1,5 +1,5 @@
 import React from 'react';
-import Calculation from './Calculation'
+import ElectricCalculation from '../components/calculations/ElectricCalculation';
 import { useParams } from 'react-router-dom';
 import { useQuery } from '@apollo/client';
 import { QUERY_ME } from '../utils/queries';
@@ -35,8 +35,7 @@ const Electricity = () => {
   }
   return (
     <main className="electricity-page">
-      <h1>Electric Use Information</h1>
-      <Calculation />
+      <ElectricCalculation />
       <ElectricHistory />
     </main>
   );
