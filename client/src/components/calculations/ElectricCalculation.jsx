@@ -28,11 +28,12 @@ const ElectricCalculation = () => {
         try {
             const { data } = await addElectricUse({
                 variables: {
+                    electricCompany,
                     kwh,
                     billDate,
                     // carbonOutput,
                     userId: Auth.getProfile().authenticatedPerson._id
-                }    
+                }  
             })
         } catch (err) {
             console.error(err);

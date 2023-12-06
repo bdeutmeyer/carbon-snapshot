@@ -40,7 +40,6 @@ const ElectricCalc = ({electricCompany, kwh, billDate}) => {
   // Calculate carbon footprint based on the collected data
   const calculateCarbonFootprint = () => {
     const companyCostFactors = costFactors[electricCompany] || {};
-    console.log(companyCostFactors)
     let totalCarbonFootprint = 0;
     const individualFootprints = {};
 
@@ -56,7 +55,6 @@ const ElectricCalc = ({electricCompany, kwh, billDate}) => {
   };
 
   const { individualFootprints, totalCarbonFootprint } = calculateCarbonFootprint();
-console.log(individualFootprints)
   return (
     <div>
       <h2>Electric Calculation Results</h2>

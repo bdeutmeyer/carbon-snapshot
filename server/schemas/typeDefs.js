@@ -4,7 +4,6 @@ const typeDefs = `
     name: String
     email: String
     password: String
-    electricCompany: String
     electricConsumption: [ElectricConsumption]
     naturalGasConsumption: [NaturalGasConsumption]
     gasolineConsumption: [GasolineConsumption]
@@ -12,6 +11,7 @@ const typeDefs = `
 
   type ElectricConsumption {
     userId: ID
+    electricCompany: String
     kwh: Int
     billDate: String
     carbonOutput: Int
@@ -46,9 +46,9 @@ const typeDefs = `
   type Mutation {
     addUser(name: String!, email: String!, password: String!): Auth
     login(email: String!, password: String!): Auth
-    addElectricUse(kwh: Int!, billDate: String!, carbonOutput: Int): User
-    addNaturalGasUse(therms: Int!, billDate: String!, carbonOutput: Int): User
-    addGasolineUse(gallons: Int!, purchaseDate: String!, carbonOutput: Int): User
+    addElectricUse(electricCompany: String!, kwh: Int!, billDate: String!, carbonOutput: Int): ElectricConsumption
+    addNaturalGasUse(therms: Int!, billDate: String!, carbonOutput: Int): NaturalGasConsumption
+    addGasolineUse(gallons: Int!, purchaseDate: String!, carbonOutput: Int): GasolineConsumption
   }
 `;
 

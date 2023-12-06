@@ -5,6 +5,9 @@ const electricConsumptionSchema = new Schema({
     type: String,
     required: true,
   },
+  electricCompany: {
+    type: String,
+  },
   kwh: {
     type: Number,
   },
