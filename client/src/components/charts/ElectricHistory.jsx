@@ -60,7 +60,7 @@ export default function ElectricHistory() {
       }
     };
       
-      const datesToFormat = user.electricConsumption.map((index) => new Date(parseInt(index.billDate)).toLocaleDateString())
+      const datesToFormat = user.electricConsumption.map((index) => new Date(parseInt(index.billDate)).toLocaleDateString(undefined, { timeZone: 'Asia/Bangkok' }))
 
       const labels = datesToFormat
 
@@ -68,7 +68,7 @@ export default function ElectricHistory() {
         labels,
         datasets: [
           {
-            label: `Electric Use through ${user.electricCompany}`,
+            label: `Electric Use through ${user.electricCompany} (kWh)`,
             data: user.electricConsumption.map((index) => index.kwh),
             backgroundColor: 'rgba(255, 99, 132, 0.5)',
           },

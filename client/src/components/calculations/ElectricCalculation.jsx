@@ -49,7 +49,7 @@ const ElectricCalculation = () => {
     return (
         <div className='electricity'>
             <div className='electricity-input'>
-                <h1id='elecFont'>Electricity Use</h1>
+                <h1 id='elecFont'>Electricity Use</h1>
                 <ElectricForm
                     electricCompany={electricCompany}
                     kwh={kwh}

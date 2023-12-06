@@ -61,23 +61,18 @@ export default function AllHistory() {
     }
   };
 
-  const electricDatesToFormat = user.electricConsumption.map((index) => new Date(parseInt(index.billDate)).toLocaleDateString())
-
+  const electricDatesToFormat = user.electricConsumption.map((index) => new Date(parseInt(index.billDate)).toLocaleDateString(undefined, { timeZone: 'Asia/Bangkok' }));
   const electricLabels = electricDatesToFormat
-
-  const naturalGasDatesToFormat = user.naturalGasConsumption.map((index) => new Date(parseInt(index.billDate)).toLocaleDateString())
-
+  const naturalGasDatesToFormat = user.naturalGasConsumption.map((index) => new Date(parseInt(index.billDate)).toLocaleDateString(undefined, { timeZone: 'Asia/Bangkok' }));
   const naturalGasLabels = naturalGasDatesToFormat
-
-  const gasolineDatesToFormat = user.gasolineConsumption.map((index) => new Date(parseInt(index.purchaseDate)).toLocaleDateString())
-
+  const gasolineDatesToFormat = user.gasolineConsumption.map((index) => new Date(parseInt(index.purchaseDate)).toLocaleDateString(undefined, { timeZone: 'Asia/Bangkok' }));
   const gasolineLabels = gasolineDatesToFormat
 
   const electricChartDetails = {
     labels: electricLabels,
     datasets: [
       {
-        label: `Electric Use through ${user.electricCompany}`,
+        label: `Electric Use through ${user.electricCompany} (kWh)`,
         data: user.electricConsumption.map((index) => index.kwh),
         backgroundColor: 'rgba(255, 99, 132, 0.5)',
       },
@@ -88,7 +83,7 @@ export default function AllHistory() {
     labels: naturalGasLabels,
     datasets: [
       {
-        label: 'Natural Gas Use',
+        label: 'Natural Gas Use (therms)',
         data: user.naturalGasConsumption.map((index) => index.therms),
         backgroundColor: 'rgba(53, 162, 235, 0.5)',
       },
@@ -99,7 +94,7 @@ export default function AllHistory() {
     labels: gasolineLabels,
     datasets: [
       {
-        label: 'Gasoline Use',
+        label: 'Gasoline Use (gallons)',
         data: user.gasolineConsumption.map((index) => index.gallons),
         backgroundColor: 'rgba(34, 139, 34, 0.5)'
       },
