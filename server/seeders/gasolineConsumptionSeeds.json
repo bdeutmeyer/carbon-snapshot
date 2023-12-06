@@ -2,32 +2,38 @@
     {
         "userId": "65674fcd32e16ff7ea845537",
         "gallons": 15,
-        "purchaseDate": "June 13, 2023"
+        "purchaseDate": "June 13, 2023",
+        "carbonOutput": 47
     },
     {
         "userId": "65674fcd32e16ff7ea845537",
         "gallons": 17,
-        "purchaseDate": "July 13, 2023"
+        "purchaseDate": "July 13, 2023",
+        "carbonOutput": 48
     },
     {
         "userId": "65674fcd32e16ff7ea845537",
         "gallons": 12,
-        "purchaseDate": "August 13, 2023"
+        "purchaseDate": "August 13, 2023",
+        "carbonOutput": 42
     },
     {
         "userId": "65674fcd32e16ff7ea845537",
         "gallons": 18,
-        "purchaseDate": "September 13, 2023"
+        "purchaseDate": "September 13, 2023",
+        "carbonOutput": 49
     },
     {
         "userId": "65674fcd32e16ff7ea845537",
         "gallons": 20,
-        "purchaseDate": "October 13, 2023"
+        "purchaseDate": "October 13, 2023",
+        "carbonOutput": 51
     },
     {
         "userId": "65674fcd32e16ff7ea845537",
         "gallons": 19,
-        "purchaseDate": "November 13, 2023"
+        "purchaseDate": "November 13, 2023",
+        "carbonOutput": 50
     },
     {
         "userId": "65674fcd32e16ff7ea84553a",

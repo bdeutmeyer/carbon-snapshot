@@ -1,7 +1,7 @@
 /* In your CSS file */
 #root {
-  /* font-family: 'Roboto', sans-serif; Use the imported font-family in your styles */
-  font-family: 'Manjari', sans-serif !important;
+  font-family: 'Manjari', sans-serif, !important;
+  font-weight: 400;
   margin: 0 auto;
   text-align: center;
   background-image: url(./assets/wind-turbines.jpg);
@@ -15,6 +15,7 @@
 }
 
 #subTitle-CS {
+  font-family: 'Rock Salt', sans-serif !important;
   font-size: x-large;
 }
 
@@ -46,10 +47,55 @@
 .chart-color {
   background-color: #c7bba2f5;
   opacity: 0.65;
+
+#footerFont {
+  font-family: 'Rock Salt', sans-serif !important;
 }
 
 #github-link {
   color: black !important;
+}
+
+#mainFont {
+  font-family: 'Manjari';
+  font-weight: bolder !important;
+  font-size: larger;
+}
+
+#natGasCSS {
+  font-family: 'Manjari';
+  font-style: italic;
+  text-decoration: underline;
+  font-weight: bolder !important;
+}
+
+#natGasText {
+  font-family: 'Manjari';
+  font-weight: 600;
+}
+
+#gasFormTxt {
+  font-family: 'Manjari';
+  font-weight: 600 !important;
+}
+
+#elecFont {
+  font-family: 'Manjari';
+  font-style: italic;
+  text-decoration: underline;
+  font-weight: bolder !important;
+}
+
+#elecFormTxt {
+  font-family: 'Manjari';
+  font-weight: 600 !important;
+}
+
+#petrolFont {
+  font-family: 'Manjari';
+  font-style: italic;
+  text-decoration: underline;
+  font-weight: bolder !important;
 }
 
 .logo {
@@ -61,10 +107,6 @@
 
 .landing-page {
   color: white;
-}
-
-#mainFont {
-  font-family: 'Londrina Solid', sans-serif !important;
 }
 
 #landing-header {

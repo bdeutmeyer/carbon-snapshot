@@ -9,6 +9,8 @@ import {
 import Auth from '../utils/auth';
 import '../App.css'
 
+import '../App.css'
+
 export default function Navigation(args) {
   const logout = (event) => {
     event.preventDefault();
@@ -19,7 +21,7 @@ export default function Navigation(args) {
     <>
       {Auth.loggedIn() ? (
         <div className="nav-container">
-        <div class="nav-box">
+        <div id="mainFont" class="nav-box">
           <Navbar {...args}>
             <Nav className="me-auto">
               <NavItem>

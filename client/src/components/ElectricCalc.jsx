@@ -1,9 +1,6 @@
-import React from 'react';
-// import useData from './ElectricForm';
+import React, {useEffect} from 'react';
 
-const ElectricCalc = ({electricCompany, kwh, billDate}) => {
-  // Access the shared data context
-  // const { electricData } = useData();
+const ElectricCalc = ({electricCompany, kwh, billDate, carbonOutput, setCarbonOutput}) => {
 
   // Cost factors for each company
   const costFactors = {
@@ -40,7 +37,6 @@ const ElectricCalc = ({electricCompany, kwh, billDate}) => {
   // Calculate carbon footprint based on the collected data
   const calculateCarbonFootprint = () => {
     const companyCostFactors = costFactors[electricCompany] || {};
-    console.log(companyCostFactors)
     let totalCarbonFootprint = 0;
     const individualFootprints = {};
 
@@ -56,7 +52,10 @@ const ElectricCalc = ({electricCompany, kwh, billDate}) => {
   };
 
   const { individualFootprints, totalCarbonFootprint } = calculateCarbonFootprint();
-console.log(individualFootprints)
+
+  // useEffect(()=>{
+    setCarbonOutput(totalCarbonFootprint.toFixed(0))
+  // },[])
   return (
     <div>
       <h2>Electric Calculation Results</h2>
@@ -73,7 +72,7 @@ console.log(individualFootprints)
           <p key={item[0]}>{item[0]} = {item[1]}</p>
         ))
       }
-      <p>Total Carbon Footprint: {totalCarbonFootprint} pounds of CO2</p>
+      <p>Total Carbon Footprint: {carbonOutput} pounds of CO2</p>
       {/* Display other calculation results or further user interaction */}
     </div>
   );
