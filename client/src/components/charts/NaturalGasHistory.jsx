@@ -60,7 +60,7 @@ export default function NaturalGasHistory() {
     }
   };
 
-  const datesToFormat = user.naturalGasConsumption.map((index) => new Date(parseInt(index.billDate)).toLocaleDateString())
+  const datesToFormat = user.naturalGasConsumption.map((index) => new Date(parseInt(index.billDate)).toLocaleDateString(undefined, { timeZone: 'Asia/Bangkok' }))
 
   const labels = datesToFormat
 
@@ -68,7 +68,7 @@ export default function NaturalGasHistory() {
     labels,
     datasets: [
       {
-        label: 'Natural Gas Use',
+        label: 'Natural Gas Use (therms)',
         data: user.naturalGasConsumption.map((index) => index.therms),
         backgroundColor: 'rgba(53, 162, 235, 0.5)',
       },

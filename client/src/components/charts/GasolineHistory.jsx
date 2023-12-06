@@ -63,7 +63,7 @@ export default function GasolineHistory() {
       }
     };
       
-      const gasolineDatesToFormat = user.gasolineConsumption.map((index) => new Date(parseInt(index.purchaseDate)).toLocaleDateString())
+      const gasolineDatesToFormat = user.gasolineConsumption.map((index) => new Date(parseInt(index.purchaseDate)).toLocaleDateString(undefined, { timeZone: 'Asia/Bangkok' }))
 
       const labels = gasolineDatesToFormat
 
@@ -71,7 +71,7 @@ export default function GasolineHistory() {
         labels,
         datasets: [
             {
-                label: 'Gasoline Use',
+                label: 'Gasoline Use (gallons)',
                 data: user.gasolineConsumption.map((index) => index.gallons),
                 backgroundColor: 'rgba(34, 139, 34, 0.5)'
             },
