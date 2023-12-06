@@ -7,16 +7,18 @@ import Auth from '../../utils/auth'
 
 const ElectricCalculation = () => {
     const [electricCompany, setElectricCompany] = useState('');
-    const [kwh, setKwh] = useState('');
+    const [kwh, setKwh] = useState(0);
     const [billDate, setBillDate] = useState('');
+    const [totalCarbonFootprint, setTotalCarbonFootprint] = useState(0);
     const [addElectricUse, { error }] = useMutation(ADD_ELECTRIC_USE)
+    console.log(totalCarbonFootprint);
 
     const handleElectricCompanyChange = (event) => {
         setElectricCompany(event.target.value);
     }
 
     const handleKwhChange = (event) => {
-        setKwh(event.target.value);
+        setKwh(+event.target.value);
     }
 
     const handleElectricBillDateChange = (event) => {
@@ -57,6 +59,8 @@ const ElectricCalculation = () => {
                 electricCompany={electricCompany}
                 kwh={kwh}
                 billDate={billDate}
+                totalCarbonFootprint = {totalCarbonFootprint}
+                setTotalCarbonFootprint = {setTotalCarbonFootprint}
             />
         </div>
     );
