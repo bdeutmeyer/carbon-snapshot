@@ -26,8 +26,13 @@ export default function Navigation(args) {
                 </NavLink>
             </NavItem>
             <NavItem>
-              <NavLink href="/utilities">
-                Utilities
+              <NavLink href="/electricity">
+                Electricity
+              </NavLink>
+            </NavItem>
+            <NavItem>
+              <NavLink href="/naturalgas">
+                Natural Gas
               </NavLink>
             </NavItem>
             <NavItem>

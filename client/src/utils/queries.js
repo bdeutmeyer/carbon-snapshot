@@ -8,16 +8,19 @@ query me {
     electricConsumption {
       kWh
       billDate
+      carbonOutput
       comment
     }
     naturalGasConsumption {
       therms
       billDate
+      carbonOutput
       comment
     }
     gasolineConsumption {
       gallons
       purchaseDate
+      carbonOutput
       comment
     }
   }

@@ -12,7 +12,6 @@ import {
 } from 'chart.js';
 import { Bar } from 'react-chartjs-2';
 import { QUERY_ME } from '../../utils/queries';
-import { convertFromUnix } from '../../utils/dateFormat';
 
 ChartJS.register(
   CategoryScale,
@@ -23,7 +22,7 @@ ChartJS.register(
   Legend
 );
 
-export default function AllHistory() {
+export default function NaturalGasHistory() {
     const { email: userParam } = useParams();
 
     const { loading, data } = useQuery(QUERY_ME, {
@@ -31,7 +30,6 @@ export default function AllHistory() {
     });
 
     const user = data?.me || data?.user || {};
-    console.log(user)
 
     const options = {
         responsive: true,
@@ -46,18 +44,13 @@ export default function AllHistory() {
         },
       };
       
-      const datesToFormat = user.electricConsumption.map((index) => index.billDate)
+      const datesToFormat = user.naturalGasConsumption.map((index) => new Date(parseInt(index.billDate)).toLocaleDateString())
 
       const labels = datesToFormat
 
       const chartDetails = {
         labels,
         datasets: [
-          {
-            label: `Electric Use through ${user.electricCompany}`,
-            data: user.electricConsumption.map((index) => index.kWh),
-            backgroundColor: 'rgba(255, 99, 132, 0.5)',
-          },
           {
             label: 'Natural Gas Use',
             data: user.naturalGasConsumption.map((index) => index.therms),

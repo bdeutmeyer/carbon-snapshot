@@ -4,10 +4,9 @@ import { useParams } from 'react-router-dom';
 import { useQuery } from '@apollo/client';
 import { QUERY_ME } from '../utils/queries';
 import Auth from '../utils/auth';
-import ElectricForm from '../components/ElectricForm';
-import UtilitiesHistory from '../components/charts/UtilitiesHistory'
+import ElectricHistory from '../components/charts/ElectricHistory';
 
-const Utilities = () => {
+const Electricity = () => {
   const { email: userParam } = useParams();
 
   const { loading, data } = useQuery(QUERY_ME, {
@@ -17,10 +16,10 @@ const Utilities = () => {
   const user = data?.me || data?.user || {};
   if (
     Auth.loggedIn() && 
-    /* Run the getProfile() method to get access to the unencrypted token value in order to retrieve the user's email, and compare it to the userParam variable */
+
     Auth.getProfile().authenticatedPerson.email === userParam
   ) {
-    return <Navigate to="/utilities" />;
+    return <Navigate to="/electricity" />;
   }
 
   if (loading) {
@@ -35,16 +34,15 @@ const Utilities = () => {
     );
   }
   return (
-    <main className="utilities-page">
-      <h1>Utilities Information</h1>
+    <main className="electricity-page">
+      <h1>Electric Use Information</h1>
       <Calculation />
-      <UtilitiesHistory />
-      {/* You can add more forms or components as needed */}
+      <ElectricHistory />
     </main>
   );
 };
 
-export default Utilities;
+export default Electricity;
 
 
 

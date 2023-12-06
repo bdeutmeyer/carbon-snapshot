@@ -15,6 +15,7 @@ const typeDefs = `
     userId: ID
     kWh: Int
     billDate: String
+    carbonOutput: Int
     comment: String
   }
 
@@ -22,6 +23,7 @@ const typeDefs = `
     userId: ID
     therms: Int
     billDate: String
+    carbonOutput: Int
     comment: String
   }
 
@@ -29,6 +31,7 @@ const typeDefs = `
     userId: ID
     gallons: Int
     purchaseDate: String
+    carbonOutput: Int
     comment: String
   }
 

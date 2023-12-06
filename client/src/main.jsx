@@ -10,9 +10,10 @@ import Login from './pages/Login';
 import Profile from './pages/Profile';
 import Error from './pages/Error';
 import Landing from './pages/Landing';
-import Utilities from './pages/Utilities';
+import Electricity from './pages/Electricity';
 import Calculation from './pages/Calculation';
 import Gasoline from './pages/Gasoline';
+import NaturalGas from './pages/NaturalGas'
 
 
 const router = createBrowserRouter([
@@ -34,8 +35,8 @@ const router = createBrowserRouter([
         path: '/me',
         element: <Profile />
       }, {
-        path: '/utilities',
-        element: <Utilities />
+        path: '/electricity',
+        element: <Electricity />
       },
       {
         path: '/calculation',
@@ -44,6 +45,9 @@ const router = createBrowserRouter([
         {
         path: '/gasoline',
         element: <Gasoline />
+      }, {
+        path: '/naturalgas',
+        element: <NaturalGas />
       }
     ]
   }
