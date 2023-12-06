@@ -39,7 +39,8 @@ const GasolineCalculation = () => {
   }
   }
   return (
-    <div>
+    <div className='gasoline'>
+      <div className='gasoline-input'>
       <h1 id='petrolFont'>Gasoline Use</h1>
       <GasolineForm 
       gallons = {gallons}
@@ -48,6 +49,8 @@ const GasolineCalculation = () => {
       handlePurchaseDateChange = {handlePurchaseDateChange}
       handleGasolineFormSubmit = {handleGasolineFormSubmit}
       />
+      </div>
+      <div className='gasoline-footprint'>
       <h2 id='petrolFont'>Gasoline Footprint</h2>
       <GasolineCalc 
         gallons = {gallons}
@@ -55,6 +58,7 @@ const GasolineCalculation = () => {
         carbonOutput={carbonOutput}
         setCarbonOutput={setCarbonOutput}
       />
+      </div>
     </div>
   );
 };

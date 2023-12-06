@@ -7,16 +7,7 @@ const Footer = () => {
   const navigate = useNavigate();
   return (
     <footer id="footerFont" className="w-100 mt-auto bg-secondary p-4">
-      {/* we'll probably axe this? */}
       <div className="container text-center mb-5">
-        {/* {location.pathname !== '/' && (
-          <button
-            className="btn btn-dark mb-3"
-            onClick={() => navigate(-1)}
-          >
-            &larr; Go Back
-          </button>
-        )} */}
         <h4>
           Carbon Snapshot - 2023. All rights reserved. Made by:
           <a href="https://github.com/ckietzm2" id= "github-link"> Cody, </a>

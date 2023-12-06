@@ -37,7 +37,7 @@ const ElectricCalculation = () => {
                     billDate,
                     carbonOutput: +carbonOutput,
                     userId: Auth.getProfile().authenticatedPerson._id
-                }  
+                }
             })
             setElectricCompany('');
             setKwh(0);
@@ -46,21 +46,23 @@ const ElectricCalculation = () => {
             console.error(err);
         }
     }
-
     return (
-        <div>
-            <h1 id='elecFont'>Electricity Use</h1>
-            <ElectricForm
-                electricCompany={electricCompany}
-                kwh={kwh}
-                billDate={billDate}
-                handleElectricCompanyChange={handleElectricCompanyChange}
-                handleKwhChange={handleKwhChange}
-                handleElectricBillDateChange={handleElectricBillDateChange}
-                handleElectricFormSubmit={handleElectricFormSubmit}
-            />
+        <div className='electricity'>
+            <div className='electricity-input'>
+                <h1id='elecFont'>Electricity Use</h1>
+                <ElectricForm
+                    electricCompany={electricCompany}
+                    kwh={kwh}
+                    billDate={billDate}
+                    handleElectricCompanyChange={handleElectricCompanyChange}
+                    handleKwhChange={handleKwhChange}
+                    handleElectricBillDateChange={handleElectricBillDateChange}
+                    handleElectricFormSubmit={handleElectricFormSubmit}
+                />
+            </div>
+            <div className='electricity-footprint'>
             <h2 id='elecFont'>Electricity Footprint</h2>
-             <ElectricCalc
+            <ElectricCalc
 
                 electricCompany={electricCompany}
                 kwh={kwh}
@@ -68,7 +70,8 @@ const ElectricCalculation = () => {
                 carbonOutput = {carbonOutput}
                 setCarbonOutput = {setCarbonOutput}
             />
-        </div>
+            </div>
+        </div >
     );
 };
 
