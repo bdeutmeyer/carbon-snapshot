@@ -1,5 +1,5 @@
 import React from 'react';
-// import useData from './ElectricForm';
+
 
 const GasCalc = ({therm, gasBillDate}) => {
   // Access the shared data context

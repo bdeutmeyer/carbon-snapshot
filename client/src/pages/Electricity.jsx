@@ -1,10 +1,10 @@
 import React from 'react';
-import Calculation from './Calculation'
+import ElectricCalculation from '../components/calculations/ElectricCalculation';
 import { useParams } from 'react-router-dom';
 import { useQuery } from '@apollo/client';
 import { QUERY_ME } from '../utils/queries';
 import Auth from '../utils/auth';
-import UtilitiesHistory from '../components/charts/UtilitiesHistory'
+import ElectricHistory from '../components/charts/ElectricHistory';
 
 const Electricity = () => {
   const { email: userParam } = useParams();
@@ -42,7 +42,6 @@ const Electricity = () => {
 };
 
 export default Electricity;
-
 
 
 

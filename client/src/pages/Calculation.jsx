@@ -1,13 +1,15 @@
 // CalculationPage.jsx
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import ElectricCalc from '../components/ElectricCalc';
 import ElectricForm from '../components/ElectricForm';
 import GasCalc from '../components/GasCalc';
 import GasForm from '../components/GasForm';
-// import GasCalc from './GasCalc';
+import GasolineCalc from '../components/GasolineCalc';
+import GasolineForm from '../components/GasolineForm';
+
 
 const CalculationPage = () => {
-    const [electricCompany, setElectricCompany] = useState('');
+  const [electricCompany, setElectricCompany] = useState('');
   const [kwh, setKwh] = useState('');
   const [electricBillDate, setElectricBillDate] = useState('');
 
@@ -28,6 +30,7 @@ const CalculationPage = () => {
 
   }
 
+  // Natural Gas
   const [therm, setTherm] = useState('');
   const [gasBillDate, setGasBillDate] = useState('');
 
@@ -43,35 +46,64 @@ const CalculationPage = () => {
 
   const handleGasFormSubmit = (event) => {
     event.preventDefault();
+  }
+
+  // Gasoline 
+  const [gallons, setGallons] = useState('');
+  const [purchaseDate, setPurchaseDate] = useState('');
+
+
+
+  const handleGallonsChange = (event) => {
+    setGallons(event.target.value);
+  }
+
+  const handlePurchaseDateChange = (event) => {
+    setPurchaseDate(event.target.value);
+  }
+
+  const handleGasolineFormSubmit = (event) => {
+    event.preventDefault();
 
   }
   return (
     <div>
       <h1>Calculation Page</h1>
-      <ElectricCalc 
-        electricCompany = {electricCompany}
-        kwh = {kwh}
-        electricBillDate = {electricBillDate}
+      <ElectricCalc
+        electricCompany={electricCompany}
+        kwh={kwh}
+        electricBillDate={electricBillDate}
       />
-      <ElectricForm 
-      electricCompany = {electricCompany}
-      kwh = {kwh}
-      electricBillDate = {electricBillDate}
-      handleElectricCompanyChange = {handleElectricCompanyChange}
-      handleKwhChange = {handleKwhChange}
-      handleElectricBillDateChange = {handleElectricBillDateChange}
-      handleElectricFormSubmit = {handleElectricFormSubmit}
+      <ElectricForm
+        electricCompany={electricCompany}
+        kwh={kwh}
+        electricBillDate={electricBillDate}
+        handleElectricCompanyChange={handleElectricCompanyChange}
+        handleKwhChange={handleKwhChange}
+        handleElectricBillDateChange={handleElectricBillDateChange}
+        handleElectricFormSubmit={handleElectricFormSubmit}
       />
-      <GasCalc 
-        therm = {therm}
-        gasBillDate = {gasBillDate}
+      <GasCalc
+        therm={therm}
+        gasBillDate={gasBillDate}
       />
-      <GasForm 
-      therm = {therm}
-      gasBillDate = {gasBillDate}
-      handleThermChange = {handleThermChange}
-      handleGasBillDateChange = {handleGasBillDateChange}
-      handleGasFormSubmit = {handleGasFormSubmit}
+      <GasForm
+        therm={therm}
+        gasBillDate={gasBillDate}
+        handleThermChange={handleThermChange}
+        handleGasBillDateChange={handleGasBillDateChange}
+        handleGasFormSubmit={handleGasFormSubmit}
+      />
+      <GasolineCalc
+        gallons={gallons}
+        purchaseDate={purchaseDate}
+      />
+      <GasolineForm
+        gallons={gallons}
+        purchaseDate={purchaseDate}
+        handleGallonsChange={handleGallonsChange}
+        handlePurchaseDateChange={handlePurchaseDateChange}
+        handleGasolineFormSubmit={handleGasolineFormSubmit}
       />
 
     </div>
