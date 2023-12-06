@@ -1,9 +1,11 @@
 import React from 'react';
 
 
-const GasolineCalc = ({gallons, purchaseDate}) => {
+const GasolineCalc = ({gallons, purchaseDate, carbonOutput, setCarbonOutput}) => {
   // Access the shared data context
-  const gallonsTotal = (gallons * 3.7 * 0.87).toFixed(2);
+  const carbonTotal = (gallons * 3.7 * 0.87);
+
+  setCarbonOutput(carbonTotal.toFixed(0))
 
   return (
     <div>
@@ -14,7 +16,7 @@ const GasolineCalc = ({gallons, purchaseDate}) => {
       {/* Display breakdown of carbon footprint for each energy source */}
       <p>Carbon Footprint Breakdown:</p>
       <p>(Pounds of CO2)</p>
-      <p>{gallonsTotal}</p>
+      <p>{carbonOutput}</p>
        
 
     </div>

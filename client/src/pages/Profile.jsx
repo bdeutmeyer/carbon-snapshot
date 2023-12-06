@@ -3,6 +3,7 @@ import { useQuery } from '@apollo/client';
 import { QUERY_ME } from '../utils/queries';
 import Auth from '../utils/auth';
 import AllHistory from '../components/charts/AllHistory'
+import CarbonSnapshot from '../components/charts/CarbonSnapshot';
 import { Container, Row } from 'reactstrap';
 
 const Profile = () => {
@@ -38,6 +39,7 @@ const Profile = () => {
     <div>
       <Container fluid>
         <Row className='d-flex'>
+        <CarbonSnapshot />
         <AllHistory />
       </Row>
     </Container>

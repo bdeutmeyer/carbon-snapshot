@@ -1,29 +1,38 @@
-
-
-// The stuff below is just copied over from the natural gas calculation thing and then renamed the function - guessing you'd be using it as a template anyway, so just slapped it here so I had something to render and get it linked up. 
-
-
-
 import React, {useState} from 'react';
 import { useMutation } from '@apollo/client';
 import GasolineCalc from '../GasolineCalc';
 import GasolineForm from '../GasolineForm';
+import { ADD_GASOLINE_USE } from '../../utils/mutations';
+import Auth from '../../utils/auth';
 
 const GasolineCalculation = () => {
-  const [gallons, setGallons] = useState('');
+  const [gallons, setGallons] = useState(0);
   const [purchaseDate, setPurchaseDate] = useState('');
+  const [carbonOutput, setCarbonOutput] = useState(0);
+  const [addGasolineUse, { error }] = useMutation(ADD_GASOLINE_USE)
 
   const handleGallonsChange = (event) => {
-    setGallons(event.target.value);
+    setGallons(+event.target.value);
   }
 
   const handlePurchaseDateChange = (event) => {
     setPurchaseDate(event.target.value);
   }
 
-  const handleGasolineFormSubmit = (event) => {
+  const handleGasolineFormSubmit = async (event) => {
     event.preventDefault();
-
+    try {
+      const { data } = await addGasolineUse({
+          variables: {
+              gallons,
+              purchaseDate,
+              carbonOutput: +carbonOutput,
+              userId: Auth.getProfile().authenticatedPerson._id
+          }  
+      })
+  } catch (err) {
+      console.error(err);
+  }
   }
   return (
     <div>
@@ -39,6 +48,8 @@ const GasolineCalculation = () => {
       <GasolineCalc 
         gallons = {gallons}
         purchaseDate = {purchaseDate}
+        carbonOutput={carbonOutput}
+        setCarbonOutput={setCarbonOutput}
       />
     </div>
   );
