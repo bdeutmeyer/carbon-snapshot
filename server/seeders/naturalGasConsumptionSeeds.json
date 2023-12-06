@@ -2,32 +2,38 @@
     {
         "userId": "65674fcd32e16ff7ea845537",
         "therms": 75,
-        "billDate": "June 13, 2023"
+        "billDate": "June 13, 2023",
+        "carbonOutput": 60
     },
     {
         "userId": "65674fcd32e16ff7ea845537",
         "therms": 50,
-        "billDate": "July 13, 2023"
+        "billDate": "July 13, 2023",
+        "carbonOutput": 45
     },
     {
         "userId": "65674fcd32e16ff7ea845537",
         "therms": 60,
-        "billDate": "August 13, 2023"
+        "billDate": "August 13, 2023",
+        "carbonOutput": 50
     },
     {
         "userId": "65674fcd32e16ff7ea845537",
         "therms": 90,
-        "billDate": "September 13, 2023"
+        "billDate": "September 13, 2023",
+        "carbonOutput": 75
     },
     {
         "userId": "65674fcd32e16ff7ea845537",
         "therms": 96,
-        "billDate": "October 13, 2023"
+        "billDate": "October 13, 2023",
+        "carbonOutput": 80
     },
     {
         "userId": "65674fcd32e16ff7ea845537",
         "therms": 107,
-        "billDate": "November 13, 2023"
+        "billDate": "November 13, 2023",
+        "carbonOutput": 85
     },
     {
         "userId": "65674fcd32e16ff7ea84553a",

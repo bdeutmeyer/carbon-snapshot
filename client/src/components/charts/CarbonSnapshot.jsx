@@ -31,8 +31,8 @@ export default function CarbonSnapshot() {
     });
 
     const user = data?.me || data?.user || {};
-
-    const lastMonthEndDate = new Date(parseInt(Date.now())).toLocaleDateString()
+console.log(user)
+    const lastMonthEndDate = Date.now()
     const lastMonthStartDate = new Date(lastMonthEndDate);
     
     // Set the start date of the last month
@@ -50,32 +50,44 @@ export default function CarbonSnapshot() {
     const previousMonthStartDate = new Date(previousMonthEndDate);
     previousMonthStartDate.setMonth(previousMonthStartDate.getMonth() - 1);
     previousMonthStartDate.setHours(0, 0, 0, 0);
-    
-    console.log(
-      'Last Month End Date:', lastMonthEndDate,
-      'Last Month Start Date:', lastMonthStartDate,
-      'Previous Month End Date:', previousMonthEndDate,
-      'Previous Month Start Date:', previousMonthStartDate
-    );
-    
 
-    // Filter entries within the last 6 months
-    // const filteredElectricData = user.electricConsumption.filter(entry => {
-    //     const billDate = parseInt(entry.billDate);
-    //     return billDate >= startDate.getTime() && billDate <= endDate;
-    // });
+    const lastMonthElectricData = user.electricConsumption.filter(entry => {
+        const billDate = parseInt(entry.billDate);
+        return billDate >= lastMonthStartDate.getTime() && billDate <= lastMonthEndDate;
+    });
 
-    // const filteredNaturalGasData = user.naturalGasConsumption.filter(entry => {
-    //     const billDate = parseInt(entry.billDate);
-    //     return billDate >= startDate.getTime() && billDate <= endDate;
-    // });
+    const previousMonthElectricData = user.electricConsumption.filter(entry => {
+        const billDate = parseInt(entry.billDate);
+        return billDate >= previousMonthStartDate.getTime() && billDate <= previousMonthEndDate;
+    });
 
-    // const filteredGasolineData = user.gasolineConsumption.filter(entry => {
-    //     const purchaseDate = parseInt(entry.purchaseDate);
-    //     return purchaseDate >= startDate.getTime() && purchaseDate <= endDate;
-    // });
+    const lastMonthNaturalGasData = user.naturalGasConsumption.filter(entry => {
+        const billDate = parseInt(entry.billDate);
+        return billDate >= lastMonthStartDate.getTime() && billDate <= lastMonthEndDate;
+    });
 
-    // console.log(filteredElectricData);
+    const previousMonthNaturalGasData = user.naturalGasConsumption.filter(entry => {
+        const billDate = parseInt(entry.billDate);
+        return billDate >= previousMonthStartDate.getTime() && billDate <= previousMonthEndDate;
+    });
+
+    const lastMonthGasolineData = user.gasolineConsumption.filter(entry => {
+        const purchaseDate = parseInt(entry.purchaseDate);
+        return purchaseDate >= lastMonthStartDate.getTime() && purchaseDate <= lastMonthEndDate;
+    });
+
+    const previousMonthGasolineData = user.gasolineConsumption.filter(entry => {
+        const purchaseDate = parseInt(entry.purchaseDate);
+        return purchaseDate >= previousMonthStartDate.getTime() && purchaseDate <= previousMonthEndDate;
+    });
+
+    const formattedLastMonthEndDate = new Date(parseInt(lastMonthEndDate)).toLocaleDateString()
+
+    const electricData = [previousMonthElectricData, lastMonthElectricData]
+
+    const naturalGasData = [previousMonthNaturalGasData, lastMonthNaturalGasData]
+
+    const gasolineData = [previousMonthGasolineData, lastMonthGasolineData]
 
     const options = {
         responsive: true,
@@ -90,34 +102,47 @@ export default function CarbonSnapshot() {
         },
     };
 
-    const electricDatesToFormat = user.electricConsumption.map((index) => new Date(parseInt(index.billDate)).toLocaleDateString())
+    const pastMonthLabels = [`${lastMonthStartDate.toLocaleDateString()} - ${formattedLastMonthEndDate}`]
 
-    const electricLabels = electricDatesToFormat
+    const previousMonthLabels = [`${previousMonthStartDate.toLocaleDateString()} - ${previousMonthEndDate.toLocaleDateString()}`]
 
-    const naturalGasDatesToFormat = user.naturalGasConsumption.map((index) => new Date(parseInt(index.billDate)).toLocaleDateString())
-
-    const naturalGasLabels = naturalGasDatesToFormat
-
-    const gasolineDatesToFormat = user.gasolineConsumption.map((index) => new Date(parseInt(index.purchaseDate)).toLocaleDateString())
-
-    const gasolineLabels = gasolineDatesToFormat
-
-    const chartDetails = {
-        labels: electricDatesToFormat,
+    const previousMonthChartDetails = {
+        labels: previousMonthLabels,
         datasets: [
             {
                 label: 'Electricity Footprint',
-                data: user.electricConsumption.map((index) => index.carbonOutput),
+                data: previousMonthElectricData.map((index) => index.carbonOutput),
                 backgroundColor: 'rgba(255, 99, 132, 0.5)',
             },
             {
                 label: 'Natural Gas Footprint',
-                data: user.naturalGasConsumption.map((index) => index.carbonOutput),
+                data: previousMonthNaturalGasData.map((index) => index.carbonOutput),
                 backgroundColor: 'rgba(53, 162, 235, 0.5)',
             },
             {
                 label: 'Gasoline Footprint',
-                data: user.gasolineConsumption.map((index) => index.carbonOutput),
+                data: previousMonthGasolineData.map((index) => index.carbonOutput),
+                backgroundColor: 'rgba(34, 139, 34, 0.5)'
+            },
+        ]
+    };
+    
+    const pastMonthChartDetails = {
+        labels: pastMonthLabels,
+        datasets: [
+            {
+                label: 'Electricity Footprint',
+                data: lastMonthElectricData.map((index) => index.carbonOutput),
+                backgroundColor: 'rgba(255, 99, 132, 0.5)',
+            },
+            {
+                label: 'Natural Gas Footprint',
+                data: lastMonthNaturalGasData.map((index) => index.carbonOutput),
+                backgroundColor: 'rgba(53, 162, 235, 0.5)',
+            },
+            {
+                label: 'Gasoline Footprint',
+                data: lastMonthGasolineData.map((index) => index.carbonOutput),
                 backgroundColor: 'rgba(34, 139, 34, 0.5)'
             },
         ]
@@ -126,9 +151,11 @@ export default function CarbonSnapshot() {
     return (
         <>
             <Col>
-                <Bar options={options} data={chartDetails} className='bg-white' />
+                <Bar options={options} data={previousMonthChartDetails} className='bg-white' />
             </Col>
-
+            <Col>
+                <Bar options={options} data={pastMonthChartDetails} className='bg-white' />
+            </Col>
         </>
     )
 }
