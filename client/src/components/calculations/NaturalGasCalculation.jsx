@@ -2,37 +2,54 @@ import React, {useState} from 'react';
 import GasCalc from '../GasCalc';
 import GasForm from '../GasForm';
 import { useMutation } from '@apollo/client';
+import { ADD_NATGAS_USE } from '../../utils/mutations';
+import Auth from '../../utils/auth';
 
 const NaturalGasCalculation = () => {
-  const [therm, setTherm] = useState('');
-  const [gasBillDate, setGasBillDate] = useState('');
+  const [therms, setTherms] = useState(0);
+  const [billDate, setBillDate] = useState('');
+  const [carbonOutput, setCarbonOutput] = useState(0);
+  const [addNaturalGasUse, { error }] = useMutation(ADD_NATGAS_USE);
 
   const handleThermChange = (event) => {
-    setTherm(event.target.value);
+    setTherms(+event.target.value);
   }
 
   const handleGasBillDateChange = (event) => {
-    setGasBillDate(event.target.value);
+    setBillDate(event.target.value);
   }
 
-  const handleGasFormSubmit = (event) => {
+  const handleGasFormSubmit = async (event) => {
     event.preventDefault();
-
+    try {
+      const { data } = await addNaturalGasUse({
+          variables: {
+              therms,
+              billDate,
+              carbonOutput: +carbonOutput,
+              userId: Auth.getProfile().authenticatedPerson._id
+          }  
+      })
+  } catch (err) {
+      console.error(err);
+  }
   }
   return (
     <div>
       <h1>Natural Gas Use</h1>
       <GasForm 
-      therm = {therm}
-      gasBillDate = {gasBillDate}
+      therms = {therms}
+      billDate = {billDate}
       handleThermChange = {handleThermChange}
       handleGasBillDateChange = {handleGasBillDateChange}
       handleGasFormSubmit = {handleGasFormSubmit}
       />
       <h2>Natural Gas Footprint</h2>
       <GasCalc 
-        therm = {therm}
-        gasBillDate = {gasBillDate}
+        therms = {therms}
+        billDate = {billDate}
+        carbonOutput={carbonOutput}
+        setCarbonOutput={setCarbonOutput}
       />
     </div>
   );

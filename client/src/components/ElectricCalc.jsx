@@ -1,6 +1,6 @@
 import React, {useEffect} from 'react';
 
-const ElectricCalc = ({electricCompany, kwh, billDate, totalCarbonFootprint,setTotalCarbonFootprint}) => {
+const ElectricCalc = ({electricCompany, kwh, billDate, carbonOutput, setCarbonOutput}) => {
 
   // Cost factors for each company
   const costFactors = {
@@ -37,7 +37,7 @@ const ElectricCalc = ({electricCompany, kwh, billDate, totalCarbonFootprint,setT
   // Calculate carbon footprint based on the collected data
   const calculateCarbonFootprint = () => {
     const companyCostFactors = costFactors[electricCompany] || {};
-    let totalCarbonFootprintLocal = 0;
+    let totalCarbonFootprint = 0;
     const individualFootprints = {};
 
     // Iterate over predefined sources and calculate the footprint
@@ -45,16 +45,16 @@ const ElectricCalc = ({electricCompany, kwh, billDate, totalCarbonFootprint,setT
       const costFactor = companyCostFactors[source] || 0;
       const footprint = costFactor
       individualFootprints[source] = footprint;
-      totalCarbonFootprintLocal += parseFloat(footprint);
+      totalCarbonFootprint += parseFloat(footprint);
     });
 
-    return { individualFootprints, totalCarbonFootprintLocal};
+    return { individualFootprints, totalCarbonFootprint};
   };
 
-  const { individualFootprints, totalCarbonFootprintLocal } = calculateCarbonFootprint();
+  const { individualFootprints, totalCarbonFootprint } = calculateCarbonFootprint();
 
   // useEffect(()=>{
-    setTotalCarbonFootprint(totalCarbonFootprintLocal)
+    setCarbonOutput(totalCarbonFootprint.toFixed(0))
   // },[])
   return (
     <div>
@@ -72,7 +72,7 @@ const ElectricCalc = ({electricCompany, kwh, billDate, totalCarbonFootprint,setT
           <p key={item[0]}>{item[0]} = {item[1]}</p>
         ))
       }
-      <p>Total Carbon Footprint: {totalCarbonFootprint} pounds of CO2</p>
+      <p>Total Carbon Footprint: {carbonOutput} pounds of CO2</p>
       {/* Display other calculation results or further user interaction */}
     </div>
   );

@@ -9,9 +9,9 @@ const ElectricCalculation = () => {
     const [electricCompany, setElectricCompany] = useState('');
     const [kwh, setKwh] = useState(0);
     const [billDate, setBillDate] = useState('');
-    const [totalCarbonFootprint, setTotalCarbonFootprint] = useState(0);
+    const [carbonOutput, setCarbonOutput] = useState(0);
     const [addElectricUse, { error }] = useMutation(ADD_ELECTRIC_USE)
-    console.log(totalCarbonFootprint);
+    console.log(carbonOutput)
 
     const handleElectricCompanyChange = (event) => {
         setElectricCompany(event.target.value);
@@ -33,7 +33,7 @@ const ElectricCalculation = () => {
                     electricCompany,
                     kwh,
                     billDate,
-                    // carbonOutput,
+                    carbonOutput: +carbonOutput,
                     userId: Auth.getProfile().authenticatedPerson._id
                 }  
             })
@@ -59,8 +59,8 @@ const ElectricCalculation = () => {
                 electricCompany={electricCompany}
                 kwh={kwh}
                 billDate={billDate}
-                totalCarbonFootprint = {totalCarbonFootprint}
-                setTotalCarbonFootprint = {setTotalCarbonFootprint}
+                carbonOutput = {carbonOutput}
+                setCarbonOutput = {setCarbonOutput}
             />
         </div>
     );
