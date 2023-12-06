@@ -39,12 +39,6 @@ const userSchema = new Schema({
       ref: 'GasolineConsumption',
     },
   ],
-  snapshots: [
-    {
-      type: Schema.Types.ObjectId,
-      ref: 'Snapshot',
-    },
-  ],
 });
 
 userSchema.pre('save', async function (next) {

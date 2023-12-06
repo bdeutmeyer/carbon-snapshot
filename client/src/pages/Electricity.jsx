@@ -1,12 +1,12 @@
 import React from 'react';
+import Calculation from './Calculation'
 import { useParams } from 'react-router-dom';
 import { useQuery } from '@apollo/client';
 import { QUERY_ME } from '../utils/queries';
 import Auth from '../utils/auth';
-import GasolineHistory from '../components/charts/GasolineHistory'
-import GasolineCalculation from '../components/calculations/GasolineCalculation';
+import UtilitiesHistory from '../components/charts/UtilitiesHistory'
 
-const Gasoline = () => {
+const Electricity = () => {
   const { email: userParam } = useParams();
 
   const { loading, data } = useQuery(QUERY_ME, {
@@ -16,10 +16,10 @@ const Gasoline = () => {
   const user = data?.me || data?.user || {};
   if (
     Auth.loggedIn() && 
-    /* Run the getProfile() method to get access to the unencrypted token value in order to retrieve the user's email, and compare it to the userParam variable */
+
     Auth.getProfile().authenticatedPerson.email === userParam
   ) {
-    return <Navigate to="/gasoline" />;
+    return <Navigate to="/electricity" />;
   }
 
   if (loading) {
@@ -33,13 +33,16 @@ const Gasoline = () => {
       </h4>
     );
   }
-    return (
-      <main className="gasoline-page">
-        <GasolineCalculation />
-        <GasolineHistory />
-        {/* You can add more forms or components as needed */}
-      </main>
-    );
-  };
-  
-  export default Gasoline;
+  return (
+    <main className="electricity-page">
+      <ElectricCalculation />
+      <ElectricHistory />
+    </main>
+  );
+};
+
+export default Electricity;
+
+
+
+

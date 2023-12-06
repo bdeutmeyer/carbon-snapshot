@@ -8,13 +8,13 @@ const typeDefs = `
     electricConsumption: [ElectricConsumption]
     naturalGasConsumption: [NaturalGasConsumption]
     gasolineConsumption: [GasolineConsumption]
-    snapshots: [Snapshot]
   }
 
   type ElectricConsumption {
     userId: ID
-    kWh: Int
+    kwh: Int
     billDate: String
+    carbonOutput: Int
     comment: String
   }
 
@@ -22,6 +22,7 @@ const typeDefs = `
     userId: ID
     therms: Int
     billDate: String
+    carbonOutput: Int
     comment: String
   }
 
@@ -29,16 +30,8 @@ const typeDefs = `
     userId: ID
     gallons: Int
     purchaseDate: String
+    carbonOutput: Int
     comment: String
-  }
-
-  type Snapshot {
-    userId: ID
-    startDate: String
-    endDate: String
-    electricFootprint: Int
-    naturalGasFootprint: Int
-    gasolineFootprint: Int
   }
 
   type Auth {
@@ -53,6 +46,9 @@ const typeDefs = `
   type Mutation {
     addUser(name: String!, email: String!, password: String!): Auth
     login(email: String!, password: String!): Auth
+    addElectricUse(kwh: Int!, billDate: String!, carbonOutput: Int): User
+    addNaturalGasUse(therms: Int!, billDate: String!, carbonOutput: Int): User
+    addGasolineUse(gallons: Int!, purchaseDate: String!, carbonOutput: Int): User
   }
 `;
 

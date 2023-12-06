@@ -6,18 +6,21 @@ query me {
     name
     electricCompany
     electricConsumption {
-      kWh
+      kwh
       billDate
+      carbonOutput
       comment
     }
     naturalGasConsumption {
       therms
       billDate
+      carbonOutput
       comment
     }
     gasolineConsumption {
       gallons
       purchaseDate
+      carbonOutput
       comment
     }
   }

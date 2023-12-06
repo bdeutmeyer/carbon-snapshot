@@ -1,4 +1,4 @@
-const { User } = require('../models');
+const { User, ElectricConsumption, NaturalGasConsumption, GasolineConsumption } = require('../models');
 const { signToken, AuthenticationError } = require('../utils/auth');
 
 const resolvers = {
@@ -10,20 +10,7 @@ const resolvers = {
         .populate('electricConsumption')
         .populate('naturalGasConsumption')
         .populate('gasolineConsumption')
-        // .populate({
-        //   path: 'snapshots',
-        // ---leaving out for now since we have no snapshots to pull. Will want to have it show ...what? most recent snap? aggregate for the calendar year?
-        // });
       }
-
-      // populate({
-      //   path: 'fans',
-      //   match: { age: { $gte: 21 } },
-      //   // Explicitly exclude `_id`, see http://bit.ly/2aEfTdB
-      //   select: 'name -_id'
-      // }).
-      // exec();
-
       throw AuthenticationError;
     },
   },
@@ -50,6 +37,57 @@ const resolvers = {
       const token = signToken(user);
 
       return { token, user };
+    },
+    addElectricUse: async (parent, { kwh, billDate, carbonOutput }, context) => {
+      if (context.user) {
+        const electricConsumption = await ElectricConsumption.create({
+          kwh,
+          billDate,
+          carbonOutput,
+          userId: context.user._id,
+        });
+
+        await User.findOneAndUpdate(
+          { _id: context.user._id },
+          { $addToSet: { electricConsumption: electricConsumption._id } }
+        );
+        return electricConsumption;
+      }
+      throw AuthenticationError;
+    },
+    addNaturalGasUse: async (parent, { therms, billDate, carbonOutput }, context) => {
+      if (context.user) {
+        const natGasConsumption = await NaturalGasConsumption.create({
+          therms,
+          billDate,
+          carbonOutput,
+          userId: context.user._id,
+        });
+
+        await User.findOneAndUpdate(
+          { _id: context.user._id },
+          { $addToSet: { naturalGasConsumption: natGasConsumption._id } }
+        );
+        return natGasConsumption;
+      }
+      throw AuthenticationError;
+    },
+    addGasolineUse: async (parent, { gallons, purchaseDate, carbonOutput }, context) => {
+      if (context.user) {
+        const gasConsumption = await GasolineConsumption.create({
+          gallons,
+          purchaseDate,
+          carbonOutput,
+          userId: context.user._id,
+        });
+
+        await User.findOneAndUpdate(
+          { _id: context.user._id },
+          { $addToSet: { gasolineConsumption: gasConsumption._id } }
+        );
+        return gasConsumption;
+      }
+      throw AuthenticationError;
     },
   },
 };

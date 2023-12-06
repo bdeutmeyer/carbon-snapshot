@@ -1,12 +1,12 @@
 import React from 'react';
-import Calculation from './Calculation'
+import NaturalGasCalculation from '../components/calculations/NaturalGasCalculation';
 import { useParams } from 'react-router-dom';
 import { useQuery } from '@apollo/client';
 import { QUERY_ME } from '../utils/queries';
 import Auth from '../utils/auth';
-import UtilitiesHistory from '../components/charts/UtilitiesHistory'
+import NaturalGasHistory from '../components/charts/NaturalGasHistory';
 
-const Utilities = () => {
+const NaturalGas = () => {
   const { email: userParam } = useParams();
 
   const { loading, data } = useQuery(QUERY_ME, {
@@ -16,10 +16,10 @@ const Utilities = () => {
   const user = data?.me || data?.user || {};
   if (
     Auth.loggedIn() && 
-    /* Run the getProfile() method to get access to the unencrypted token value in order to retrieve the user's email, and compare it to the userParam variable */
+
     Auth.getProfile().authenticatedPerson.email === userParam
   ) {
-    return <Navigate to="/utilities" />;
+    return <Navigate to="/naturalgas" />;
   }
 
   if (loading) {
@@ -34,18 +34,14 @@ const Utilities = () => {
     );
   }
   return (
-    <main className="utilities-page">
-      <h1>Utilities Information</h1>
-
-      <Calculation />
-
-      <UtilitiesHistory />
-      {/* You can add more forms or components as needed */}
+    <main className="natural-gas-page">
+      <NaturalGasCalculation />
+      <NaturalGasHistory />
     </main>
   );
 };
 
-export default Utilities;
+export default NaturalGas;
 
 
 

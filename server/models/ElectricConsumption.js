@@ -5,12 +5,15 @@ const electricConsumptionSchema = new Schema({
     type: String,
     required: true,
   },
-  kWh: {
+  kwh: {
     type: Number,
   },
   billDate: {
     type: Date,
     default: Date.now,
+  },
+  carbonOutput: {
+    type: Number,
   },
   comment: {
     type: String,
