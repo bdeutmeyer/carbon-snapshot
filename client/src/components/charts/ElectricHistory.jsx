@@ -53,7 +53,7 @@ export default function ElectricHistory() {
         datasets: [
           {
             label: `Electric Use through ${user.electricCompany}`,
-            data: user.electricConsumption.map((index) => index.kWh),
+            data: user.electricConsumption.map((index) => index.kwh),
             backgroundColor: 'rgba(255, 99, 132, 0.5)',
           },
         ],

@@ -1,13 +1,10 @@
-import React from 'react';
-// import useData from './ElectricForm';
+import React, {useEffect} from 'react';
 
-const ElectricCalc = ({electricCompany, kwh, electricBillDate}) => {
-  // Access the shared data context
-  // const { electricData } = useData();
+const ElectricCalc = ({electricCompany, kwh, billDate, carbonOutput, setCarbonOutput}) => {
 
   // Cost factors for each company
   const costFactors = {
-    'Mid American': {
+    'Mid American Energy Company': {
       'Coal': (0.23 * 2.3 * kwh).toFixed(2),
       'Natural Gas': (0.11 * 0.97 * kwh).toFixed(2),
       'Nuclear': (0.04 * 0.0717 * kwh).toFixed(2),
@@ -21,7 +18,7 @@ const ElectricCalc = ({electricCompany, kwh, electricBillDate}) => {
       'Solar': (0.01 * 0.1102 * kwh).toFixed(2),
       'Wind': (0.11 * 0.0243 * kwh).toFixed(2),
     },
-    'Ameren': {
+    'Ameren Illinois Energy Company': {
       'Coal': (0.30 * 2.3 * kwh).toFixed(2),
       'Natural Gas': (0.36 * 0.97 * kwh).toFixed(2),
       'Nuclear': (0.15 * 0.0717 * kwh).toFixed(2),
@@ -56,12 +53,15 @@ const ElectricCalc = ({electricCompany, kwh, electricBillDate}) => {
 
   const { individualFootprints, totalCarbonFootprint } = calculateCarbonFootprint();
 
+  // useEffect(()=>{
+    setCarbonOutput(totalCarbonFootprint.toFixed(0))
+  // },[])
   return (
     <div>
       <h2>Electric Calculation Results</h2>
       <p>Electric Company: {electricCompany}</p>
       <p>KWH: {kwh}</p>
-      <p>Electric Bill Date: {electricBillDate}</p>
+      <p>Electric Bill Date: {billDate}</p>
       
       {/* Display breakdown of carbon footprint for each energy source */}
       <p>Carbon Footprint Breakdown:</p>
@@ -72,7 +72,7 @@ const ElectricCalc = ({electricCompany, kwh, electricBillDate}) => {
           <p key={item[0]}>{item[0]} = {item[1]}</p>
         ))
       }
-      <p>Total Carbon Footprint: {totalCarbonFootprint} pounds of CO2</p>
+      <p>Total Carbon Footprint: {carbonOutput} pounds of CO2</p>
       {/* Display other calculation results or further user interaction */}
     </div>
   );

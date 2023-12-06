@@ -1,46 +1,57 @@
-
-
-// The stuff below is just copied over from the natural gas calculation thing and then renamed the function - guessing you'd be using it as a template anyway, so just slapped it here so I had something to render and get it linked up. 
-
-
-
 import React, {useState} from 'react';
 import { useMutation } from '@apollo/client';
-import GasCalc from '../GasCalc';
-import GasForm from '../GasForm';
+import GasolineCalc from '../GasolineCalc';
+import GasolineForm from '../GasolineForm';
+import { ADD_GASOLINE_USE } from '../../utils/mutations';
+import Auth from '../../utils/auth';
 
 import '../../App.css'
 
 const GasolineCalculation = () => {
-  const [therm, setTherm] = useState('');
-  const [gasBillDate, setGasBillDate] = useState('');
+  const [gallons, setGallons] = useState(0);
+  const [purchaseDate, setPurchaseDate] = useState('');
+  const [carbonOutput, setCarbonOutput] = useState(0);
+  const [addGasolineUse, { error }] = useMutation(ADD_GASOLINE_USE)
 
-  const handleThermChange = (event) => {
-    setTherm(event.target.value);
+  const handleGallonsChange = (event) => {
+    setGallons(+event.target.value);
   }
 
-  const handleGasBillDateChange = (event) => {
-    setGasBillDate(event.target.value);
+  const handlePurchaseDateChange = (event) => {
+    setPurchaseDate(event.target.value);
   }
 
-  const handleGasFormSubmit = (event) => {
+  const handleGasolineFormSubmit = async (event) => {
     event.preventDefault();
-
+    try {
+      const { data } = await addGasolineUse({
+          variables: {
+              gallons,
+              purchaseDate,
+              carbonOutput: +carbonOutput,
+              userId: Auth.getProfile().authenticatedPerson._id
+          }  
+      })
+  } catch (err) {
+      console.error(err);
+  }
   }
   return (
     <div>
       <h1 id='petrolFont'>Gasoline Use</h1>
-      <GasForm 
-      therm = {therm}
-      gasBillDate = {gasBillDate}
-      handleThermChange = {handleThermChange}
-      handleGasBillDateChange = {handleGasBillDateChange}
-      handleGasFormSubmit = {handleGasFormSubmit}
+      <GasolineForm 
+      gallons = {gallons}
+      purchaseDate = {purchaseDate}
+      handleGallonsChange = {handleGallonsChange}
+      handlePurchaseDateChange = {handlePurchaseDateChange}
+      handleGasolineFormSubmit = {handleGasolineFormSubmit}
       />
       <h2 id='petrolFont'>Gasoline Footprint</h2>
-      <GasCalc 
-        therm = {therm}
-        gasBillDate = {gasBillDate}
+      <GasolineCalc 
+        gallons = {gallons}
+        purchaseDate = {purchaseDate}
+        carbonOutput={carbonOutput}
+        setCarbonOutput={setCarbonOutput}
       />
     </div>
   );

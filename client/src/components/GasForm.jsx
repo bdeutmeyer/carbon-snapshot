@@ -2,15 +2,14 @@ import React from 'react';
 import { Form, FormGroup, Label, Input, Button } from 'reactstrap';
 import '../App.css'
 
-const GasForm = ({therm, gasBillDate, handleThermChange, handleGasBillDateChange, handleGasFormSubmit}) => {
+const GasForm = ({therms, gasBillDate, handleThermChange, handleGasBillDateChange, handleGasFormSubmit}) => {
 
- 
 
   return (
     <Form onSubmit={handleGasFormSubmit}>
       <FormGroup>
-        <Label id='gasFormTxt' for="therm">Please enter your number of Therms:</Label>
-        <Input type="number" id="therm" value={therm} onChange={handleThermChange} />
+        <Label id='gasFormTxt' for="therms">Please enter your number of Therms:</Label>
+        <Input type="number" id="therms" value={therms} onChange={handleThermChange} />
       </FormGroup>
       <FormGroup>
         <Label id='gasFormTxt' for="gasBillDate">Please enter your gas bill date:</Label>

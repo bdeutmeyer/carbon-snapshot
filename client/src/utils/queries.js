@@ -4,7 +4,6 @@ export const QUERY_ME = gql`
 query me {
   me {
     name
-    electricCompany
     electricConsumption {
       kwh
       billDate

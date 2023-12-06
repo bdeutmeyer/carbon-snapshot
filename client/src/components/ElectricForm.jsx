@@ -10,9 +10,10 @@ const ElectricForm = ({electricCompany, kwh, electricBillDate, handleElectricCom
       <FormGroup>
         <Label id='elecFormTxt' for="electricCompany">Please choose your electric company:</Label>
         <Input type="select" id="electricCompany" value={electricCompany} onChange={handleElectricCompanyChange}>
+          <option value="default">Select one</option>
           <option value="Alliant Energy">Alliant Energy</option>
-          <option value="Ameren">Ameren</option>
-          <option value="Mid American">Mid American</option>
+          <option value="Ameren Illinois Energy Company">Ameren Illinois Energy Company</option>
+          <option value="Mid American Energy Company">Mid American Energy Company</option>
           <option value="Commonwealth Edison">Commonwealth Edison</option>
         </Input>
       </FormGroup>

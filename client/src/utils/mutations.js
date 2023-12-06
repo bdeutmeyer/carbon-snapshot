@@ -25,15 +25,35 @@ export const ADD_USER = gql`
 `;
 
 export const ADD_ELECTRIC_USE = gql`
-mutation addElectricUse($kwh: Int!, $billDate: String!, $carbonOutput: Int) {
-  addElectricUse(kwh: $kwh, billDate: $billDate, carbonOutput: $carbonOutput) {
-    electricConsumption {
-      _id
-      kwh
-      billDate
-      carbonOutput
-      userId
-    }
+mutation addElectricUse($electricCompany: String!, $kwh: Int!, $billDate: String!, $carbonOutput: Int!) {
+  addElectricUse(electricCompany: $electricCompany, kwh: $kwh, billDate: $billDate, carbonOutput: $carbonOutput) {
+    electricCompany
+    kwh
+    billDate
+    carbonOutput
+    userId
+  }
+}
+`
+
+export const ADD_NATGAS_USE = gql`
+mutation addNaturalGasUse($therms: Int!, $billDate: String!, $carbonOutput: Int) {
+  addNaturalGasUse(therms: $therms, billDate: $billDate, carbonOutput: $carbonOutput) {
+    therms
+    billDate
+    carbonOutput
+    userId
+  }
+}
+`
+
+export const ADD_GASOLINE_USE = gql`
+mutation addGasolineUse($gallons: Int!, $purchaseDate: String!, $carbonOutput: Int) {
+  addGasolineUse(gallons: $gallons, purchaseDate: $purchaseDate, carbonOutput: $carbonOutput) {
+    gallons
+    purchaseDate
+    carbonOutput
+    userId
   }
 }
 `
