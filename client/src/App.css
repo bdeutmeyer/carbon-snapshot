@@ -18,6 +18,36 @@
   font-size: x-large;
 }
 
+.nav-box {
+  background-color: #c7bba2f5 !important;
+  opacity: 0.65;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-bottom: 25px;
+}
+
+.navbar-nav {
+  flex-direction: row !important;
+}
+
+.nav-link {
+  color: #134611 !important;
+}
+
+.electricity,
+.natural-gas,
+.gasoline {
+  display: flex;
+  justify-content: space-around;
+}
+
+.chart-color {
+  background-color: #c7bba2f5;
+  opacity: 0.65;
+}
+
 #github-link {
   color: black !important;
 }

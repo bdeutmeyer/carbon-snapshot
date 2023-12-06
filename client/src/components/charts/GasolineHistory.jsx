@@ -13,6 +13,7 @@ import {
 import { Bar } from 'react-chartjs-2';
 import { QUERY_ME } from '../../utils/queries';
 
+
 ChartJS.register(
   CategoryScale,
   LinearScale,
@@ -34,17 +35,33 @@ export default function GasolineHistory() {
     console.log(user)
 
     const options = {
-        responsive: true,
-        plugins: {
-          legend: {
-            position: 'top',
-          },
-          title: {
-            display: true,
-            text: `${user.name}'s Usage History`,
-          },
+      responsive: true,
+      plugins: {
+        legend: {
+          position: 'top',
+          labels: {
+            color: '#134611'
+          }
         },
-      };
+        title: {
+          display: true,
+          text: `${user.name}'s Usage History`,
+          color: '#134611'
+        },
+      },
+      scales: {
+        x: {
+          ticks: {
+            color: '#134611'
+          }
+        },
+        y: {
+          ticks: {
+            color: '#134611'
+          }
+        }
+      }
+    };
       
       const gasolineDatesToFormat = user.gasolineConsumption.map((index) => new Date(parseInt(index.purchaseDate)).toLocaleDateString())
 
@@ -63,7 +80,7 @@ export default function GasolineHistory() {
 
     return (
         <>
-        <Bar options={options} data={chartDetails} />
+        <Bar options={options} data={chartDetails} className='chart-color' />
         </>
     )
 }

@@ -38,9 +38,9 @@ const Profile = () => {
     <div>
       <Container fluid>
         <Row className='d-flex'>
-        <AllHistory />
-      </Row>
-    </Container>
+          <AllHistory />
+        </Row>
+      </Container>
     </div >
   );
 };

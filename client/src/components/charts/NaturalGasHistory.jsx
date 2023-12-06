@@ -23,45 +23,61 @@ ChartJS.register(
 );
 
 export default function NaturalGasHistory() {
-    const { email: userParam } = useParams();
+  const { email: userParam } = useParams();
 
-    const { loading, data } = useQuery(QUERY_ME, {
-      variables: { email: userParam },
-    });
+  const { loading, data } = useQuery(QUERY_ME, {
+    variables: { email: userParam },
+  });
 
-    const user = data?.me || data?.user || {};
+  const user = data?.me || data?.user || {};
 
-    const options = {
-        responsive: true,
-        plugins: {
-          legend: {
-            position: 'top',
-          },
-          title: {
-            display: true,
-            text: `${user.name}'s Usage History`,
-          },
-        },
-      };
-      
-      const datesToFormat = user.naturalGasConsumption.map((index) => new Date(parseInt(index.billDate)).toLocaleDateString())
+  const options = {
+    responsive: true,
+    plugins: {
+      legend: {
+        position: 'top',
+        labels: {
+          color: '#134611'
+        }
+      },
+      title: {
+        display: true,
+        text: `${user.name}'s Usage History`,
+        color: '#134611'
+      },
+    },
+    scales: {
+      x: {
+        ticks: {
+          color: '#134611'
+        }
+      },
+      y: {
+        ticks: {
+          color: '#134611'
+        }
+      }
+    }
+  };
 
-      const labels = datesToFormat
+  const datesToFormat = user.naturalGasConsumption.map((index) => new Date(parseInt(index.billDate)).toLocaleDateString())
 
-      const chartDetails = {
-        labels,
-        datasets: [
-          {
-            label: 'Natural Gas Use',
-            data: user.naturalGasConsumption.map((index) => index.therms),
-            backgroundColor: 'rgba(53, 162, 235, 0.5)',
-          },
-        ],
-      };
+  const labels = datesToFormat
 
-    return (
-        <>
-        <Bar options={options} data={chartDetails} />
-        </>
-    )
+  const chartDetails = {
+    labels,
+    datasets: [
+      {
+        label: 'Natural Gas Use',
+        data: user.naturalGasConsumption.map((index) => index.therms),
+        backgroundColor: 'rgba(53, 162, 235, 0.5)',
+      },
+    ],
+  };
+
+  return (
+    <>
+      <Bar options={options} data={chartDetails} className='chart-color' />
+    </>
+  )
 }

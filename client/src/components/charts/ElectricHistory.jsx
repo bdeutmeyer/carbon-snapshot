@@ -32,17 +32,33 @@ export default function ElectricHistory() {
     const user = data?.me || data?.user || {};
 
     const options = {
-        responsive: true,
-        plugins: {
-          legend: {
-            position: 'top',
-          },
-          title: {
-            display: true,
-            text: `${user.name}'s Usage History`,
-          },
+      responsive: true,
+      plugins: {
+        legend: {
+          position: 'top',
+          labels: {
+            color: '#134611'
+          }
         },
-      };
+        title: {
+          display: true,
+          text: `${user.name}'s Usage History`,
+          color: '#134611'
+        },
+      },
+      scales: {
+        x: {
+          ticks: {
+            color: '#134611'
+          }
+        },
+        y: {
+          ticks: {
+            color: '#134611'
+          }
+        }
+      }
+    };
       
       const datesToFormat = user.electricConsumption.map((index) => new Date(parseInt(index.billDate)).toLocaleDateString())
 
@@ -62,7 +78,7 @@ export default function ElectricHistory() {
 
     return (
         <>
-        <Bar options={options} data={chartDetails} />
+        <Bar options={options} data={chartDetails} className='chart-color' />
         </>
     )
 }

@@ -26,7 +26,8 @@ const GasolineCalculation = () => {
 
   }
   return (
-    <div>
+    <div className='gasoline'>
+      <div className='gasoline-input'>
       <h1>Natural Gas Use</h1>
       <GasForm 
       therm = {therm}
@@ -35,11 +36,14 @@ const GasolineCalculation = () => {
       handleGasBillDateChange = {handleGasBillDateChange}
       handleGasFormSubmit = {handleGasFormSubmit}
       />
+      </div>
+      <div className='gasoline-footprint'>
       <h2>Natural Gas Footprint</h2>
       <GasCalc 
         therm = {therm}
         gasBillDate = {gasBillDate}
       />
+      </div>
     </div>
   );
 };

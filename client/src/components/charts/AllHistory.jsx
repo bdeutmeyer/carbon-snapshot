@@ -37,12 +37,28 @@ export default function AllHistory() {
     plugins: {
       legend: {
         position: 'top',
+        labels: {
+          color: '#134611'
+        }
       },
       title: {
         display: true,
         text: `${user.name}'s Usage History`,
+        color: '#134611'
       },
     },
+    scales: {
+      x: {
+        ticks: {
+          color: '#134611'
+        }
+      },
+      y: {
+        ticks: {
+          color: '#134611'
+        }
+      }
+    }
   };
 
   const electricDatesToFormat = user.electricConsumption.map((index) => new Date(parseInt(index.billDate)).toLocaleDateString())
@@ -93,13 +109,13 @@ export default function AllHistory() {
   return (
     <>
       <Col>
-        <Bar options={options} data={electricChartDetails} className='bg-white' />
+        <Bar options={options} data={electricChartDetails} className='chart-color' />
       </Col>
       <Col>
-        <Bar options={options} data={naturalGasChartDetails} className='bg-white' />
+        <Bar options={options} data={naturalGasChartDetails} className='chart-color' />
       </Col>
       <Col>
-        <Bar options={options} data={gasolineChartDetails} className='bg-white' />
+        <Bar options={options} data={gasolineChartDetails} className='chart-color' />
       </Col>
     </>
   )

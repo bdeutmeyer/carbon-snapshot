@@ -32,7 +32,7 @@ const ElectricCalculation = () => {
                     billDate,
                     // carbonOutput,
                     userId: Auth.getProfile().authenticatedPerson._id
-                }    
+                }
             })
         } catch (err) {
             console.error(err);
@@ -40,24 +40,28 @@ const ElectricCalculation = () => {
     }
 
     return (
-        <div>
-            <h1>Electricity Use</h1>
-            <ElectricForm
-                electricCompany={electricCompany}
-                kwh={kwh}
-                billDate={billDate}
-                handleElectricCompanyChange={handleElectricCompanyChange}
-                handleKwhChange={handleKwhChange}
-                handleElectricBillDateChange={handleElectricBillDateChange}
-                handleElectricFormSubmit={handleElectricFormSubmit}
-            />
+        <div className='electricity'>
+            <div className='electricity-input'>
+                <h1>Electricity Use</h1>
+                <ElectricForm
+                    electricCompany={electricCompany}
+                    kwh={kwh}
+                    billDate={billDate}
+                    handleElectricCompanyChange={handleElectricCompanyChange}
+                    handleKwhChange={handleKwhChange}
+                    handleElectricBillDateChange={handleElectricBillDateChange}
+                    handleElectricFormSubmit={handleElectricFormSubmit}
+                />
+            </div>
+            <div className='electricity-footprint'>
             <h2>Electricity Footprint</h2>
             <ElectricCalc
                 electricCompany={electricCompany}
                 kwh={kwh}
                 billDate={billDate}
             />
-        </div>
+            </div>
+        </div >
     );
 };
 
