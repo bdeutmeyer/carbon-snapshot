@@ -6,39 +6,39 @@
 
 import React, {useState} from 'react';
 import { useMutation } from '@apollo/client';
-import GasCalc from '../GasCalc';
-import GasForm from '../GasForm';
+import GasolineCalc from '../GasolineCalc';
+import GasolineForm from '../GasolineForm';
 
 const GasolineCalculation = () => {
-  const [therm, setTherm] = useState('');
-  const [gasBillDate, setGasBillDate] = useState('');
+  const [gallons, setGallons] = useState('');
+  const [purchaseDate, setPurchaseDate] = useState('');
 
-  const handleThermChange = (event) => {
-    setTherm(event.target.value);
+  const handleGallonsChange = (event) => {
+    setGallons(event.target.value);
   }
 
-  const handleGasBillDateChange = (event) => {
-    setGasBillDate(event.target.value);
+  const handlePurchaseDateChange = (event) => {
+    setPurchaseDate(event.target.value);
   }
 
-  const handleGasFormSubmit = (event) => {
+  const handleGasolineFormSubmit = (event) => {
     event.preventDefault();
 
   }
   return (
     <div>
-      <h1>Natural Gas Use</h1>
-      <GasForm 
-      therm = {therm}
-      gasBillDate = {gasBillDate}
-      handleThermChange = {handleThermChange}
-      handleGasBillDateChange = {handleGasBillDateChange}
-      handleGasFormSubmit = {handleGasFormSubmit}
+      <h1>Gasoline Use</h1>
+      <GasolineForm 
+      gallons = {gallons}
+      purchaseDate = {purchaseDate}
+      handleGallonsChange = {handleGallonsChange}
+      handlePurchaseDateChange = {handlePurchaseDateChange}
+      handleGasolineFormSubmit = {handleGasolineFormSubmit}
       />
-      <h2>Natural Gas Footprint</h2>
-      <GasCalc 
-        therm = {therm}
-        gasBillDate = {gasBillDate}
+      <h2>Gasoline Footprint</h2>
+      <GasolineCalc 
+        gallons = {gallons}
+        purchaseDate = {purchaseDate}
       />
     </div>
   );
