@@ -1,9 +1,6 @@
-import React from 'react';
-// import useData from './ElectricForm';
+import React, {useEffect} from 'react';
 
-const ElectricCalc = ({electricCompany, kwh, billDate}) => {
-  // Access the shared data context
-  // const { electricData } = useData();
+const ElectricCalc = ({electricCompany, kwh, billDate, totalCarbonFootprint,setTotalCarbonFootprint}) => {
 
   // Cost factors for each company
   const costFactors = {
@@ -40,7 +37,7 @@ const ElectricCalc = ({electricCompany, kwh, billDate}) => {
   // Calculate carbon footprint based on the collected data
   const calculateCarbonFootprint = () => {
     const companyCostFactors = costFactors[electricCompany] || {};
-    let totalCarbonFootprint = 0;
+    let totalCarbonFootprintLocal = 0;
     const individualFootprints = {};
 
     // Iterate over predefined sources and calculate the footprint
@@ -48,13 +45,17 @@ const ElectricCalc = ({electricCompany, kwh, billDate}) => {
       const costFactor = companyCostFactors[source] || 0;
       const footprint = costFactor
       individualFootprints[source] = footprint;
-      totalCarbonFootprint += parseFloat(footprint);
+      totalCarbonFootprintLocal += parseFloat(footprint);
     });
 
-    return { individualFootprints, totalCarbonFootprint};
+    return { individualFootprints, totalCarbonFootprintLocal};
   };
 
-  const { individualFootprints, totalCarbonFootprint } = calculateCarbonFootprint();
+  const { individualFootprints, totalCarbonFootprintLocal } = calculateCarbonFootprint();
+
+  // useEffect(()=>{
+    setTotalCarbonFootprint(totalCarbonFootprintLocal)
+  // },[])
   return (
     <div>
       <h2>Electric Calculation Results</h2>
