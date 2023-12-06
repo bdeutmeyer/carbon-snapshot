@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-// import ElectricCalc from '../ElectricCalc';
+import ElectricCalc from '../ElectricCalc';
 import ElectricForm from '../ElectricForm';
 import { useMutation } from '@apollo/client';
 import { ADD_ELECTRIC_USE } from '../../utils/mutations';
@@ -22,8 +22,6 @@ const ElectricCalculation = () => {
     const handleElectricBillDateChange = (event) => {
         setBillDate(event.target.value);
     }
-    const userId = Auth.getProfile().authenticatedPerson._id
-    console.log(userId)
 
     const handleElectricFormSubmit = async (event) => {
         event.preventDefault();
@@ -54,11 +52,11 @@ const ElectricCalculation = () => {
                 handleElectricFormSubmit={handleElectricFormSubmit}
             />
             <h2>Electricity Footprint</h2>
-            {/* <ElectricCalc
+            <ElectricCalc
                 electricCompany={electricCompany}
                 kwh={kwh}
-                electricBillDate={electricBillDate}
-            /> */}
+                billDate={billDate}
+            />
         </div>
     );
 };
