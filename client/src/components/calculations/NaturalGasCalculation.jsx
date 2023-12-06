@@ -32,6 +32,8 @@ const NaturalGasCalculation = () => {
               userId: Auth.getProfile().authenticatedPerson._id
           }  
       })
+      setTherms(0);
+      setBillDate('');
   } catch (err) {
       console.error(err);
   }
