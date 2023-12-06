@@ -32,6 +32,8 @@ const GasolineCalculation = () => {
               userId: Auth.getProfile().authenticatedPerson._id
           }  
       })
+      setGallons(0);
+      setPurchaseDate('');
   } catch (err) {
       console.error(err);
   }

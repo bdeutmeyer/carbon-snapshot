@@ -39,6 +39,9 @@ const ElectricCalculation = () => {
                     userId: Auth.getProfile().authenticatedPerson._id
                 }  
             })
+            setElectricCompany('');
+            setKwh(0);
+            setBillDate('');
         } catch (err) {
             console.error(err);
         }
@@ -57,7 +60,7 @@ const ElectricCalculation = () => {
                 handleElectricFormSubmit={handleElectricFormSubmit}
             />
             <h2 id='elecFont'>Electricity Footprint</h2>
-            {/* <ElectricCalc
+             <ElectricCalc
 
                 electricCompany={electricCompany}
                 kwh={kwh}
