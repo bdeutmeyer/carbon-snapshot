@@ -8,6 +8,8 @@ import {
 } from 'reactstrap';
 import Auth from '../utils/auth';
 
+import '../App.css'
+
 export default function Navigation(args) {
   const logout = (event) => {
     event.preventDefault();
@@ -17,9 +19,9 @@ export default function Navigation(args) {
   return (
     <>
     {Auth.loggedIn() ? (
-        <div>
+        <div id="mainFont">
       <Navbar {...args}>
-          <Nav id="mainFont" className="me-auto" navbar>
+          <Nav className="me-auto" navbar>
             <NavItem>
               <NavLink href="/me">
                 Dashboard
