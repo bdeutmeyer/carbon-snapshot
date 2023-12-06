@@ -1,4 +1,4 @@
-const { User, ElectricConsumption } = require('../models');
+const { User, ElectricConsumption, NaturalGasConsumption, GasolineConsumption } = require('../models');
 const { signToken, AuthenticationError } = require('../utils/auth');
 
 const resolvers = {
@@ -11,7 +11,6 @@ const resolvers = {
         .populate('naturalGasConsumption')
         .populate('gasolineConsumption')
       }
-      
       throw AuthenticationError;
     },
   },
@@ -39,7 +38,6 @@ const resolvers = {
 
       return { token, user };
     },
-    
     addElectricUse: async (parent, { kwh, billDate, carbonOutput }, context) => {
       if (context.user) {
         const electricConsumption = await ElectricConsumption.create({
@@ -53,13 +51,44 @@ const resolvers = {
           { _id: context.user._id },
           { $addToSet: { electricConsumption: electricConsumption._id } }
         );
-
         return electricConsumption;
       }
       throw AuthenticationError;
-    }
+    },
+    addNaturalGasUse: async (parent, { therms, billDate, carbonOutput }, context) => {
+      if (context.user) {
+        const natGasConsumption = await NaturalGasConsumption.create({
+          therms,
+          billDate,
+          carbonOutput,
+          userId: context.user._id,
+        });
 
+        await User.findOneAndUpdate(
+          { _id: context.user._id },
+          { $addToSet: { naturalGasConsumption: natGasConsumption._id } }
+        );
+        return natGasConsumption;
+      }
+      throw AuthenticationError;
+    },
+    addGasolineUse: async (parent, { gallons, purchaseDate, carbonOutput }, context) => {
+      if (context.user) {
+        const gasConsumption = await GasolineConsumption.create({
+          gallons,
+          purchaseDate,
+          carbonOutput,
+          userId: context.user._id,
+        });
 
+        await User.findOneAndUpdate(
+          { _id: context.user._id },
+          { $addToSet: { gasolineConsumption: gasConsumption._id } }
+        );
+        return gasConsumption;
+      }
+      throw AuthenticationError;
+    },
   },
 };
 
