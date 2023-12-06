@@ -1,7 +1,7 @@
 import React from 'react';
 import { Form, FormGroup, Label, Input, Button } from 'reactstrap';
 
-const GasForm = ({therms, gasBillDate, handleThermChange, handleGasBillDateChange, handleGasFormSubmit}) => {
+const GasForm = ({therms, billDate, handleThermChange, handleGasBillDateChange, handleGasFormSubmit}) => {
 
 
 
@@ -13,7 +13,7 @@ const GasForm = ({therms, gasBillDate, handleThermChange, handleGasBillDateChang
       </FormGroup>
       <FormGroup>
         <Label for="gasBillDate">Please enter your gas bill date:</Label>
-        <Input type="date" id="gasBillDate" value={gasBillDate} onChange={handleGasBillDateChange} />
+        <Input type="date" id="gasBillDate" value={billDate} onChange={handleGasBillDateChange} />
       </FormGroup>
       <Button type="submit">Submit Gas Info</Button>
     </Form>
