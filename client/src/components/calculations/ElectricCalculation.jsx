@@ -60,7 +60,7 @@ const ElectricCalculation = () => {
                 handleElectricFormSubmit={handleElectricFormSubmit}
             />
             <h2 id='elecFont'>Electricity Footprint</h2>
-            {/* <ElectricCalc
+             <ElectricCalc
 
                 electricCompany={electricCompany}
                 kwh={kwh}
