@@ -5,6 +5,8 @@ import GasolineForm from '../GasolineForm';
 import { ADD_GASOLINE_USE } from '../../utils/mutations';
 import Auth from '../../utils/auth';
 
+import '../../App.css'
+
 const GasolineCalculation = () => {
   const [gallons, setGallons] = useState(0);
   const [purchaseDate, setPurchaseDate] = useState('');
@@ -38,7 +40,7 @@ const GasolineCalculation = () => {
   }
   return (
     <div>
-      <h1>Gasoline Use</h1>
+      <h1 id='petrolFont'>Gasoline Use</h1>
       <GasolineForm 
       gallons = {gallons}
       purchaseDate = {purchaseDate}
@@ -46,7 +48,7 @@ const GasolineCalculation = () => {
       handlePurchaseDateChange = {handlePurchaseDateChange}
       handleGasolineFormSubmit = {handleGasolineFormSubmit}
       />
-      <h2>Gasoline Footprint</h2>
+      <h2 id='petrolFont'>Gasoline Footprint</h2>
       <GasolineCalc 
         gallons = {gallons}
         purchaseDate = {purchaseDate}

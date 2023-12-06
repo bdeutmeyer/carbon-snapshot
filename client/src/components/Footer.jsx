@@ -6,7 +6,7 @@ const Footer = () => {
   const location = useLocation();
   const navigate = useNavigate();
   return (
-    <footer className="w-100 mt-auto bg-secondary p-4">
+    <footer id="footerFont" className="w-100 mt-auto bg-secondary p-4">
       {/* we'll probably axe this? */}
       <div className="container text-center mb-5">
         {/* {location.pathname !== '/' && (
