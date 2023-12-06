@@ -1,4 +1,4 @@
-const { User } = require('../models');
+const { User, ElectricConsumption } = require('../models');
 const { signToken, AuthenticationError } = require('../utils/auth');
 
 const resolvers = {
@@ -39,6 +39,27 @@ const resolvers = {
 
       return { token, user };
     },
+    
+    addElectricUse: async (parent, { kwh, billDate, carbonOutput }, context) => {
+      if (context.user) {
+        const electricConsumption = await ElectricConsumption.create({
+          kwh,
+          billDate,
+          carbonOutput,
+          userId: context.user._id,
+        });
+
+        await User.findOneAndUpdate(
+          { _id: context.user._id },
+          { $addToSet: { electricConsumption: electricConsumption._id } }
+        );
+
+        return electricConsumption;
+      }
+      throw AuthenticationError;
+    }
+
+
   },
 };
 

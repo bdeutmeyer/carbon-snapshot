@@ -3,8 +3,6 @@ import { Form, FormGroup, Label, Input, Button } from 'reactstrap';
 
 const ElectricForm = ({electricCompany, kwh, electricBillDate, handleElectricCompanyChange, handleKwhChange, handleElectricBillDateChange, handleElectricFormSubmit}) => {
 
-
-
   return (
     <Form onSubmit={handleElectricFormSubmit}>
       <FormGroup>
