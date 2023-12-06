@@ -47,7 +47,6 @@ export default function ElectricHistory() {
       const datesToFormat = user.electricConsumption.map((index) => new Date(parseInt(index.billDate)).toLocaleDateString())
 
       const labels = datesToFormat
-      console.log(labels)
 
       const chartDetails = {
         labels,
