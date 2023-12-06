@@ -5,6 +5,8 @@ import { useMutation } from '@apollo/client';
 import { ADD_ELECTRIC_USE } from '../../utils/mutations';
 import Auth from '../../utils/auth'
 
+import '../../App.css'
+
 const ElectricCalculation = () => {
     const [electricCompany, setElectricCompany] = useState('');
     const [kwh, setKwh] = useState(0);
@@ -44,7 +46,7 @@ const ElectricCalculation = () => {
 
     return (
         <div>
-            <h1>Electricity Use</h1>
+            <h1 id='elecFont'>Electricity Use</h1>
             <ElectricForm
                 electricCompany={electricCompany}
                 kwh={kwh}
@@ -54,8 +56,9 @@ const ElectricCalculation = () => {
                 handleElectricBillDateChange={handleElectricBillDateChange}
                 handleElectricFormSubmit={handleElectricFormSubmit}
             />
-            <h2>Electricity Footprint</h2>
-            <ElectricCalc
+            <h2 id='elecFont'>Electricity Footprint</h2>
+            {/* <ElectricCalc
+
                 electricCompany={electricCompany}
                 kwh={kwh}
                 billDate={billDate}
