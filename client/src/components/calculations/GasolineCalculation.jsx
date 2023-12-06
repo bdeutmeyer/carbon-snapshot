@@ -9,6 +9,8 @@ import { useMutation } from '@apollo/client';
 import GasCalc from '../GasCalc';
 import GasForm from '../GasForm';
 
+import '../../App.css'
+
 const GasolineCalculation = () => {
   const [therm, setTherm] = useState('');
   const [gasBillDate, setGasBillDate] = useState('');
@@ -27,7 +29,7 @@ const GasolineCalculation = () => {
   }
   return (
     <div>
-      <h1>Natural Gas Use</h1>
+      <h1 id='petrolFont'>Gasoline Use</h1>
       <GasForm 
       therm = {therm}
       gasBillDate = {gasBillDate}
@@ -35,7 +37,7 @@ const GasolineCalculation = () => {
       handleGasBillDateChange = {handleGasBillDateChange}
       handleGasFormSubmit = {handleGasFormSubmit}
       />
-      <h2>Natural Gas Footprint</h2>
+      <h2 id='petrolFont'>Gasoline Footprint</h2>
       <GasCalc 
         therm = {therm}
         gasBillDate = {gasBillDate}
