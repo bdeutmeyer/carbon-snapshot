@@ -18,6 +18,8 @@ Carbon Snapshot! is an innovative app that empowers users to track and reduce th
 Carbon Snapshot! is an innovative app that tracks and reduces carbon footprints by analyzing real-time energy data from users' electric companies. The user-friendly dashboard breaks down carbon emissions in CO2#, offering insights into the environmental impact of electricity consumption. Users can make informed decisions to support renewable energy based on energy source percentages. The app generates monthly reports to track progress, making it a supportive companion on the journey to a greener and more sustainable future. Should a user choose to clone the repository to run this application locally, follow [installation](#installation) instructions below.
 
 ## Installation
+[Click Here to head straight to Carbon Snapshot!](https://mighty-springs-81425-8a650de94654.herokuapp.com/)
+
 To install the application, follow these simple steps:
 
 1. Clone the repository to your local machine using the command:
@@ -29,7 +31,7 @@ To install the application, follow these simple steps:
 4. Start the application locally using:
 "npm run develop"
 
-This sequence of commands ensures that the application and its dependencies are properly set up on your machine, allowing you to run it locally with the specified development script.
+This sequence of commands ensures that the application and its dependencies are properly set up on your machine, allowing you to run it locally with the specified development script. 
 
 
 ## Technologies Used
