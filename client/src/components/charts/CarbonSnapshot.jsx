@@ -31,21 +31,21 @@ export default function CarbonSnapshot() {
     });
 
     const user = data?.me || data?.user || {};
-console.log(user)
+    console.log(user)
     const lastMonthEndDate = Date.now()
     const lastMonthStartDate = new Date(lastMonthEndDate);
-    
+
     // Set the start date of the last month
     lastMonthStartDate.setMonth(lastMonthStartDate.getMonth() - 1);
     lastMonthStartDate.setHours(0, 0, 0, 0);
-    
+
     // Copy the lastMonthStartDate for the previous month end date
     const previousMonthEndDate = new Date(lastMonthStartDate);
-    
+
     // Subtract one day to get the end date of the previous month
     previousMonthEndDate.setDate(previousMonthEndDate.getDate() - 1);
     previousMonthEndDate.setHours(23, 59, 59, 999);
-    
+
     // Set the start date of the previous month
     const previousMonthStartDate = new Date(previousMonthEndDate);
     previousMonthStartDate.setMonth(previousMonthStartDate.getMonth() - 1);
@@ -94,12 +94,28 @@ console.log(user)
         plugins: {
             legend: {
                 position: 'top',
+                labels: {
+                    color: 'black'
+                }
             },
             title: {
                 display: true,
                 text: `${user.name}'s Carbon Footprint`,
+                color: 'black'
             },
         },
+        scales: {
+            x: {
+                ticks: {
+                    color: 'black'
+                }
+            },
+            y: {
+                ticks: {
+                    color: 'black'
+                }
+            }
+        }
     };
 
     const pastMonthLabels = [`${lastMonthStartDate.toLocaleDateString()} - ${formattedLastMonthEndDate}`]
@@ -126,7 +142,7 @@ console.log(user)
             },
         ]
     };
-    
+
     const pastMonthChartDetails = {
         labels: pastMonthLabels,
         datasets: [
@@ -150,11 +166,23 @@ console.log(user)
 
     return (
         <>
-            <Col>
-                <Bar options={options} data={previousMonthChartDetails} className='bg-white' />
+            <Col id= 'carbon-chart' className="chart-color"
+                md={{
+                    offset: 2,
+                    size: 8
+                }}
+                sm="12"
+            >
+                <Bar options={options} data={pastMonthChartDetails} className='chart-color' />
             </Col>
-            <Col>
-                <Bar options={options} data={pastMonthChartDetails} className='bg-white' />
+            <Col id= 'carbon-chart' className="chart-color"
+                md={{
+                    offset: 2,
+                    size: 8
+                }}
+                sm="12"
+            >
+                <Bar options={options} data={previousMonthChartDetails} className='chart-color' />
             </Col>
         </>
     )

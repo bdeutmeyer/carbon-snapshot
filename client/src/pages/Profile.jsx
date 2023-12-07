@@ -40,7 +40,7 @@ const Profile = () => {
       <Container fluid>
         <Row className='d-flex'>
         <CarbonSnapshot />
-        <AllHistory />
+        {/* <AllHistory /> */}
       </Row>
     </Container>
     </div >

@@ -12,7 +12,7 @@ const GasCalc = ({therms, billDate, carbonOutput, setCarbonOutput}) => {
 
   return (
     <div>
-      <h2 id='natGasCSS'>Gas Calculation Results</h2>
+      <h2 id='natGasCSS'> Natural Gas Calculation Results</h2>
       <p id='natGasText'>Therms: {therms}</p>
       <p id='natGasText'>Gas Bill Date: {billDate}</p>
       

@@ -58,21 +58,21 @@ const ElectricCalc = ({electricCompany, kwh, billDate, carbonOutput, setCarbonOu
   // },[])
   return (
     <div>
-      <h2>Electric Calculation Results</h2>
-      <p>Electric Company: {electricCompany}</p>
-      <p>KWH: {kwh}</p>
-      <p>Electric Bill Date: {billDate}</p>
+      <h2 id='natGasCSS'>Electric Calculation Results</h2>
+      <p id='natGasText'>Electric Company: {electricCompany}</p>
+      <p id='natGasText'>KWH: {kwh}</p>
+      <p id='natGasText'>Electric Bill Date: {billDate}</p>
       
       {/* Display breakdown of carbon footprint for each energy source */}
-      <p>Carbon Footprint Breakdown:</p>
-      <p>(Pounds of CO2)</p>
+      <p id='natGasText'>Carbon Footprint Breakdown:</p>
+      <p id='natGasText'>(Pounds of CO2)</p>
 
       {  
         Object.entries(individualFootprints).map(item => (
-          <p key={item[0]}>{item[0]} = {item[1]}</p>
+          <p id='natGasText' key={item[0]}>{item[0]} = {item[1]}</p>
         ))
       }
-      <p>Total Carbon Footprint: {carbonOutput} pounds of CO2</p>
+      <p id='natGasText'>Total Carbon Footprint: {carbonOutput} pounds of CO2</p>
       {/* Display other calculation results or further user interaction */}
     </div>
   );
