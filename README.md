@@ -1,4 +1,4 @@
-# It Feels Good Being Green!
+# Carbon Snapshot!
 
 ## Table of Contents
   - [Description](#description)
@@ -12,17 +12,24 @@
   - [Future Developments](#future-developments-work-zone-hard-hats-required)
 
 ## Description
-It Feels Good Being Green! is an innovative app that empowers users to track and reduce their carbon footprint by analyzing real-time energy usage data from their electric company. The user-friendly dashboard provides a personalized breakdown of carbon emissions measured in CO2#, highlighting the environmental impact of electricity consumption. With insights into energy source percentages, users can make informed decisions to support renewable energy. Once you begin, and accumalate data, monthly reports track progress. It Feels Good Being Green! is not just an app but a companion, guiding users toward a greener and more sustainable future.
+Carbon Snapshot! is an innovative app that empowers users to track and reduce their carbon footprint by analyzing real-time energy usage data from their electric company. The user-friendly dashboard provides a personalized breakdown of carbon emissions measured in CO2#, highlighting the environmental impact of electricity consumption. With insights into energy source percentages, users can make informed decisions to support renewable energy. Once you begin, and accumalate data, monthly reports track progress. Carbon Snapshot! is not just an app but a companion, guiding users toward a greener and more sustainable future.
 
 ## Usage
-
-
-
-
-
-Should a user choose to clone the repository to run this application locally, follow [installation](#installation) instructions below.
+Carbon Snapshot! is an innovative app that tracks and reduces carbon footprints by analyzing real-time energy data from users' electric companies. The user-friendly dashboard breaks down carbon emissions in CO2#, offering insights into the environmental impact of electricity consumption. Users can make informed decisions to support renewable energy based on energy source percentages. The app generates monthly reports to track progress, making it a supportive companion on the journey to a greener and more sustainable future. Should a user choose to clone the repository to run this application locally, follow [installation](#installation) instructions below.
 
 ## Installation
+To install the application, follow these simple steps:
+
+1. Clone the repository to your local machine using the command:
+"git clone <repository-url>"
+2. Navigate to the project directory:
+"cd <project-directory>"
+3. Install the required dependencies with:
+"npm install"
+4. Start the application locally using:
+"npm run develop"
+
+This sequence of commands ensures that the application and its dependencies are properly set up on your machine, allowing you to run it locally with the specified development script.
 
 
 ## Technologies Used
@@ -119,7 +126,12 @@ Below you can find a list of Technologies that are utilized within the use of th
 
 
 ## Screenshots
-
+![Screenshot 1](/Carbon1.png)
+![Screenshot 1](/Carbon2.png)
+![Screenshot 1](/Carbon3.png)
+![Screenshot 1](/Carbon4.png)
+![Screenshot 1](/Carbon5.png)
+![Screenshot 1](/Carbon6.png)
 
 ## Credits
 Project Collaborators:
@@ -140,10 +152,10 @@ https://github.com/bdeutmeyer/carbon-snapshot
 This project is licensed under the MIT License - see the [MIT License](/LICENSE) file for details.
 
 ## Future Developments (Work Zone! Hard Hats Required)
-For Future Developments - our team is working hard on providing you the number one resource in Carbon Footprint tracking. We strive to be at the forefront of th eGrren Era of Energy by aiming to improve our product and the planet! Keep an eye out for developments as we will always keep this section of the ReadMe updated as we confirm dates, features and future projects.
+For Future Developments - our team is working hard on providing you the number one resource in Carbon Footprint tracking. We strive to be at the forefront of the Green Era of Energy by aiming to improve our product and the planet! Keep an eye out for developments as we will always keep this section of the ReadMe updated as we confirm dates, features and future projects.
 
 Upcoming Features:
-- Establish your sustainability objectives with a Goal tracking chart
+- Establish your sustainability objectives with a goal tracking chart
 - Access a repository of tailored tips to decrease carbon emissions
 - *Once Mobile App Launches* - Receive push notifications to stay motivated on your path towards a greener lifestyle  
 
