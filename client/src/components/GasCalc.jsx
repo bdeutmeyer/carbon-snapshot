@@ -6,7 +6,7 @@ import '../App.css'
 const GasCalc = ({therms, billDate, carbonOutput, setCarbonOutput}) => {
 
   // Access the shared data context
-  const thermTotal = (therms * 0.034121412 * 0.97);
+  const thermTotal = (therms * 12.08);
 
   setCarbonOutput(thermTotal.toFixed(0))
 
