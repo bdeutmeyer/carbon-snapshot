@@ -12,6 +12,7 @@ import {
 } from 'chart.js';
 import { Bar } from 'react-chartjs-2';
 import { QUERY_ME } from '../../utils/queries';
+import { Col } from 'reactstrap';
 
 ChartJS.register(
   CategoryScale,
@@ -23,61 +24,69 @@ ChartJS.register(
 );
 
 export default function ElectricHistory() {
-    const { email: userParam } = useParams();
+  const { email: userParam } = useParams();
 
-    const { loading, data } = useQuery(QUERY_ME, {
-      variables: { email: userParam },
-    });
+  const { loading, data } = useQuery(QUERY_ME, {
+    variables: { email: userParam },
+  });
 
-    const user = data?.me || data?.user || {};
+  const user = data?.me || data?.user || {};
 
-    const options = {
-      responsive: true,
-      plugins: {
-        legend: {
-          position: 'top',
-          labels: {
-            color: '#134611'
-          }
-        },
-        title: {
-          display: true,
-          text: `${user.name}'s Usage History`,
-          color: '#134611'
-        },
+  const options = {
+    responsive: true,
+    plugins: {
+      legend: {
+        position: 'top',
+        labels: {
+          color: 'black'
+        }
       },
-      scales: {
-        x: {
-          ticks: {
-            color: '#134611'
-          }
-        },
-        y: {
-          ticks: {
-            color: '#134611'
-          }
+      title: {
+        display: true,
+        text: `${user.name}'s Usage History`,
+        color: 'black'
+      },
+    },
+    scales: {
+      x: {
+        ticks: {
+          color: 'black'
+        }
+      },
+      y: {
+        ticks: {
+          color: 'black'
         }
       }
-    };
-      
-      const datesToFormat = user.electricConsumption.map((index) => new Date(parseInt(index.billDate)).toLocaleDateString(undefined, { timeZone: 'Asia/Bangkok' }))
+    }
+  };
 
-      const labels = datesToFormat
+  const datesToFormat = user.electricConsumption.map((index) => new Date(parseInt(index.billDate)).toLocaleDateString(undefined, { timeZone: 'Asia/Bangkok' }))
 
-      const chartDetails = {
-        labels,
-        datasets: [
-          {
-            label: `Electric Use through ${user.electricCompany} (kWh)`,
-            data: user.electricConsumption.map((index) => index.kwh),
-            backgroundColor: 'rgba(255, 99, 132, 0.5)',
-          },
-        ],
-      };
+  const labels = datesToFormat
 
-    return (
-        <>
+  const chartDetails = {
+    labels,
+    datasets: [
+      {
+        label: `Electric Use through ${user.electricCompany} (kWh)`,
+        data: user.electricConsumption.map((index) => index.kwh),
+        backgroundColor: 'rgba(255, 99, 132, 0.5)',
+      },
+    ],
+  };
+
+  return (
+    <>
+      <Col className="chart-color"
+        md={{
+          offset: 1,
+          size: 10
+        }}
+        sm="12"
+      >
         <Bar options={options} data={chartDetails} className='chart-color' />
-        </>
-    )
+      </Col>
+    </>
+  )
 }

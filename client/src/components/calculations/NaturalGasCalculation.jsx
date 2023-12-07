@@ -34,6 +34,7 @@ const NaturalGasCalculation = () => {
       })
       setTherms(0);
       setBillDate('');
+      window.location.reload();
   } catch (err) {
       console.error(err);
   }
@@ -51,7 +52,7 @@ const NaturalGasCalculation = () => {
       />
       </div>
       <div className='natural-gas-footprint'>
-      <h2 id="natGasCSS">Natural Gas Footprint via</h2>
+      <h2 id="natGasCSS">Natural Gas Footprint</h2>
       <GasCalc 
         therms = {therms}
         billDate = {billDate}

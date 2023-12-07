@@ -42,6 +42,7 @@ const ElectricCalculation = () => {
             setElectricCompany('');
             setKwh(0);
             setBillDate('');
+            window.location.reload();
         } catch (err) {
             console.error(err);
         }

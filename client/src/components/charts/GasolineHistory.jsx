@@ -12,6 +12,7 @@ import {
 } from 'chart.js';
 import { Bar } from 'react-chartjs-2';
 import { QUERY_ME } from '../../utils/queries';
+import { Col } from 'reactstrap';
 
 
 ChartJS.register(
@@ -24,63 +25,71 @@ ChartJS.register(
 );
 
 export default function GasolineHistory() {
-    const { email: userParam } = useParams();
+  const { email: userParam } = useParams();
 
-    const { loading, data } = useQuery(QUERY_ME, {
-      variables: { email: userParam },
-    });
-    console.log(data)
+  const { loading, data } = useQuery(QUERY_ME, {
+    variables: { email: userParam },
+  });
+  console.log(data)
 
-    const user = data?.me || data?.user || {};
-    console.log(user)
+  const user = data?.me || data?.user || {};
+  console.log(user)
 
-    const options = {
-      responsive: true,
-      plugins: {
-        legend: {
-          position: 'top',
-          labels: {
-            color: '#134611'
-          }
-        },
-        title: {
-          display: true,
-          text: `${user.name}'s Usage History`,
-          color: '#134611'
-        },
+  const options = {
+    responsive: true,
+    plugins: {
+      legend: {
+        position: 'top',
+        labels: {
+          color: 'black'
+        }
       },
-      scales: {
-        x: {
-          ticks: {
-            color: '#134611'
-          }
-        },
-        y: {
-          ticks: {
-            color: '#134611'
-          }
+      title: {
+        display: true,
+        text: `${user.name}'s Usage History`,
+        color: 'black'
+      },
+    },
+    scales: {
+      x: {
+        ticks: {
+          color: 'black'
+        }
+      },
+      y: {
+        ticks: {
+          color: 'black'
         }
       }
-    };
-      
-      const gasolineDatesToFormat = user.gasolineConsumption.map((index) => new Date(parseInt(index.purchaseDate)).toLocaleDateString(undefined, { timeZone: 'Asia/Bangkok' }))
+    }
+  };
 
-      const labels = gasolineDatesToFormat
+  const gasolineDatesToFormat = user.gasolineConsumption.map((index) => new Date(parseInt(index.purchaseDate)).toLocaleDateString(undefined, { timeZone: 'Asia/Bangkok' }))
 
-      const chartDetails = {
-        labels,
-        datasets: [
-            {
-                label: 'Gasoline Use (gallons)',
-                data: user.gasolineConsumption.map((index) => index.gallons),
-                backgroundColor: 'rgba(34, 139, 34, 0.5)'
-            },
-        ],
-      };
+  const labels = gasolineDatesToFormat
 
-    return (
-        <>
+  const chartDetails = {
+    labels,
+    datasets: [
+      {
+        label: 'Gasoline Use (gallons)',
+        data: user.gasolineConsumption.map((index) => index.gallons),
+        backgroundColor: 'rgba(34, 139, 34, 0.5)'
+      },
+    ],
+  };
+
+  return (
+    <>
+      <Col className="chart-color"
+        md={{
+          offset: 1,
+          size: 10
+        }}
+        sm="12"
+      >
         <Bar options={options} data={chartDetails} className='chart-color' />
-        </>
-    )
+      </Col>
+    </>
+  )
 }

@@ -38,24 +38,24 @@ export default function AllHistory() {
       legend: {
         position: 'top',
         labels: {
-          color: '#134611'
+          color: 'black'
         }
       },
       title: {
         display: true,
         text: `${user.name}'s Usage History`,
-        color: '#134611'
+        color: 'black'
       },
     },
     scales: {
       x: {
         ticks: {
-          color: '#134611'
+          color: 'black'
         }
       },
       y: {
         ticks: {
-          color: '#134611'
+          color: 'black'
         }
       }
     }

@@ -9,14 +9,14 @@ const GasolineCalc = ({gallons, purchaseDate, carbonOutput, setCarbonOutput}) =>
 
   return (
     <div>
-      <h2>Gasoline Calculation Results</h2>
-      <p>Gallons: {gallons}</p>
-      <p>Purchase Date: {purchaseDate}</p>
+      <h2 id='natGasCSS'>Gasoline Calculation Results</h2>
+      <p id='natGasText'>Gallons: {gallons}</p>
+      <p id='natGasText'>Purchase Date: {purchaseDate}</p>
       
       {/* Display breakdown of carbon footprint for each energy source */}
-      <p>Carbon Footprint Breakdown:</p>
-      <p>(Pounds of CO2)</p>
-      <p>{carbonOutput}</p>
+      <p id='natGasText'>Carbon Footprint Breakdown:</p>
+      <p id='natGasText'>(Pounds of CO2)</p>
+      <p id='natGasText'>{carbonOutput}</p>
        
 
     </div>

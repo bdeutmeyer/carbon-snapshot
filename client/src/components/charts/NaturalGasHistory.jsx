@@ -12,6 +12,7 @@ import {
 } from 'chart.js';
 import { Bar } from 'react-chartjs-2';
 import { QUERY_ME } from '../../utils/queries';
+import { Col } from 'reactstrap';
 
 ChartJS.register(
   CategoryScale,
@@ -37,24 +38,24 @@ export default function NaturalGasHistory() {
       legend: {
         position: 'top',
         labels: {
-          color: '#134611'
+          color: 'black'
         }
       },
       title: {
         display: true,
         text: `${user.name}'s Usage History`,
-        color: '#134611'
+        color: 'black'
       },
     },
     scales: {
       x: {
         ticks: {
-          color: '#134611'
+          color: 'black'
         }
       },
       y: {
         ticks: {
-          color: '#134611'
+          color: 'black'
         }
       }
     }
@@ -77,7 +78,15 @@ export default function NaturalGasHistory() {
 
   return (
     <>
+    <Col className="chart-color"
+        md={{
+          offset: 1,
+          size: 10
+        }}
+        sm="12"
+      >
       <Bar options={options} data={chartDetails} className='chart-color' />
+      </Col>
     </>
   )
 }

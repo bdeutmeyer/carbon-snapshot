@@ -34,6 +34,7 @@ const GasolineCalculation = () => {
       })
       setGallons(0);
       setPurchaseDate('');
+      window.location.reload();
   } catch (err) {
       console.error(err);
   }
