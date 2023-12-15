@@ -126,12 +126,12 @@ Below you can find a list of Technologies that are utilized within the use of th
 
 
 ## Screenshots
-![Screenshot 1](/Carbon1.png)
-![Screenshot 1](/Carbon2.png)
-![Screenshot 1](/Carbon3.png)
-![Screenshot 1](/Carbon4.png)
-![Screenshot 1](/Carbon5.png)
-![Screenshot 1](/Carbon6.png)
+![Screenshot 1](/client/src/assets/images/Carbon1.png)
+![Screenshot 1](/client/src/assets/images/Carbon2.png)
+![Screenshot 1](/client/src/assets/images/Carbon3.png)
+![Screenshot 1](/client/src/assets/images/Carbon4.png)
+![Screenshot 1](/client/src/assets/images/Carbon5.png)
+![Screenshot 1](/client/src/assets/images/Carbon6.png)
 
 ## Credits
 Project Collaborators:

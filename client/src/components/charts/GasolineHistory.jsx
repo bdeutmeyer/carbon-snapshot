@@ -14,7 +14,6 @@ import { Bar } from 'react-chartjs-2';
 import { QUERY_ME } from '../../utils/queries';
 import { Col } from 'reactstrap';
 
-
 ChartJS.register(
   CategoryScale,
   LinearScale,
@@ -30,10 +29,8 @@ export default function GasolineHistory() {
   const { loading, data } = useQuery(QUERY_ME, {
     variables: { email: userParam },
   });
-  console.log(data)
 
   const user = data?.me || data?.user || {};
-  console.log(user)
 
   const options = {
     responsive: true,

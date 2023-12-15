@@ -15,6 +15,7 @@ const NaturalGasCalculation = () => {
 
   const handleThermChange = (event) => {
     setTherms(+event.target.value);
+    setCarbonOutput(thermTotal.toFixed(0))
   }
 
   const handleGasBillDateChange = (event) => {
@@ -25,40 +26,44 @@ const NaturalGasCalculation = () => {
     event.preventDefault();
     try {
       const { data } = await addNaturalGasUse({
-          variables: {
-              therms,
-              billDate,
-              carbonOutput: +carbonOutput,
-              userId: Auth.getProfile().authenticatedPerson._id
-          }  
+        variables: {
+          therms,
+          billDate,
+          carbonOutput: +carbonOutput,
+          userId: Auth.getProfile().authenticatedPerson._id
+        }
       })
       setTherms(0);
       setBillDate('');
       window.location.reload();
-  } catch (err) {
+    } catch (err) {
       console.error(err);
+    }
   }
-  }
+
+  // Access the shared data context
+  const thermTotal = (therms * 12.08);
+
   return (
     <div className='natural-gas'>
       <div className='natural-gas-input'>
-      <h1 id="natGasCSS">Natural Gas Use</h1>
-      <GasForm 
-      therms = {therms}
-      billDate = {billDate}
-      handleThermChange = {handleThermChange}
-      handleGasBillDateChange = {handleGasBillDateChange}
-      handleGasFormSubmit = {handleGasFormSubmit}
-      />
+        <h1 id="natGasCSS">Natural Gas Use</h1>
+        <GasForm
+          therms={therms}
+          billDate={billDate}
+          handleThermChange={handleThermChange}
+          handleGasBillDateChange={handleGasBillDateChange}
+          handleGasFormSubmit={handleGasFormSubmit}
+        />
       </div>
       <div className='natural-gas-footprint'>
-      <h2 id="natGasCSS">Natural Gas Footprint</h2>
-      <GasCalc 
-        therms = {therms}
-        billDate = {billDate}
-        carbonOutput={carbonOutput}
-        setCarbonOutput={setCarbonOutput}
-      />
+        <h2 id="natGasCSS">Natural Gas Footprint</h2>
+        <GasCalc
+          therms={therms}
+          billDate={billDate}
+          carbonOutput={carbonOutput}
+          setCarbonOutput={setCarbonOutput}
+        />
       </div>
     </div>
   );

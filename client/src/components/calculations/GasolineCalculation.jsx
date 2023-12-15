@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import { useMutation } from '@apollo/client';
 import GasolineCalc from '../GasolineCalc';
 import GasolineForm from '../GasolineForm';
@@ -15,6 +15,7 @@ const GasolineCalculation = () => {
 
   const handleGallonsChange = (event) => {
     setGallons(+event.target.value);
+    setCarbonOutput(carbonTotal.toFixed(0))
   }
 
   const handlePurchaseDateChange = (event) => {
@@ -25,40 +26,42 @@ const GasolineCalculation = () => {
     event.preventDefault();
     try {
       const { data } = await addGasolineUse({
-          variables: {
-              gallons,
-              purchaseDate,
-              carbonOutput: +carbonOutput,
-              userId: Auth.getProfile().authenticatedPerson._id
-          }  
+        variables: {
+          gallons,
+          purchaseDate,
+          carbonOutput: +carbonOutput,
+          userId: Auth.getProfile().authenticatedPerson._id
+        }
       })
       setGallons(0);
       setPurchaseDate('');
       window.location.reload();
-  } catch (err) {
+    } catch (err) {
       console.error(err);
+    }
   }
-  }
+  // Access the shared data context
+  const carbonTotal = (gallons * 3.7 * 0.87);
   return (
     <div className='gasoline'>
       <div className='gasoline-input'>
-      <h1 id='petrolFont'>Gasoline Use</h1>
-      <GasolineForm 
-      gallons = {gallons}
-      purchaseDate = {purchaseDate}
-      handleGallonsChange = {handleGallonsChange}
-      handlePurchaseDateChange = {handlePurchaseDateChange}
-      handleGasolineFormSubmit = {handleGasolineFormSubmit}
-      />
+        <h1 id='petrolFont'>Gasoline Use</h1>
+        <GasolineForm
+          gallons={gallons}
+          purchaseDate={purchaseDate}
+          handleGallonsChange={handleGallonsChange}
+          handlePurchaseDateChange={handlePurchaseDateChange}
+          handleGasolineFormSubmit={handleGasolineFormSubmit}
+        />
       </div>
       <div className='gasoline-footprint'>
-      <h2 id='petrolFont'>Gasoline Footprint</h2>
-      <GasolineCalc 
-        gallons = {gallons}
-        purchaseDate = {purchaseDate}
-        carbonOutput={carbonOutput}
-        setCarbonOutput={setCarbonOutput}
-      />
+        <h2 id='petrolFont'>Gasoline Footprint</h2>
+        <GasolineCalc
+          gallons={gallons}
+          purchaseDate={purchaseDate}
+          carbonOutput={carbonOutput}
+          setCarbonOutput={setCarbonOutput}
+        />
       </div>
     </div>
   );

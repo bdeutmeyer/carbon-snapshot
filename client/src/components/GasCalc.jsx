@@ -1,14 +1,7 @@
 import React from 'react';
-
-
 import '../App.css'
 
-const GasCalc = ({therms, billDate, carbonOutput, setCarbonOutput}) => {
-
-  // Access the shared data context
-  const thermTotal = (therms * 12.08);
-
-  setCarbonOutput(thermTotal.toFixed(0))
+const GasCalc = ({therms, billDate, carbonOutput}) => {
 
   return (
     <div>
