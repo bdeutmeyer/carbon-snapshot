@@ -21,7 +21,7 @@ export default function Navigation(args) {
     <>
       {Auth.loggedIn() ? (
         <div className="nav-container">
-        <div id="mainFont" class="nav-box">
+        <div id="mainFont" className="nav-box">
           <Navbar {...args}>
             <Nav className="me-auto">
               <NavItem>

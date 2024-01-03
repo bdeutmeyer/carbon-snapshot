@@ -11,7 +11,6 @@ import Profile from './pages/Profile';
 import Error from './pages/Error';
 import Landing from './pages/Landing';
 import Electricity from './pages/Electricity';
-import Calculation from './pages/Calculation';
 import Gasoline from './pages/Gasoline';
 import NaturalGas from './pages/NaturalGas'
 
@@ -38,10 +37,6 @@ const router = createBrowserRouter([
         path: '/electricity',
         element: <Electricity />
       },
-      {
-        path: '/calculation',
-        element: <Calculation />
-      }, 
         {
         path: '/gasoline',
         element: <Gasoline />
