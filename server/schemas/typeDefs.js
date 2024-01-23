@@ -46,9 +46,9 @@ const typeDefs = `
   type Mutation {
     addUser(name: String!, email: String!, password: String!): Auth
     login(email: String!, password: String!): Auth
-    addElectricUse(electricCompany: String!, kwh: Int!, billDate: String!, carbonOutput: Int): ElectricConsumption
-    addNaturalGasUse(therms: Int!, billDate: String!, carbonOutput: Int): NaturalGasConsumption
-    addGasolineUse(gallons: Int!, purchaseDate: String!, carbonOutput: Int): GasolineConsumption
+    addElectricUse(electricCompany: String!, kwh: Int!, billDate: String!, carbonOutput: Int, comment: String): ElectricConsumption
+    addNaturalGasUse(therms: Int!, billDate: String!, carbonOutput: Int, comment: String): NaturalGasConsumption
+    addGasolineUse(gallons: Int!, purchaseDate: String!, carbonOutput: Int, comment: String): GasolineConsumption
   }
 `;
 

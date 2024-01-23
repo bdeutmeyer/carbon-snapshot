@@ -11,6 +11,7 @@ const NaturalGasCalculation = () => {
   const [therms, setTherms] = useState(0);
   const [billDate, setBillDate] = useState('');
   const [carbonOutput, setCarbonOutput] = useState(0);
+  const [comment, setComment] = useState('');
   const [addNaturalGasUse, { error }] = useMutation(ADD_NATGAS_USE);
 
   const handleThermChange = (event) => {
@@ -22,6 +23,10 @@ const NaturalGasCalculation = () => {
     setBillDate(event.target.value);
   }
 
+  const handleGasCommentChange = (event) => {
+    setComment(event.target.value)
+  }
+
   const handleGasFormSubmit = async (event) => {
     event.preventDefault();
     try {
@@ -30,6 +35,7 @@ const NaturalGasCalculation = () => {
           therms,
           billDate,
           carbonOutput: +carbonOutput,
+          comment,
           userId: Auth.getProfile().authenticatedPerson._id
         }
       })
@@ -51,8 +57,10 @@ const NaturalGasCalculation = () => {
         <GasForm
           therms={therms}
           billDate={billDate}
+          comment={comment}
           handleThermChange={handleThermChange}
           handleGasBillDateChange={handleGasBillDateChange}
+          handleGasCommentChange={handleGasCommentChange}
           handleGasFormSubmit={handleGasFormSubmit}
         />
       </div>

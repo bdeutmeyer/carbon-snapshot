@@ -32,6 +32,17 @@ export default function NaturalGasHistory() {
 
   const user = data?.me || data?.user || {};
 
+  const footer = (tooltipItems) => {
+    let comment;
+    tooltipItems.forEach(function(tooltipItem) {
+      comment = user.naturalGasConsumption[tooltipItem.dataIndex].comment || '';
+      if (comment) {
+        comment = 'Comment: ' + comment;
+      }
+    });
+    return comment;
+  };
+
   const options = {
     responsive: true,
     plugins: {
@@ -39,6 +50,11 @@ export default function NaturalGasHistory() {
         position: 'top',
         labels: {
           color: 'black'
+        }
+      },
+      tooltip: {
+        callbacks: {
+          footer: footer
         }
       },
       title: {

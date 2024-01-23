@@ -37,13 +37,14 @@ const resolvers = {
 
       return { token, user };
     },
-    addElectricUse: async (parent, { electricCompany, kwh, billDate, carbonOutput }, context) => {
+    addElectricUse: async (parent, { electricCompany, kwh, billDate, carbonOutput, comment }, context) => {
       if (context.user) {
         const electricConsumption = await ElectricConsumption.create({
           electricCompany,
           kwh,
           billDate,
           carbonOutput,
+          comment,
           userId: context.user._id,
         });
 
@@ -55,12 +56,13 @@ const resolvers = {
       }
       throw AuthenticationError;
     },
-    addNaturalGasUse: async (parent, { therms, billDate, carbonOutput }, context) => {
+    addNaturalGasUse: async (parent, { therms, billDate, carbonOutput, comment }, context) => {
       if (context.user) {
         const natGasConsumption = await NaturalGasConsumption.create({
           therms,
           billDate,
           carbonOutput,
+          comment,
           userId: context.user._id,
         });
 
@@ -72,12 +74,13 @@ const resolvers = {
       }
       throw AuthenticationError;
     },
-    addGasolineUse: async (parent, { gallons, purchaseDate, carbonOutput }, context) => {
+    addGasolineUse: async (parent, { gallons, purchaseDate, carbonOutput, comment }, context) => {
       if (context.user) {
         const gasConsumption = await GasolineConsumption.create({
           gallons,
           purchaseDate,
           carbonOutput,
+          comment,
           userId: context.user._id,
         });
 
