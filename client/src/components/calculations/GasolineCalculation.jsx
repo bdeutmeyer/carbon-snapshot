@@ -11,6 +11,7 @@ const GasolineCalculation = () => {
   const [gallons, setGallons] = useState(0);
   const [purchaseDate, setPurchaseDate] = useState('');
   const [carbonOutput, setCarbonOutput] = useState(0);
+  const [comment, setComment] = useState('');
   const [addGasolineUse, { error }] = useMutation(ADD_GASOLINE_USE)
 
   const handleGallonsChange = (event) => {
@@ -22,6 +23,10 @@ const GasolineCalculation = () => {
     setPurchaseDate(event.target.value);
   }
 
+  const handleGasolineCommentChange = (event) => {
+    setComment(event.target.value)
+  }
+
   const handleGasolineFormSubmit = async (event) => {
     event.preventDefault();
     try {
@@ -30,6 +35,7 @@ const GasolineCalculation = () => {
           gallons,
           purchaseDate,
           carbonOutput: +carbonOutput,
+          comment,
           userId: Auth.getProfile().authenticatedPerson._id
         }
       })
@@ -49,8 +55,10 @@ const GasolineCalculation = () => {
         <GasolineForm
           gallons={gallons}
           purchaseDate={purchaseDate}
+          comment={comment}
           handleGallonsChange={handleGallonsChange}
           handlePurchaseDateChange={handlePurchaseDateChange}
+          handleGasolineCommentChange={handleGasolineCommentChange}
           handleGasolineFormSubmit={handleGasolineFormSubmit}
         />
       </div>

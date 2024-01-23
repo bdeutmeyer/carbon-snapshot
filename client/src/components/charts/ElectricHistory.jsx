@@ -32,6 +32,17 @@ export default function ElectricHistory() {
 
   const user = data?.me || data?.user || {};
 
+  const footer = (tooltipItems) => {
+    let comment;
+    tooltipItems.forEach(function(tooltipItem) {
+      comment = user.electricConsumption[tooltipItem.dataIndex].comment || '';
+      if (comment) {
+        comment = 'Comment: ' + comment;
+      }
+    });
+    return comment;
+  };
+
   const options = {
     responsive: true,
     plugins: {
@@ -39,6 +50,11 @@ export default function ElectricHistory() {
         position: 'top',
         labels: {
           color: 'black'
+        }
+      },
+      tooltip: {
+        callbacks: {
+          footer: footer
         }
       },
       title: {
@@ -69,7 +85,7 @@ export default function ElectricHistory() {
     labels,
     datasets: [
       {
-        label: `Electric Use through ${user.electricCompany} (kWh)`,
+        label: `Electric Use (kWh)`,
         data: user.electricConsumption.map((index) => index.kwh),
         backgroundColor: 'rgba(255, 99, 132, 0.5)',
       },

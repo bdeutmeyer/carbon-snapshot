@@ -12,6 +12,7 @@ const ElectricCalculation = () => {
   const [kwh, setKwh] = useState(0);
   const [billDate, setBillDate] = useState('');
   const [carbonOutput, setCarbonOutput] = useState(0);
+  const [comment, setComment] = useState('');
   const [addElectricUse, { error }] = useMutation(ADD_ELECTRIC_USE);
 
   const handleElectricCompanyChange = (event) => {
@@ -27,6 +28,10 @@ const ElectricCalculation = () => {
     setBillDate(event.target.value);
   }
 
+  const handleElecCommentChange = (event) => {
+    setComment(event.target.value)
+  }
+
   const handleElectricFormSubmit = async (event) => {
     event.preventDefault();
     try {
@@ -36,6 +41,7 @@ const ElectricCalculation = () => {
           kwh,
           billDate,
           carbonOutput: +carbonOutput,
+          comment,
           userId: Auth.getProfile().authenticatedPerson._id
         }
       })
@@ -107,9 +113,11 @@ const ElectricCalculation = () => {
           electricCompany={electricCompany}
           kwh={kwh}
           billDate={billDate}
+          comment={comment}
           handleElectricCompanyChange={handleElectricCompanyChange}
           handleKwhChange={handleKwhChange}
           handleElectricBillDateChange={handleElectricBillDateChange}
+          handleElecCommentChange={handleElecCommentChange}
           handleElectricFormSubmit={handleElectricFormSubmit}
         />
       </div>

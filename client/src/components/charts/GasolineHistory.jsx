@@ -32,6 +32,17 @@ export default function GasolineHistory() {
 
   const user = data?.me || data?.user || {};
 
+  const footer = (tooltipItems) => {
+    let comment;
+    tooltipItems.forEach(function(tooltipItem) {
+      comment = user.gasolineConsumption[tooltipItem.dataIndex].comment || '';
+      if (comment) {
+        comment = 'Comment: ' + comment;
+      }
+    });
+    return comment;
+  };
+
   const options = {
     responsive: true,
     plugins: {
@@ -39,6 +50,11 @@ export default function GasolineHistory() {
         position: 'top',
         labels: {
           color: 'black'
+        }
+      },
+      tooltip: {
+        callbacks: {
+          footer: footer
         }
       },
       title: {

@@ -6,7 +6,7 @@ const ElectricCalc = ({ electricCompany, kwh, billDate, carbonOutput, individual
     <div>
       <h2 id='natGasCSS'>Electric Calculation Results</h2>
       <p id='natGasText'>Electric Company: {electricCompany}</p>
-      <p id='natGasText'>KWH: {kwh}</p>
+      <p id='natGasText'>kWh: {kwh}</p>
       <p id='natGasText'>Electric Bill Date: {billDate}</p>
       
       {/* Display breakdown of carbon footprint for each energy source */}
