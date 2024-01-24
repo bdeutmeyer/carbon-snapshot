@@ -32,10 +32,24 @@ export default function GasolineHistory() {
 
   const user = data?.me || data?.user || {};
 
+  const formattedData = user.gasolineConsumption.map((index) => {
+    const formattedDate = new Date(parseInt(index.purchaseDate)).toLocaleDateString(undefined, { timeZone: 'Asia/Bangkok' });
+    return {
+      ...index,
+      purchaseDate: formattedDate,
+    };
+  });
+  
+  const sortedData = formattedData.sort((a, b) => {
+    a = a.purchaseDate.split('/');
+    b = b.purchaseDate.split('/');
+    return a[2] - b[2] || a[0] - b[0] || a[1] - b[1];
+});
+
   const footer = (tooltipItems) => {
     let comment;
     tooltipItems.forEach(function(tooltipItem) {
-      comment = user.gasolineConsumption[tooltipItem.dataIndex].comment || '';
+      comment = sortedData[tooltipItem.dataIndex].comment || '';
       if (comment) {
         comment = 'Comment: ' + comment;
       }
@@ -77,16 +91,16 @@ export default function GasolineHistory() {
     }
   };
 
-  const gasolineDatesToFormat = user.gasolineConsumption.map((index) => new Date(parseInt(index.purchaseDate)).toLocaleDateString(undefined, { timeZone: 'Asia/Bangkok' }))
+  const sortedDates = formattedData.map(index => index.purchaseDate)
 
-  const labels = gasolineDatesToFormat
+  const labels = sortedDates
 
   const chartDetails = {
     labels,
     datasets: [
       {
         label: 'Gasoline Use (gallons)',
-        data: user.gasolineConsumption.map((index) => index.gallons),
+        data: sortedData.map((index) => index.gallons),
         backgroundColor: 'rgba(34, 139, 34, 0.5)'
       },
     ],
