@@ -3,7 +3,7 @@ import { Form, FormGroup, Label, Input, Button } from 'reactstrap';
 
 import '../App.css'
 
-const ElectricForm = ({electricCompany, kwh, electricBillDate, comment, handleElectricCompanyChange, handleKwhChange, handleElectricBillDateChange, handleElecCommentChange, handleElectricFormSubmit}) => {
+const ElectricForm = ({ electricCompany, kwh, electricBillDate, comment, handleElectricCompanyChange, handleKwhChange, handleElectricBillDateChange, handleElecCommentChange, handleElectricFormSubmit }) => {
 
   return (
     <Form onSubmit={handleElectricFormSubmit}>
@@ -18,12 +18,12 @@ const ElectricForm = ({electricCompany, kwh, electricBillDate, comment, handleEl
         </Input>
       </FormGroup>
       <FormGroup>
-        <Label className='elecFormTxt' for="kwh">Please enter your billed kWh:</Label>
-        <Input type="integer" id="kwh" value={kwh} onChange={handleKwhChange} />
-      </FormGroup>
-      <FormGroup>
         <Label className='elecFormTxt' for="electricBillDate">Please enter your electric bill date:</Label>
         <Input type="date" id="electricBillDate" value={electricBillDate} onChange={handleElectricBillDateChange} />
+      </FormGroup>
+      <FormGroup>
+        <Label className='elecFormTxt' for="kwh">Please enter your billed kWh:</Label>
+        <Input type="integer" id="kwh" value={kwh} onChange={handleKwhChange} />
       </FormGroup>
       <FormGroup>
         <Label className='elecFormTxt' for="elecComment">Comments (optional):</Label>

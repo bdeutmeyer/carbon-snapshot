@@ -32,10 +32,24 @@ export default function NaturalGasHistory() {
 
   const user = data?.me || data?.user || {};
 
+  const formattedData = user.naturalGasConsumption.map((index) => {
+    const formattedDate = new Date(parseInt(index.billDate)).toLocaleDateString(undefined, { timeZone: 'Asia/Bangkok' });
+    return {
+      ...index,
+      billDate: formattedDate,
+    };
+  });
+  
+  const sortedData = formattedData.sort((a, b) => {
+    a = a.billDate.split('/');
+    b = b.billDate.split('/');
+    return a[2] - b[2] || a[0] - b[0] || a[1] - b[1];
+});
+
   const footer = (tooltipItems) => {
     let comment;
     tooltipItems.forEach(function(tooltipItem) {
-      comment = user.naturalGasConsumption[tooltipItem.dataIndex].comment || '';
+      comment = sortedData[tooltipItem.dataIndex].comment || '';
       if (comment) {
         comment = 'Comment: ' + comment;
       }
@@ -77,16 +91,16 @@ export default function NaturalGasHistory() {
     }
   };
 
-  const datesToFormat = user.naturalGasConsumption.map((index) => new Date(parseInt(index.billDate)).toLocaleDateString(undefined, { timeZone: 'Asia/Bangkok' }))
+  const sortedDates = formattedData.map(index => index.billDate)
 
-  const labels = datesToFormat
+  const labels = sortedDates
 
   const chartDetails = {
     labels,
     datasets: [
       {
         label: 'Natural Gas Use (therms)',
-        data: user.naturalGasConsumption.map((index) => index.therms),
+        data: sortedData.map((index) => index.therms),
         backgroundColor: 'rgba(53, 162, 235, 0.5)',
       },
     ],

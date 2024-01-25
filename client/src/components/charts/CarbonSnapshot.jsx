@@ -89,6 +89,8 @@ export default function CarbonSnapshot() {
 
     const gasolineData = [previousMonthGasolineData, lastMonthGasolineData]
 
+    console.log(electricData, naturalGasData, gasolineData)
+
     const options = {
         responsive: true,
         plugins: {
