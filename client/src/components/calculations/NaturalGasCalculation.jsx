@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import GasCalc from '../GasCalc';
-import GasForm from '../GasForm';
+import NaturalGasReadout from '../readouts/NaturalGasReadout';
+import NaturalGasForm from '../forms/NaturalGasForm';
 import { useMutation } from '@apollo/client';
 import { ADD_NATGAS_USE } from '../../utils/mutations';
 import Auth from '../../utils/auth';
@@ -54,7 +54,7 @@ const NaturalGasCalculation = () => {
     <div className='natural-gas'>
       <div className='natural-gas-input'>
         <h1 id="natGasCSS">Natural Gas Use</h1>
-        <GasForm
+        <NaturalGasForm
           therms={therms}
           billDate={billDate}
           comment={comment}
@@ -66,7 +66,7 @@ const NaturalGasCalculation = () => {
       </div>
       <div className='natural-gas-footprint'>
         <h2 id="natGasCSS">Natural Gas Footprint</h2>
-        <GasCalc
+        <NaturalGasReadout
           therms={therms}
           billDate={billDate}
           carbonOutput={carbonOutput}

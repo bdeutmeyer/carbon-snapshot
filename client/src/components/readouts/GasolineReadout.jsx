@@ -1,7 +1,7 @@
 import React from 'react';
-import formatDate from '../utils/formatDate'
+import formatDate from '../../utils/formatDate'
 
-const GasolineCalc = ({gallons, purchaseDate, carbonOutput}) => {
+const GasolineReadout = ({gallons, purchaseDate, carbonOutput}) => {
 
   const formattedDate = formatDate(purchaseDate)
 
@@ -17,4 +17,4 @@ const GasolineCalc = ({gallons, purchaseDate, carbonOutput}) => {
   );
 };
 
-export default GasolineCalc;
+export default GasolineReadout;

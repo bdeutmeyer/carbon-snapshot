@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import ElectricCalc from '../ElectricCalc';
-import ElectricForm from '../ElectricForm';
-import { useMutation } from '@apollo/client';
+import ElectricReadout from '../readouts/ElectricReadout';
+import ElectricForm from '../forms/ElectricForm';
+import { useMutation, useQuery } from '@apollo/client';
+import { ELEC_SOURCES } from '../../utils/queries';
 import { ADD_ELECTRIC_USE } from '../../utils/mutations';
 import Auth from '../../utils/auth'
 
@@ -14,6 +15,11 @@ const ElectricCalculation = () => {
   const [carbonOutput, setCarbonOutput] = useState(0);
   const [comment, setComment] = useState('');
   const [addElectricUse, { error }] = useMutation(ADD_ELECTRIC_USE);
+
+  const { loading, err, data } = useQuery(ELEC_SOURCES, {
+    variables: { companyName: electricCompany }
+  });
+  console.log(data)
 
   const handleElectricCompanyChange = (event) => {
     setElectricCompany(event.target.value);
@@ -54,7 +60,6 @@ const ElectricCalculation = () => {
     }
   }
 
-  // Cost factors for each company
   const costFactors = {
     'Mid American Energy Company': {
       'Coal': (0.23 * 2.3 * kwh).toFixed(2),
@@ -85,6 +90,37 @@ const ElectricCalculation = () => {
       'Wind': (0.04 * 0.0243 * kwh).toFixed(2),
     },
   };
+  // Cost factors for each company
+  // const costFactors = {
+  //   'Mid American Energy Company': {
+  //     'Coal': (0.23 * 2.3 * kwh).toFixed(2),
+  //     'Natural Gas': (0.11 * 0.97 * kwh).toFixed(2),
+  //     'Nuclear': (0.04 * 0.0717 * kwh).toFixed(2),
+  //     'Solar': (0.01 * 0.1102 * kwh).toFixed(2),
+  //     'Wind': (0.61 * 0.0243 * kwh).toFixed(2),
+  //   },
+  //   'Alliant Energy': {
+  //     'Coal': (0.32 * 2.3 * kwh).toFixed(2),
+  //     'Natural Gas': (0.32 * 0.97 * kwh).toFixed(2),
+  //     'Nuclear': (0.08 * 0.0717 * kwh).toFixed(2),
+  //     'Solar': (0.01 * 0.1102 * kwh).toFixed(2),
+  //     'Wind': (0.11 * 0.0243 * kwh).toFixed(2),
+  //   },
+  //   'Ameren Illinois Energy Company': {
+  //     'Coal': (0.30 * 2.3 * kwh).toFixed(2),
+  //     'Natural Gas': (0.36 * 0.97 * kwh).toFixed(2),
+  //     'Nuclear': (0.15 * 0.0717 * kwh).toFixed(2),
+  //     'Solar': (0.01 * 0.1102 * kwh).toFixed(2),
+  //     'Wind': (0.15 * 0.0243 * kwh).toFixed(2),
+  //   },
+  //   'Commonwealth Edison': {
+  //     'Coal': (0.18 * 2.3 * kwh).toFixed(2),
+  //     'Natural Gas': (0.42 * 0.97 * kwh).toFixed(2),
+  //     'Nuclear': (0.33 * 0.0717 * kwh).toFixed(2),
+  //     'Solar': (0.01 * 0.1102 * kwh).toFixed(2),
+  //     'Wind': (0.04 * 0.0243 * kwh).toFixed(2),
+  //   },
+  // };
 
   // Calculate carbon footprint based on the collected data
   const calculateCarbonFootprint = () => {
@@ -123,7 +159,7 @@ const ElectricCalculation = () => {
       </div>
       <div className='electricity-footprint'>
         <h2 id='elecFont'>Electricity Footprint</h2>
-        <ElectricCalc
+        <ElectricReadout
           electricCompany={electricCompany}
           kwh={kwh}
           billDate={billDate}

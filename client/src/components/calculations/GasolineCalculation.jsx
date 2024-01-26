@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useMutation } from '@apollo/client';
-import GasolineCalc from '../GasolineCalc';
-import GasolineForm from '../GasolineForm';
+import GasolineReadout from '../readouts/GasolineReadout';
+import GasolineForm from '../forms/GasolineForm';
 import { ADD_GASOLINE_USE } from '../../utils/mutations';
 import Auth from '../../utils/auth';
 
@@ -64,7 +64,7 @@ const GasolineCalculation = () => {
       </div>
       <div className='gasoline-footprint'>
         <h2 id='petrolFont'>Gasoline Footprint</h2>
-        <GasolineCalc
+        <GasolineReadout
           gallons={gallons}
           purchaseDate={purchaseDate}
           carbonOutput={carbonOutput}
