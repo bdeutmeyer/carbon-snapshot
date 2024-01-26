@@ -103,6 +103,11 @@ export default function ElectricHistory() {
         data: sortedData.map((index) => index.kwh),
         backgroundColor: 'rgba(255, 99, 132, 0.5)',
       },
+      {
+        label: 'Carbon Output (pounds)',
+        data: sortedData.map((index) => index.carbonOutput),
+        backgroundColor: 'rgba(0, 0, 0, 0.5)'
+      }
     ],
   };
 
