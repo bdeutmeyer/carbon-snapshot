@@ -1,4 +1,4 @@
-const { User, ElectricConsumption, NaturalGasConsumption, GasolineConsumption } = require('../models');
+const { User, ElectricCompany, ElectricConsumption, NaturalGasConsumption, GasolineConsumption } = require('../models');
 const { signToken, AuthenticationError } = require('../utils/auth');
 
 const resolvers = {
@@ -11,6 +11,9 @@ const resolvers = {
         .populate('gasolineConsumption')
       }
       throw AuthenticationError;
+    },
+    elecSources: async (parent, { companyName }) => {
+      return await ElectricCompany.findOne({companyName: companyName})
     },
   },
 

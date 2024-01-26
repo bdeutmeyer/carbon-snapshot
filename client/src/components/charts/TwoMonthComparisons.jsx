@@ -1,3 +1,5 @@
+// This file is a MONSTER. I would love to have it modularized. The charts and header all use the same previous month/last month dates, though, so would need to be able to share those variables OR would all need to do the same calculating separately/redundantly. I've tried a couple of different ways to get the variables to export from another file, but haven't found a successful solution yet. I'm sure I can, it just hasn't gotten to the top of the priority list.
+
 import React from 'react';
 import { useParams } from 'react-router-dom';
 import { useQuery } from '@apollo/client';
@@ -127,10 +129,25 @@ export default function TwoMonthComparisons() {
         previousMonthTotalGasolineCarbon += previousMonthGasolineData[i].carbonOutput
     }
 
+    // Month totals for carbon
     const lastMonthTotalCarbon = lastMonthTotalElecCarbon + lastMonthTotalNatGasCarbon + lastMonthTotalGasolineCarbon
 
     const previousMonthTotalCarbon = previousMonthTotalElecCarbon + previousMonthTotalNatGasCarbon + previousMonthTotalGasolineCarbon
 
+    // Carbon trend heading info
+    let carbonDifference = 0;
+    let carbonDirection = '';
+    if (lastMonthTotalCarbon > previousMonthTotalCarbon) {
+        carbonDifference = lastMonthTotalCarbon - previousMonthTotalCarbon;
+        carbonDirection = `up from last month by ${carbonDifference} pounds of CO₂.`;
+    } else if (lastMonthTotalCarbon < previousMonthTotalCarbon) {
+        carbonDifference = previousMonthTotalCarbon - lastMonthTotalCarbon;
+        carbonDirection = `down from last month by ${carbonDifference} pounds of CO₂.`;
+    } else {
+        carbonDirection = 'equal to last month'
+    }
+
+    // Labels for charts
     const formattedLastMonthEndDate = new Date(parseInt(lastMonthEndDate)).toLocaleDateString()
     const lastMonthLabels = [`${lastMonthStartDate.toLocaleDateString()} - ${formattedLastMonthEndDate}`]
     const previousMonthLabels = [`${previousMonthStartDate.toLocaleDateString()} - ${previousMonthEndDate.toLocaleDateString()}`]
@@ -149,12 +166,8 @@ export default function TwoMonthComparisons() {
             },
         },
         scales: {
-            x: {
-                ticks: { color: 'black' }
-            },
-            y: {
-                ticks: { color: 'black' }
-            }
+            x: { ticks: { color: 'black' } },
+            y: { ticks: { color: 'black' } }
         }
     };
 
@@ -202,12 +215,8 @@ export default function TwoMonthComparisons() {
             },
         },
         scales: {
-            x: {
-                ticks: { color: 'black' }
-            },
-            y: {
-                ticks: { color: 'black' }
-            }
+            x: { ticks: { color: 'black' } },
+            y: { ticks: { color: 'black' } }
         }
     };
 
@@ -225,12 +234,8 @@ export default function TwoMonthComparisons() {
             },
         },
         scales: {
-            x: {
-                ticks: { color: 'black' }
-            },
-            y: {
-                ticks: { color: 'black' }
-            }
+            x: { ticks: { color: 'black' } },
+            y: { ticks: { color: 'black' } }
         }
     };
 
@@ -248,12 +253,8 @@ export default function TwoMonthComparisons() {
             },
         },
         scales: {
-            x: {
-                ticks: { color: 'black' }
-            },
-            y: {
-                ticks: { color: 'black' }
-            }
+            x: { ticks: { color: 'black' } },
+            y: { ticks: { color: 'black' } }
         }
     };
 
@@ -264,8 +265,7 @@ export default function TwoMonthComparisons() {
                 label: [previousMonthLabels],
                 data: [previousMonthTotalCarbon],
                 backgroundColor: 'rgba(0, 0, 0, 0.5)'
-            },
-            {
+            }, {
                 label: [lastMonthLabels],
                 data: [lastMonthTotalCarbon],
                 backgroundColor: 'rgba(0, 0, 0, 0.9)'
@@ -310,8 +310,7 @@ export default function TwoMonthComparisons() {
                 label: [previousMonthLabels],
                 data: [previousMonthTotalKwh],
                 backgroundColor: 'rgba(255, 99, 132, 0.5)'
-            },
-            {
+            }, {
                 label: [lastMonthLabels],
                 data: [lastMonthTotalKwh],
                 backgroundColor: 'rgba(255, 99, 132, 0.9)',
@@ -326,8 +325,7 @@ export default function TwoMonthComparisons() {
                 label: [previousMonthLabels],
                 data: [previousMonthTotalTherms],
                 backgroundColor: 'rgba(53, 162, 235, 0.5)'
-            },
-            {
+            }, {
                 label: [lastMonthLabels],
                 data: [lastMonthTotalTherms],
                 backgroundColor: 'rgba(53, 162, 235, 0.9)'
@@ -342,8 +340,7 @@ export default function TwoMonthComparisons() {
                 label: [previousMonthLabels],
                 data: [previousMonthTotalGallons],
                 backgroundColor: 'rgba(34, 139, 34, 0.5)'
-            },
-            {
+            }, {
                 label: [lastMonthLabels],
                 data: [lastMonthTotalGallons],
                 backgroundColor: 'rgba(34, 139, 34, 0.9)'
@@ -353,6 +350,9 @@ export default function TwoMonthComparisons() {
 
     return (
         <>
+        <Row>{carbonDirection !== '' ?             <h3>Your carbon output is {carbonDirection}</h3> : <></>}
+
+        </Row>
             <Row>
                 <Col id='carbon-chart' className="chart-color"
                     md={{

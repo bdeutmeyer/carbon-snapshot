@@ -1,7 +1,7 @@
 import React from 'react';
-import formatDate from '../utils/formatDate'
+import formatDate from '../../utils/formatDate'
 
-const ElectricCalc = ({ electricCompany, kwh, billDate, carbonOutput, individualFootprints }) => {
+const ElectricReadout = ({ electricCompany, kwh, billDate, carbonOutput, individualFootprints }) => {
 
   const formattedDate = formatDate(billDate)
 
@@ -26,4 +26,4 @@ const ElectricCalc = ({ electricCompany, kwh, billDate, carbonOutput, individual
   );
 };
 
-export default ElectricCalc;
+export default ElectricReadout;

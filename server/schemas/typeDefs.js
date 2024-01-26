@@ -9,6 +9,25 @@ const typeDefs = `
     gasolineConsumption: [GasolineConsumption]
   }
 
+  type ElectricCompany {
+    _id: ID
+    companyName: String
+    sourceBreakdown: SourceBreakdown
+  }
+
+  type SourceBreakdown {
+    coal: Float
+    hydro: Float
+    naturalGas: Float
+    nuclear: Float
+    nuclearOther: Float
+    oil: Float
+    other: Float
+    renewables: Float
+    solar: Float
+    wind: Float
+  }
+
   type ElectricConsumption {
     userId: ID
     electricCompany: String
@@ -41,6 +60,7 @@ const typeDefs = `
 
   type Query {
     me: User
+    elecSources(companyName: String!): ElectricCompany
   }
 
   type Mutation {

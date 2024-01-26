@@ -1,8 +1,8 @@
 import React from 'react';
 import { Form, FormGroup, Label, Input, Button } from 'reactstrap';
-import '../App.css'
+import '../../App.css'
 
-const GasForm = ({ therms, billDate, comment, handleThermChange, handleGasBillDateChange, handleGasCommentChange, handleGasFormSubmit }) => {
+const NaturalGasForm = ({ therms, billDate, comment, handleThermChange, handleGasBillDateChange, handleGasCommentChange, handleGasFormSubmit }) => {
 
   return (
     <Form onSubmit={handleGasFormSubmit}>
@@ -23,6 +23,6 @@ const GasForm = ({ therms, billDate, comment, handleThermChange, handleGasBillDa
   );
 }
 
-export default GasForm;
+export default NaturalGasForm;
 
 

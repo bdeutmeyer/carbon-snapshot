@@ -1,8 +1,8 @@
 import React from 'react';
-import '../App.css'
-import formatDate from '../utils/formatDate'
+import '../../App.css'
+import formatDate from '../../utils/formatDate'
 
-const GasCalc = ({therms, billDate, carbonOutput}) => {
+const NaturalGasReadout = ({therms, billDate, carbonOutput}) => {
 
   const formattedDate = formatDate(billDate)
 
@@ -19,4 +19,4 @@ const GasCalc = ({therms, billDate, carbonOutput}) => {
   );
 };
 
-export default GasCalc;
+export default NaturalGasReadout;
