@@ -46,8 +46,8 @@ const GasolineCalculation = () => {
       console.error(err);
     }
   }
-  // Access the shared data context
-  const carbonTotal = (gallons * 3.7 * 0.87);
+  // Carbon calculation: 1 gallon of gas produces 19.59248 pounds of CO2 * 
+  const carbonTotal = (gallons * 19.59248);
   return (
     <div className='gasoline'>
       <div className='gasoline-input'>

@@ -2,8 +2,9 @@ import { Navigate, useParams } from 'react-router-dom';
 import { useQuery } from '@apollo/client';
 import { QUERY_ME } from '../utils/queries';
 import Auth from '../utils/auth';
-import CarbonSnapshot from '../components/charts/CarbonSnapshot';
+import TwoMonthComparisons from '../components/charts/TwoMonthComparisons';
 import { Container, Row } from 'reactstrap';
+
 
 const Profile = () => {
   const { email: userParam } = useParams();
@@ -38,10 +39,9 @@ const Profile = () => {
     <div>
       <Container fluid>
         <Row className='d-flex'>
-        <CarbonSnapshot />
-        {/* <AllHistory /> */}
-      </Row>
-    </Container>
+          <TwoMonthComparisons />
+        </Row>
+      </Container>
     </div >
   );
 };

@@ -103,6 +103,11 @@ export default function GasolineHistory() {
         data: sortedData.map((index) => index.gallons),
         backgroundColor: 'rgba(34, 139, 34, 0.5)'
       },
+      {
+        label: 'Carbon Output (pounds)',
+        data: sortedData.map((index) => index.carbonOutput),
+        backgroundColor: 'rgba(0, 0, 0, 0.5)'
+      }
     ],
   };
 

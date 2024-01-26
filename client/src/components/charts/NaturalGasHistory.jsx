@@ -103,6 +103,11 @@ export default function NaturalGasHistory() {
         data: sortedData.map((index) => index.therms),
         backgroundColor: 'rgba(53, 162, 235, 0.5)',
       },
+      {
+        label: 'Carbon Output (pounds)',
+        data: sortedData.map((index) => index.carbonOutput),
+        backgroundColor: 'rgba(0, 0, 0, 0.5)'
+      }
     ],
   };
 
