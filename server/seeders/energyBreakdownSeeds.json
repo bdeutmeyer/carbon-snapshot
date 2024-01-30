@@ -3,8 +3,8 @@
         "companyName": "Mid American Energy Company",
         "sourceBreakdown": {
             "coal": 0.23,
-            "natural gas": 0.11,
-            "nuclearOther": 0.04,
+            "naturalGas": 0.11,
+            "nuclear": 0.04,
             "solar": 0.01,
             "wind": 0.61
         },
@@ -14,7 +14,7 @@
         "companyName": "Alliant Energy",
         "sourceBreakdown": {
             "coal": 0.32,
-            "natural gas": 0.32,
+            "naturalGas": 0.32,
             "other": 0.08,
             "renewables": 0.17,
             "wind": 0.11
@@ -26,7 +26,7 @@
         "sourceBreakdown": {
             "coal": 0.3,
             "hydro": 0.02,
-            "natural gas": 0.36,
+            "naturalGas": 0.36,
             "nuclear": 0.15,
             "oil": 0.01,
             "solar": 0.01,
@@ -39,7 +39,7 @@
         "sourceBreakdown": {
             "coal": 0.18,
             "hydro": 0.01,
-            "natural gas": 0.42,
+            "naturalGas": 0.42,
             "nuclear": 0.33,
             "other": 0.01,
             "solar": 0.01,
