@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import ElectricReadout from '../readouts/ElectricReadout';
 import ElectricForm from '../forms/ElectricForm';
 import { enableExperimentalFragmentVariables, useMutation, useQuery } from '@apollo/client';
-import { ELEC_SOURCES } from '../../utils/queries';
+// import { ELEC_SOURCES } from '../../utils/queries';
 import data from '../../utils/elecCompanyBreakdowns'
 import { ADD_ELECTRIC_USE } from '../../utils/mutations';
 import Auth from '../../utils/auth'
@@ -16,7 +16,33 @@ const ElectricCalculation = () => {
   const [sourceArray, setSourceArray] = useState([]);
   const [addElectricUse, { error }] = useMutation(ADD_ELECTRIC_USE);
 
-  //Permanent version with backend data:
+  // Modularized frontend data version (no Heroku seeding needed):
+  useEffect(() => {
+    let selectedCompany = {};
+    if (data) {
+      for (let i = 0; i < data.length; i++) {
+        if (data[i].companyName == electricCompany) {
+          selectedCompany = data[i]
+          let source = selectedCompany.sourceBreakdown;
+          const newSourceArray = [
+            { 'Coal: ': source.coal },
+            { 'Hydro: ': source.hydro },
+            { 'Natural Gas: ': source.naturalGas },
+            { 'Nuclear: ': source.nuclear },
+            { 'Oil: ': source.oil },
+            { 'Other (est): ': source.other },
+            { 'Renewables (est): ': source.renewables },
+            { 'Solar: ': source.solar },
+            { 'Wind: ': source.wind }
+          ].filter(obj => Object.values(obj)[0] !== null && Object.values(obj)[0] !== undefined);
+
+          setSourceArray(newSourceArray);
+        }
+      }
+    }
+  }, [data, electricCompany]);
+
+  // Backend db data version (Heroku seeding needed if we want to use it):
   // const { loading, err, data } = useQuery(ELEC_SOURCES, {
   //   variables: { companyName: electricCompany }
   // });
@@ -40,31 +66,6 @@ const ElectricCalculation = () => {
   //   }
   // }, [data, electricCompany]);
 
-  // Temporary version until we learn how to seed data on Heroku:
-  useEffect(() => {
-    let selectedCompany = {};
-    if (data) {
-      for (let i = 0; i < data.length; i++) {
-        if (data[i].companyName == electricCompany) {
-          selectedCompany = data[i]
-          let source = selectedCompany.sourceBreakdown;
-          const newSourceArray = [
-            { 'Coal: ': source.coal },
-            { 'Hydro: ': source.hydro },
-            { 'Natural Gas: ': source.naturalGas },
-            { 'Nuclear: ': source.nuclear },
-            { 'Oil: ': source.oil },
-            { 'Other (est): ': source.other },
-            { 'Renewables: ': source.renewables },
-            { 'Solar: ': source.solar },
-            { 'Wind: ': source.wind }
-          ].filter(obj => Object.values(obj)[0] !== null && Object.values(obj)[0] !== undefined);
-        
-          setSourceArray(newSourceArray);
-        }
-    }}
-  }, [data, electricCompany]);
-
   const calcsIntoValues = (key, value) => {
     switch (key) {
       case 'Coal: ':
@@ -79,7 +80,7 @@ const ElectricCalculation = () => {
         return (value * 0.54 * kwh).toFixed(2);
       case 'Other (est): ':
         return (value * .517 * kwh).toFixed(2);
-      case 'Renewables: ':
+      case 'Renewables (est): ':
         return (value * 0.09 * kwh).toFixed(2);
       case 'Solar: ':
         return (value * 0.0904 * kwh).toFixed(2);
@@ -146,7 +147,7 @@ const ElectricCalculation = () => {
   return (
     <div className='electricity'>
       <div className='electricity-input'>
-        <h1 id='elecFont'>Electricity Use</h1>
+        <h1 className='elecFont'>Electricity Use</h1>
         <ElectricForm
           electricCompany={electricCompany}
           kwh={kwh}
@@ -160,7 +161,6 @@ const ElectricCalculation = () => {
         />
       </div>
       <div className='electricity-footprint'>
-        <h2 id='elecFont'>Electricity Footprint</h2>
         <ElectricReadout
           electricCompany={electricCompany}
           kwh={kwh}
@@ -172,7 +172,5 @@ const ElectricCalculation = () => {
     </div >
   );
 };
-
-
 
 export default ElectricCalculation;

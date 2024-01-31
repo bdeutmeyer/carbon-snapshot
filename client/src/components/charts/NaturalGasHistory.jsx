@@ -79,14 +79,10 @@ export default function NaturalGasHistory() {
     },
     scales: {
       x: {
-        ticks: {
-          color: 'black'
-        }
+        ticks: { color: 'black' }
       },
       y: {
-        ticks: {
-          color: 'black'
-        }
+        ticks: { color: 'black' }
       }
     }
   };

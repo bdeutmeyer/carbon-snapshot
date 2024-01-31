@@ -11,14 +11,14 @@ const NaturalGasForm = ({ therms, billDate, comment, handleThermChange, handleGa
         <Input type="date" id="gasBillDate" value={billDate} onChange={handleGasBillDateChange} />
       </FormGroup>
       <FormGroup>
-        <Label id='gasFormTxt' for="therms">Please enter the number of Therms billed:</Label>
+        <Label className='gasFormTxt' for="therms">Please enter the number of Therms billed:</Label>
         <Input type="number" id="therms" value={therms} onChange={handleThermChange} />
       </FormGroup>
       <FormGroup>
         <Label for="elecComment">Comments (optional):</Label>
         <Input type="text" id="elecComment" value={comment} onChange={handleGasCommentChange} />
       </FormGroup>
-      <Button id='gasFormTxt' type="submit">Submit Gas Info</Button>
+      <Button className='gasFormTxt' type="submit">Submit Gas Info</Button>
     </Form>
   );
 }

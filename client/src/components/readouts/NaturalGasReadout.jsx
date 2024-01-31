@@ -8,13 +8,13 @@ const NaturalGasReadout = ({therms, billDate, carbonOutput}) => {
 
   return (
     <div>
-      <h2 id='natGasCSS'> Natural Gas Calculation Results</h2>
-      <p id='natGasText'>Therms: {therms ? therms : ''}</p>
-      <p id='natGasText'>Gas Bill Date: {billDate ? formattedDate : ''}</p>
+      <h2 className='natGasCSS'> Natural Gas Calculation Results</h2>
+      <p className='natGasText'>Therms: {therms ? therms : ''}</p>
+      <p className='natGasText'>Gas Bill Date: {billDate ? formattedDate : ''}</p>
       
       {/* Display breakdown of carbon footprint for each energy source */}
-      <p id='natGasText'>Carbon Footprint Breakdown:</p>
-      <p id='natGasText'>{carbonOutput ? `${carbonOutput} pounds of CO₂` : ''}</p>
+      <p className='natGasText'>Carbon Footprint Breakdown:</p>
+      <p className='natGasText'>{carbonOutput ? `${carbonOutput} pounds of CO₂` : ''}</p>
     </div>
   );
 };
