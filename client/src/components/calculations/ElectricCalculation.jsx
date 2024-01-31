@@ -3,6 +3,7 @@ import ElectricReadout from '../readouts/ElectricReadout';
 import ElectricForm from '../forms/ElectricForm';
 import { enableExperimentalFragmentVariables, useMutation, useQuery } from '@apollo/client';
 import { ELEC_SOURCES } from '../../utils/queries';
+import data from '../../utils/elecCompanyBreakdowns'
 import { ADD_ELECTRIC_USE } from '../../utils/mutations';
 import Auth from '../../utils/auth'
 import '../../App.css'
@@ -15,27 +16,53 @@ const ElectricCalculation = () => {
   const [sourceArray, setSourceArray] = useState([]);
   const [addElectricUse, { error }] = useMutation(ADD_ELECTRIC_USE);
 
-  const { loading, err, data } = useQuery(ELEC_SOURCES, {
-    variables: { companyName: electricCompany }
-  });
+  //Permanent version with backend data:
+  // const { loading, err, data } = useQuery(ELEC_SOURCES, {
+  //   variables: { companyName: electricCompany }
+  // });
 
+  // useEffect(() => {
+  //   if (data && data.elecSources) {
+  //     const source = data.elecSources.sourceBreakdown;
+  //     const newSourceArray = [
+  //       { 'Coal: ': source.coal },
+  //       { 'Hydro: ': source.hydro },
+  //       { 'Natural Gas: ': source.naturalGas },
+  //       { 'Nuclear: ': source.nuclear },
+  //       { 'Oil: ': source.oil },
+  //       { 'Other (est): ': source.other },
+  //       { 'Renewables: ': source.renewables },
+  //       { 'Solar: ': source.solar },
+  //       { 'Wind: ': source.wind }
+  //     ].filter(obj => Object.values(obj)[0] !== null && Object.values(obj)[0] !== undefined);
+
+  //     setSourceArray(newSourceArray);
+  //   }
+  // }, [data, electricCompany]);
+
+  // Temporary version until we learn how to seed data on Heroku:
   useEffect(() => {
-    if (data && data.elecSources) {
-      const source = data.elecSources.sourceBreakdown;
-      const newSourceArray = [
-        { 'Coal: ': source.coal },
-        { 'Hydro: ': source.hydro },
-        { 'Natural Gas: ': source.naturalGas },
-        { 'Nuclear: ': source.nuclear },
-        { 'Oil: ': source.oil },
-        { 'Other (est): ': source.other },
-        { 'Renewables: ': source.renewables },
-        { 'Solar: ': source.solar },
-        { 'Wind: ': source.wind }
-      ].filter(obj => Object.values(obj)[0] !== null && Object.values(obj)[0] !== undefined);
-
-      setSourceArray(newSourceArray);
-    }
+    let selectedCompany = {};
+    if (data) {
+      for (let i = 0; i < data.length; i++) {
+        if (data[i].companyName == electricCompany) {
+          selectedCompany = data[i]
+          let source = selectedCompany.sourceBreakdown;
+          const newSourceArray = [
+            { 'Coal: ': source.coal },
+            { 'Hydro: ': source.hydro },
+            { 'Natural Gas: ': source.naturalGas },
+            { 'Nuclear: ': source.nuclear },
+            { 'Oil: ': source.oil },
+            { 'Other (est): ': source.other },
+            { 'Renewables: ': source.renewables },
+            { 'Solar: ': source.solar },
+            { 'Wind: ': source.wind }
+          ].filter(obj => Object.values(obj)[0] !== null && Object.values(obj)[0] !== undefined);
+        
+          setSourceArray(newSourceArray);
+        }
+    }}
   }, [data, electricCompany]);
 
   const calcsIntoValues = (key, value) => {
