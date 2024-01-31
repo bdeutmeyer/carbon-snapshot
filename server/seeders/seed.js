@@ -9,11 +9,11 @@ const cleanDB = require('./cleanDB');
 
 db.once('open', async () => {
   try {
-    await cleanDB('ElectricCompany', 'electricCompany');
+    await cleanDB('ElectricCompany', 'electriccompanies');
     await cleanDB('User', 'users');
-    await cleanDB('ElectricConsumption', 'electricConsumption');
-    await cleanDB('NaturalGasConsumption', 'naturalGasConsumption');
-    await cleanDB('GasolineConsumption', 'gasolineConsumption');
+    await cleanDB('ElectricConsumption', 'electricconsumptions');
+    await cleanDB('NaturalGasConsumption', 'naturalgasconsumptions');
+    await cleanDB('GasolineConsumption', 'gasolineconsumptions');
     await User.create(userSeeds);
     await ElectricCompany.create(energyBreakdownSeeds);
     await ElectricConsumption.create(electricConsumptionSeeds);

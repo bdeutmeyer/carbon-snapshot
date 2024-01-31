@@ -18,9 +18,6 @@ const companySchema = new Schema({
     nuclear: {
       type: Number
     },
-    nuclearOther: {
-      type: Number
-    },
     oil: {
       type: Number
     },
