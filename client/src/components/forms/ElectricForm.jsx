@@ -1,6 +1,5 @@
 import React from 'react';
 import { Form, FormGroup, Label, Input, Button } from 'reactstrap';
-
 import '../../App.css'
 
 const ElectricForm = ({ electricCompany, kwh, electricBillDate, comment, handleElectricCompanyChange, handleKwhChange, handleElectricBillDateChange, handleElecCommentChange, handleElectricFormSubmit }) => {

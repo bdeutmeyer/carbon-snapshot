@@ -4,7 +4,6 @@ import GasolineReadout from '../readouts/GasolineReadout';
 import GasolineForm from '../forms/GasolineForm';
 import { ADD_GASOLINE_USE } from '../../utils/mutations';
 import Auth from '../../utils/auth';
-
 import '../../App.css'
 
 const GasolineCalculation = () => {
@@ -51,7 +50,7 @@ const GasolineCalculation = () => {
   return (
     <div className='gasoline'>
       <div className='gasoline-input'>
-        <h1 id='petrolFont'>Gasoline Use</h1>
+        <h1 className='petrolFont'>Gasoline Use</h1>
         <GasolineForm
           gallons={gallons}
           purchaseDate={purchaseDate}
@@ -63,7 +62,7 @@ const GasolineCalculation = () => {
         />
       </div>
       <div className='gasoline-footprint'>
-        <h2 id='petrolFont'>Gasoline Footprint</h2>
+        <h2 className='petrolFont'>Gasoline Footprint</h2>
         <GasolineReadout
           gallons={gallons}
           purchaseDate={purchaseDate}

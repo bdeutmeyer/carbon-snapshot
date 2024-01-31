@@ -351,10 +351,9 @@ export default function TwoMonthComparisons() {
     return (
         <>
         <Row>{carbonDirection !== '' ?             <h3>Your carbon output is {carbonDirection}</h3> : <></>}
-
         </Row>
             <Row>
-                <Col id='carbon-chart' className="chart-color"
+                <Col className="chart-color carbon-chart"
                     md={{
                         offset: 2,
                         size: 5
@@ -365,7 +364,7 @@ export default function TwoMonthComparisons() {
                 </Col>
             </Row>
             <Row>
-                <Col id='carbon-chart' className="chart-color"
+                <Col  className="chart-color carbon-chart"
                     md={{
                         offset: 2,
                         size: 3
@@ -374,7 +373,7 @@ export default function TwoMonthComparisons() {
                 >
                     <Doughnut options={prevCarbBreakdownOptions} data={previousMonthCarbonSources} className='chart-color' />
                 </Col>
-                <Col id='carbon-chart' className="chart-color"
+                <Col className="chart-color carbon-chart"
                     md={{
                         offset: 2,
                         size: 3
@@ -385,7 +384,7 @@ export default function TwoMonthComparisons() {
                 </Col>
             </Row>
             <Row>
-                <Col id='carbon-chart' className="chart-color"
+                <Col className="chart-color carbon-chart"
                     md={{
                         offset: 2,
                         size: 4
@@ -394,7 +393,7 @@ export default function TwoMonthComparisons() {
                 >
                     <Bar options={elecOptions} data={twoMonthElecUsageComparison} className='chart-color' />
                 </Col>
-                <Col id='carbon-chart' className="chart-color"
+                <Col className="chart-color carbon-chart"
                     md={{
                         offset: 2,
                         size: 4
@@ -403,7 +402,7 @@ export default function TwoMonthComparisons() {
                     <Bar options={natGasOptions} data={twoMonthNatGasUsageComparison} className='chart-color' />
                 </Col>
 
-                <Col id='carbon-chart' className="chart-color"
+                <Col className="chart-color carbon-chart"
                     md={{
                         offset: 2,
                         size: 4

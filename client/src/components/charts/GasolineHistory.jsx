@@ -79,14 +79,10 @@ export default function GasolineHistory() {
     },
     scales: {
       x: {
-        ticks: {
-          color: 'black'
-        }
+        ticks: { color: 'black' }
       },
       y: {
-        ticks: {
-          color: 'black'
-        }
+        ticks: { color: 'black' }
       }
     }
   };

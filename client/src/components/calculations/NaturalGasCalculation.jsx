@@ -4,7 +4,6 @@ import NaturalGasForm from '../forms/NaturalGasForm';
 import { useMutation } from '@apollo/client';
 import { ADD_NATGAS_USE } from '../../utils/mutations';
 import Auth from '../../utils/auth';
-
 import '../../App.css'
 
 const NaturalGasCalculation = () => {
@@ -53,7 +52,7 @@ const NaturalGasCalculation = () => {
   return (
     <div className='natural-gas'>
       <div className='natural-gas-input'>
-        <h1 id="natGasCSS">Natural Gas Use</h1>
+        <h1 className="natGasCSS">Natural Gas Use</h1>
         <NaturalGasForm
           therms={therms}
           billDate={billDate}
@@ -65,7 +64,7 @@ const NaturalGasCalculation = () => {
         />
       </div>
       <div className='natural-gas-footprint'>
-        <h2 id="natGasCSS">Natural Gas Footprint</h2>
+        <h2 className="natGasCSS">Natural Gas Footprint</h2>
         <NaturalGasReadout
           therms={therms}
           billDate={billDate}

@@ -9,8 +9,6 @@ import {
 import Auth from '../utils/auth';
 import '../App.css'
 
-import '../App.css'
-
 export default function Navigation(args) {
   const logout = (event) => {
     event.preventDefault();
